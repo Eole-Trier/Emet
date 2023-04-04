@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnkiBehaviour : MonoBehaviour
+public class EnkiBehaviour : Golem
 {
     Rigidbody m_RigidBody;
     private bool m_Freezed;
@@ -15,6 +15,7 @@ public class EnkiBehaviour : MonoBehaviour
         m_Player = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
         m_Freezed = false;
+        m_CancelAnimator = 1.0f;
     }
 
     // Update is called once per frame
@@ -23,20 +24,21 @@ public class EnkiBehaviour : MonoBehaviour
         
     }
 
-    public void OnCapacity(InputAction.CallbackContext _context)
+    public override void UseCapacity()
     {
         if (m_Freezed == false)
         {
             m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
             m_Freezed = true;
-            m_Player.SetSpeed(0);
+            m_Player.SetMoveDirection(Vector3.zero);
+            m_CancelAnimator = 0.0f;
+
         }
         else
         {
             m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             m_Freezed = false;
-            m_Player.SetSpeed(m_Player.GetInitalSpeed());
-
+            m_CancelAnimator = 1.0f;
         }
     }
 }

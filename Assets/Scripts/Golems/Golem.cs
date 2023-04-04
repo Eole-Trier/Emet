@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EoleBehaviour : MonoBehaviour
+public abstract class Golem : MonoBehaviour
 {
+    public float m_CancelAnimator;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -15,4 +15,6 @@ public class EoleBehaviour : MonoBehaviour
     {
         
     }
+
+    public abstract void UseCapacity();
 }

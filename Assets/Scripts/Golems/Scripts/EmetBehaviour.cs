@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EfritBehaviour : MonoBehaviour
+public class EmetBehaviour : Golem
 {
+    public override void UseCapacity()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
