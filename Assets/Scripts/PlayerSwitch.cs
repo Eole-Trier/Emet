@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -28,6 +29,6 @@ public class PlayerSwitch : MonoBehaviour
        {
             m_CurrentGolem = (m_CurrentGolem + 1) % m_Golems.Count;
             m_Player.SetGolem(m_Golems[m_CurrentGolem]);
-       }
+        }
     }
 }

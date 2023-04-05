@@ -1,19 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_JumpStrength;
-    private Vector3 m_Position;
+    [SerializeField] private float m_MaxSpeed;
+    private float m_CurrentSpeed;
     private Vector3 m_MoveDirection;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
 
     private Golem m_Golem;
+
+    private bool jump;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +29,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_MoveDirection = new Vector3(m_Position.x, 0, m_Position.y);
-        m_Rigidbody.AddForce(m_MoveDirection * (m_Speed * Time.deltaTime), ForceMode.Impulse);
+       
+
+        /*if (m_MoveDirection == Vector3.zero)
+        {
+            m_Speed = 0;
+        }*/
+        // m_CurrentSpeed = m_Rigidbody.velocity.magnitude;
+        // m_Speed = Math.Clamp(m_CurrentSpeed, 0, m_MaxSpeed);
+       
         m_Animator.SetFloat("SpeedX", m_MoveDirection.x * m_Golem.m_CancelAnimator);
         m_Animator.SetFloat("SpeedY", m_MoveDirection.y * m_Golem.m_CancelAnimator);
 
@@ -38,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
         CopyTransform(m_GolemTransform);
     }
 
+    private void FixedUpdate()
+    {
+        m_Rigidbody.AddForce(m_MoveDirection * m_Speed);
+       
+    }
+
     private void CopyTransform(Transform _transform)
     {
         transform.position = _transform.position;
@@ -48,9 +66,9 @@ public class PlayerMovement : MonoBehaviour
     public void OnMovement(InputAction.CallbackContext _context)
     {
         var input = _context.ReadValue<Vector2>();
-        m_Position = input;
+        m_MoveDirection = new Vector3(input.x, 0, input.y);
     }
-
+    
     public void OnJump(InputAction.CallbackContext _context)
     {
         Vector3 currentVelocity = m_Rigidbody.velocity;
@@ -72,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody = golem.GetComponent<Rigidbody>();
         m_Animator = golem.GetComponent<Animator>();
     }
+
+    public Golem GetGolem() => m_Golem;
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
     public Vector3 GetMoveDirection() => m_MoveDirection;

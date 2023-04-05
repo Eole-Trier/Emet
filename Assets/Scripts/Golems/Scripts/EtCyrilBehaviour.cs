@@ -6,6 +6,7 @@ public class EtCyrilBehaviour : Golem
 {
     public override void UseCapacity()
     {
+        Destroy(gameObject);
     }
 
     // Start is called before the first frame update
