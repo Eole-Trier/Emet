@@ -9,35 +9,33 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_JumpStrength;
-    [SerializeField] private float m_MaxSpeed;
+    [SerializeField] private float m_MaxVelocity;
     private float m_CurrentSpeed;
     private Vector3 m_MoveDirection;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
+    private bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.05f, Vector3.down, 0.1f); } }
 
     private Golem m_Golem;
-
-    private bool jump;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-       
 
         /*if (m_MoveDirection == Vector3.zero)
         {
             m_Speed = 0;
         }*/
-        // m_CurrentSpeed = m_Rigidbody.velocity.magnitude;
-        // m_Speed = Math.Clamp(m_CurrentSpeed, 0, m_MaxSpeed);
-       
+
+
+        m_Rigidbody.velocity = Vector3.ClampMagnitude(m_Rigidbody.velocity, m_MaxVelocity);
+        
         m_Animator.SetFloat("SpeedX", m_MoveDirection.x * m_Golem.m_CancelAnimator);
         m_Animator.SetFloat("SpeedY", m_MoveDirection.y * m_Golem.m_CancelAnimator);
 
@@ -71,11 +69,17 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext _context)
     {
-        Vector3 currentVelocity = m_Rigidbody.velocity;
-        currentVelocity.y = 0;
-        m_Rigidbody.velocity = currentVelocity;
-        m_Rigidbody.AddForce(transform.up * m_JumpStrength);
+        if (IsGrounded)
+        {
+            Vector3 currentVelocity = m_Rigidbody.velocity;
+            currentVelocity.y = 0;
+            m_Rigidbody.velocity = currentVelocity;
+            m_Rigidbody.AddForce(transform.up * m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+        }
+       
     }
+
+    
 
     public void OnCapacity(InputAction.CallbackContext _context)
     {
@@ -91,8 +95,10 @@ public class PlayerMovement : MonoBehaviour
         m_Animator = golem.GetComponent<Animator>();
     }
 
+  
     public Golem GetGolem() => m_Golem;
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
     public Vector3 GetMoveDirection() => m_MoveDirection;
+
 }
