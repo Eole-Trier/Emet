@@ -9,8 +9,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_JumpStrength;
-    [SerializeField] private float m_MaxVelocity;
-    private float m_CurrentSpeed;
     private Vector3 m_MoveDirection;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
@@ -27,15 +25,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        /*if (m_MoveDirection == Vector3.zero)
-        {
-            m_Speed = 0;
-        }*/
-
-
-        m_Rigidbody.velocity = Vector3.ClampMagnitude(m_Rigidbody.velocity, m_MaxVelocity);
-        
         m_Animator.SetFloat("SpeedX", m_MoveDirection.x * m_Golem.m_CancelAnimator);
         m_Animator.SetFloat("SpeedY", m_MoveDirection.y * m_Golem.m_CancelAnimator);
 
@@ -50,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_Rigidbody.AddForce(m_MoveDirection * m_Speed);
-       
+
+        Movement();
     }
 
     private void CopyTransform(Transform _transform)
@@ -71,15 +60,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded)
         {
-            Vector3 currentVelocity = m_Rigidbody.velocity;
-            currentVelocity.y = 0;
-            m_Rigidbody.velocity = currentVelocity;
-            m_Rigidbody.AddForce(transform.up * m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+            Jump();
         }
-       
     }
-
-    
 
     public void OnCapacity(InputAction.CallbackContext _context)
     {
@@ -95,7 +78,20 @@ public class PlayerMovement : MonoBehaviour
         m_Animator = golem.GetComponent<Animator>();
     }
 
-  
+    private void Jump()
+    {
+        Vector3 currentVelocity = m_Rigidbody.velocity;
+        currentVelocity.y = 0;
+        m_Rigidbody.velocity = currentVelocity;
+        m_Rigidbody.AddForce(transform.up * m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+    }
+    private void Movement()
+    {
+        Vector3 vel = new(m_MoveDirection.x * m_Speed * Time.fixedDeltaTime,
+            m_Rigidbody.velocity.y, m_MoveDirection.z * m_Speed * Time.fixedDeltaTime);
+
+        m_Rigidbody.velocity = vel;
+    }
     public Golem GetGolem() => m_Golem;
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
