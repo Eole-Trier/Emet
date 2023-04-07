@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         m_Animator.SetFloat("SpeedX", m_MoveDirection.x * m_Golem.m_CancelAnimator);
         m_Animator.SetFloat("SpeedY", m_MoveDirection.y * m_Golem.m_CancelAnimator);
 
@@ -66,7 +67,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCapacity(InputAction.CallbackContext _context)
     {
-        m_Golem.UseCapacity();
+        if (_context.started)
+        {
+            m_Golem.UseCapacity();
+        }
     }
 
     public void SetGolem(Golem golem)

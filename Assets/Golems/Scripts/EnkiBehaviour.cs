@@ -21,7 +21,7 @@ public class EnkiBehaviour : Golem
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override void UseCapacity()
@@ -32,7 +32,6 @@ public class EnkiBehaviour : Golem
             m_Freezed = true;
             m_Player.SetMoveDirection(Vector3.zero);
             m_CancelAnimator = 0.0f;
-
         }
         else
         {
