@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnkiBehaviour : MonoBehaviour
+public class EnkiBehaviour : Golem
 {
-    Rigidbody m_RigidBody;
+    private Rigidbody m_RigidBody;
     private bool m_Freezed;
     private PlayerMovement m_Player;
 
@@ -17,26 +18,21 @@ public class EnkiBehaviour : MonoBehaviour
         m_Freezed = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnCapacity(InputAction.CallbackContext _context)
+    public override void UseCapacity()
     {
         if (m_Freezed == false)
         {
-            m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
             m_Freezed = true;
-            m_Player.SetSpeed(0);
+            m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            m_Player.SetMoveDirection(Vector3.zero);
+            transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.z);
         }
+
         else
         {
-            m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             m_Freezed = false;
-            m_Player.SetSpeed(m_Player.GetInitalSpeed());
-
+            m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
         }
     }
 }
