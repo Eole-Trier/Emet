@@ -26,7 +26,7 @@ public class EnkiBehaviour : Golem
 
     public override void UseCapacity()
     {
-        if (m_Freezed == false)
+        if (!m_Freezed)
         {
             m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
             m_Freezed = true;

@@ -27,8 +27,11 @@ public class PlayerSwitch : MonoBehaviour
     {
        if (_context.started)
        {
-            m_CurrentGolem = (m_CurrentGolem + 1) % m_Golems.Count;
-            m_Player.SetGolem(m_Golems[m_CurrentGolem]);
+            if (m_Golems[1] != null)
+            {
+                m_CurrentGolem = (m_CurrentGolem + 1) % m_Golems.Count;
+                m_Player.SetGolem(m_Golems[m_CurrentGolem]);
+            }
         }
     }
 }
