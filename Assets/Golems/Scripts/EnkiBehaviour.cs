@@ -15,7 +15,7 @@ public class EnkiBehaviour : Golem
         m_Player = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
         m_Freezed = false;
-        m_CancelAnimator = 1.0f;
+        m_CancelAnimator = 1f;
     }
 
     // Update is called once per frame

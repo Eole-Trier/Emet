@@ -6,9 +6,7 @@ using UnityEngine.Assertions;
 
 public class MovingPlateform : MonoBehaviour
 {
-
-
-    [SerializeField] private List<Transform> m_Waypoints;
+    [SerializeField] private List<Transform> m_PlateformPath;
     [SerializeField] private float m_Speed;
 
     private int m_CurrentWaypoint;
@@ -17,7 +15,7 @@ public class MovingPlateform : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        Assert.IsTrue(m_Waypoints.Count != 0);
+        Assert.IsTrue(m_PlateformPath.Count != 0);
         m_CurrentWaypoint = 0;
     }
 
@@ -30,17 +28,17 @@ public class MovingPlateform : MonoBehaviour
     private void HandleMovement()
     {
         Vector3 prevPos = transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, m_Waypoints[m_CurrentWaypoint].transform.position,
+        transform.position = Vector3.MoveTowards(transform.position, m_PlateformPath[m_CurrentWaypoint].transform.position,
             (m_Speed * Time.deltaTime));
 
         m_MovementOfCurrentFrame = transform.position - prevPos;
-        if (Vector3.Distance(m_Waypoints[m_CurrentWaypoint].transform.position, transform.position) <= 0)
+        if (Vector3.Distance(m_PlateformPath[m_CurrentWaypoint].transform.position, transform.position) <= 0)
             m_CurrentWaypoint++;
         
-        if (m_CurrentWaypoint != m_Waypoints.Count)
+        if (m_CurrentWaypoint != m_PlateformPath.Count)
             return;
         
-        m_Waypoints.Reverse();
+        m_PlateformPath.Reverse();
         m_CurrentWaypoint = 0;
     }
 
