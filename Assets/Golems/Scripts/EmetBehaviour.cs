@@ -8,7 +8,7 @@ public class EmetBehaviour : Golem
     [SerializeField] private float m_PickUpDist = 1f;
     [SerializeField] private float m_ObjectDist = 1f;
     [SerializeField] private float m_ObjectHeight = 1f;
-    private Transform m_CarriedObject;
+    private GameObject m_CarriedObject;
     private int m_PickupLayer;
     // Start is called before the first frame update
     void Start()
@@ -23,9 +23,9 @@ public class EmetBehaviour : Golem
     {
         if (m_CarriedObject != null)
         {
-            m_CarriedObject.position = transform.position + m_ObjectDist * transform.forward;
-            m_CarriedObject.Translate(0, m_ObjectHeight, 0);
-            m_CarriedObject.rotation = transform.rotation;
+            m_CarriedObject.transform.position = transform.position + m_ObjectDist * transform.forward;
+            m_CarriedObject.transform.Translate(0, m_ObjectHeight, 0);
+            m_CarriedObject.transform.rotation = transform.rotation;
         }
     }
 
@@ -38,6 +38,7 @@ public class EmetBehaviour : Golem
     }
     private void PickUp()
     {
+
         // Collect every pickups around. Make sure they have a collider and the layer Pickup
         Collider[] pickups = Physics.OverlapSphere(transform.position, m_PickUpDist, m_PickupLayer);
 
@@ -48,14 +49,18 @@ public class EmetBehaviour : Golem
             float newDist = (transform.position - pickups[i].transform.position).sqrMagnitude;
             if (newDist < dist)
             {
-                m_CarriedObject = pickups[i].transform;
+                m_CarriedObject = pickups[i].gameObject;
+
                 dist = newDist;
             }
         }
-        
-}
+        if (m_CarriedObject != null)
+            m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
+
+    }
     private void Drop()
     {
+        m_CarriedObject.GetComponent<Rigidbody>().isKinematic = false;
         m_CarriedObject = null;
     }
 }
