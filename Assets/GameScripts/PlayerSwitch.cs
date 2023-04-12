@@ -10,12 +10,13 @@ public class PlayerSwitch : MonoBehaviour
 {
     [SerializeField] private List<Golem> m_Golems;
     [SerializeField] private int m_CurrentGolem;
-    [SerializeField] private PlayerMovement m_Player;
+    private PlayerMovement m_Player;
 
     private void Start()
     {
+        m_Player = FindObjectOfType<PlayerMovement>();
         Assert.IsTrue(m_Golems.Count != 0);
-        m_Player.SetGolem(m_Golems[0]);
+        m_Player.SetGolem(m_Golems[m_CurrentGolem]);
     }
 
     // Update is called once per frame

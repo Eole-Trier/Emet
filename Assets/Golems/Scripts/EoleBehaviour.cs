@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class EoleBehaviour : Golem
@@ -7,12 +9,13 @@ public class EoleBehaviour : Golem
     Rigidbody m_RigidBody;
     private bool m_Helicopter;
     private PlayerMovement m_Player;
+    [SerializeField] private WindZone m_WindZone;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Player = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
+        m_Player = FindObjectOfType<PlayerMovement>();
         m_Helicopter = false;
         m_CancelAnimator = 1.0f;
     }
@@ -22,28 +25,16 @@ public class EoleBehaviour : Golem
     {
         if (m_Helicopter)
         {
-            transform.Rotate(0, 0, 10);
-            transform.position += new Vector3(0, 0.1f, 0);
+            m_WindZone.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            m_WindZone.transform.forward = transform.forward;
         }
-
+        else
+            m_WindZone.gameObject.SetActive(false);
     }
 
     public override void UseCapacity()
     {
-        if (m_Helicopter == false)
-        {
-            m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
-            m_Helicopter = true;
-            m_Player.SetMoveDirection(Vector3.zero);
-            m_CancelAnimator = 0.0f;
-            transform.Rotate(-90, 0, 0);
-
-        }
-        else
-        {
-            m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-            m_Helicopter = false;
-            m_CancelAnimator = 1.0f;
-        }
+        m_WindZone.gameObject.SetActive(true);
+        m_Helicopter ^= true;
     }
 }
