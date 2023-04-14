@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 7782466337147193666, guid: cb0ee702f6fdec74a98da0e7efaab315,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7319913
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 7782466337147193666, guid: cb0ee702f6fdec74a98da0e7efaab315,
         type: 3}
@@ -526,7 +526,6 @@ MonoBehaviour:
   - {fileID: 1115557080}
   - {fileID: 639392237}
   m_CurrentGolem: 0
-  m_Player: {fileID: 515822067}
 --- !u!114 &515822066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +741,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1051933369}
     m_Modifications:
+    - target: {fileID: 2131033176468173474, guid: 7609355f75917c4448954deecfbc9d11,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2131033177431892833, guid: 7609355f75917c4448954deecfbc9d11,
         type: 3}
       propertyPath: m_RootOrder
@@ -1104,6 +1108,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enki
       objectReference: {fileID: 0}
+    - target: {fileID: 3263108369415368717, guid: ae9cdc613c59efc41919d4d086fe6d32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae9cdc613c59efc41919d4d086fe6d32, type: 3}
 --- !u!4 &1115557079 stripped
@@ -1311,7 +1320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409481227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.67, y: 4.45, z: 0}
+  m_LocalPosition: {x: -9.67, y: 2.69, z: 0}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
