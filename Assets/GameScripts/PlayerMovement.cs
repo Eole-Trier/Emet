@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         Movement();
     }
 
@@ -93,8 +92,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 vel = new(m_MoveDirection.x * m_Speed * Time.fixedDeltaTime,
             m_Rigidbody.velocity.y, m_MoveDirection.z * m_Speed * Time.fixedDeltaTime);
+            m_Rigidbody.velocity = vel;
 
-        m_Rigidbody.velocity = vel;
     }
     public Golem GetGolem() => m_Golem;
 
