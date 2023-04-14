@@ -753,23 +753,26 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.79
+      - m_Value: 1
         m_Name: Core Size
         m_Overridden: 1
-      - m_Value: 2.17
+      - m_Value: 2
         m_Name: Flame Size
         m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 1.09, y: 0.15}
+      - m_Value: {x: 4, y: 0.08}
         m_Name: Velocity
         m_Overridden: 1
     m_Vector3f:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 5.54607, y: 22.06874, z: 6.865621, w: 1}
+      - m_Value: {x: 12.844469, y: 1.0759765, z: 11.230504, w: 1}
         m_Name: Color
+        m_Overridden: 1
+      - m_Value: {x: 2.0174558, y: 12.844469, z: 8.540563, w: 1}
+        m_Name: Color Tails
         m_Overridden: 1
     m_Uint:
       m_Array: []
@@ -793,8 +796,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812033943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.028, y: 1.175, z: -5.21}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.123, y: 1.56, z: -0.786}
+  m_LocalScale: {x: 0.26376784, y: 0.26376784, z: 0.26376784}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
