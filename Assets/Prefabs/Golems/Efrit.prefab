@@ -1215,6 +1215,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2607309925948035558}
   - component: {fileID: 935573446948658011}
+  - component: {fileID: 4044062968907128753}
+  - component: {fileID: 6161449321441231071}
   m_Layer: 0
   m_Name: Efrit
   m_TagString: Untagged
@@ -1258,6 +1260,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &4044062968907128753
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853690516235921773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4914899, y: 3.830577, z: 1}
+  m_Center: {x: 0.045491576, y: 1.9876137, z: 0}
+--- !u!54 &6161449321441231071
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853690516235921773}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &5024058366142213904
 GameObject:
   m_ObjectHideFlags: 0
