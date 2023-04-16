@@ -1899,7 +1899,6 @@ GameObject:
   - component: {fileID: 3263108368669392461}
   - component: {fileID: 3263108367638851470}
   - component: {fileID: 3263108367638851471}
-  - component: {fileID: 7694056392546894409}
   - component: {fileID: 5958143531400999814}
   m_Layer: 0
   m_Name: Enki
@@ -1953,20 +1952,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 1.9, z: 0.7}
   m_Center: {x: -0, y: 0.95, z: 0}
---- !u!114 &7694056392546894409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3263108369415368717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17acf2b2994dc1b47ab22f35077d7702, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CancelAnimator: 0
-  m_Portable: 0
 --- !u!95 &5958143531400999814
 Animator:
   serializedVersion: 4

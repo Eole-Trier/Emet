@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Golem : MonoBehaviour
 {
-    public float m_CancelAnimator;
+    [HideInInspector] public float m_CancelAnimator;
     
     // Start is called before the first frame update
     void Start()

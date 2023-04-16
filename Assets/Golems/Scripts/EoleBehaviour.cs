@@ -8,8 +8,8 @@ using UnityEngine;
 public class EoleBehaviour : Golem
 {
     [SerializeField] private float m_WindForce;
-    private List<Collider> m_ListCollider = new();
-    private bool m_WindActive;
+    [HideInInspector] public List<Collider> m_ListCollider = new();
+    [HideInInspector] public bool m_WindActive;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class EoleBehaviour : Golem
         {
             for (int i = 0; i < m_ListCollider.Count; i++)
             {
+                if (m_ListCollider[i].attachedRigidbody != null)
                 m_ListCollider[i].attachedRigidbody.AddForce(transform.forward * m_WindForce);
             }
         }
@@ -37,10 +38,16 @@ public class EoleBehaviour : Golem
 
     private void OnTriggerEnter(Collider other)
     {
-        m_ListCollider.Add(other);
+        if (!m_ListCollider.Contains(other))
+        {
+            m_ListCollider.Add(other);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        m_ListCollider.Remove(other);
+        if (m_ListCollider.Contains(other))
+        {
+            m_ListCollider.Remove(other);
+        }
     }
 }
