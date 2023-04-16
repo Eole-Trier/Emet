@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Interactibles : MonoBehaviour
 {
-    public bool isOn;
+    [HideInInspector] public bool isOn;
 
     public abstract void Update();
     public abstract void OnOff();
