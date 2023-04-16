@@ -14,7 +14,6 @@ public class EmetBehaviour : Golem
     private float m_JumpStrength;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
-    Vector3 m_ObjectColliderCenter;
     BoxCollider m_ObjectCollider;
     // Start is called before the first frame update
     void Start()
@@ -77,20 +76,19 @@ public class EmetBehaviour : Golem
         }
         if (m_CarriedObject != null)
         {
-            m_CarriedObject.GetComponent<SphereCollider>().enabled = false;
             m_CarriedObject.transform.rotation = new(0, 0, 0, 1);
             m_Player.SetJumpStrength(0);
+
+
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
             m_CarriedObject.transform.position = transform.position + m_ObjectDist * transform.forward;
             m_CarriedObject.transform.Translate(0, m_ObjectHeight, 0);
 
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
-            m_ObjectColliderCenter = objectCollider.center;
             m_ObjectCollider = CopyComponent(objectCollider, gameObject) as BoxCollider;
             Destroy(objectCollider);
 
             m_ObjectCollider.center = new(0, 1, 1);
-
 
         }
 
@@ -100,7 +98,6 @@ public class EmetBehaviour : Golem
         m_CarriedObject.transform.parent = null;
         m_Player.SetJumpStrength(m_JumpStrength);
         m_CarriedObject.GetComponent<Rigidbody>().isKinematic = false;
-        m_CarriedObject.GetComponent<SphereCollider>().enabled = true;
 
         CopyComponent(m_ObjectCollider, m_CarriedObject);
         Destroy(m_ObjectCollider);
