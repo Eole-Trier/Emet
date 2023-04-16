@@ -1894,7 +1894,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CancelAnimator: 0
-  m_Portable: 0
 --- !u!95 &1783452053
 Animator:
   serializedVersion: 4
@@ -2064,7 +2063,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CancelAnimator: 0
-  m_Portable: 0
+--- !u!136 &1937304807
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937304800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.92511845
+  m_Height: 9.61542
+  m_Direction: 2
+  m_Center: {x: 0.06, y: 0.99, z: 4.97}
 --- !u!1 &1943666632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,7 +2136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CancelAnimator: 0
-  m_Portable: 0
 --- !u!95 &1995678667
 Animator:
   serializedVersion: 4

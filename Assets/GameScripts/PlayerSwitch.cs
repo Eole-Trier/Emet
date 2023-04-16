@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class PlayerSwitch : MonoBehaviour
 {
     [SerializeField] private List<Golem> m_Golems;
-    [SerializeField] private int m_CurrentGolem;
+    [SerializeField] public int m_CurrentGolem;
     private PlayerMovement m_Player;
 
     private void Start()
