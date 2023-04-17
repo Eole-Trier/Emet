@@ -66,11 +66,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCapacity(InputAction.CallbackContext _context)
     {
-        if (_context.started)
+        if (m_Golem.m_Type == Golem.Type.EMET)
         {
-            double time = _context.time;
-            m_Golem.UseCapacity(time);
+            if (_context.canceled)
+            {
+                double time = _context.duration;
+                m_Golem.UseCapacity(time);
+            }
         }
+        else
+            if (_context.started)
+            {
+                double time = _context.duration;
+                m_Golem.UseCapacity(time);
+            }
     }
 
     public void SetGolem(Golem golem)

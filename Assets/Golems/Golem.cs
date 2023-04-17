@@ -5,8 +5,16 @@ using UnityEngine;
 
 public abstract class Golem : MonoBehaviour
 {
+    [HideInInspector]
+    public enum Type
+    {
+        EMET,
+        ENKI,
+        EOLE,
+        EFRIT
+    }
     [HideInInspector] public float m_CancelAnimator;
-    
+    [HideInInspector] public Type m_Type;
     // Start is called before the first frame update
     void Start()
     {

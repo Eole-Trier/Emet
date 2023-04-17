@@ -14,6 +14,7 @@ public class EoleBehaviour : Golem
     // Start is called before the first frame update
     void Start()
     {
+        m_Type = Type.EOLE;
         m_CancelAnimator = 1.0f;
         m_WindActive = false;
     }

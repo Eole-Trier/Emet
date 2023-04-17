@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,9 +9,12 @@ public class EmetBehaviour : Golem
 {
     private PlayerMovement m_Player;
 
+    [SerializeField] private float m_ThrowForce = 100f;
     [SerializeField] private float m_PickUpDist = 1f;
-    [SerializeField] private float m_ObjectDist = 1f;
+    [SerializeField] private float m_ObjectDropDistance = 1f;
+    [SerializeField] private float m_ObjectDistance = 1f;
     [SerializeField] private float m_ObjectHeight = 1f;
+    [SerializeField] private float m_TimeKeyPressedToThrow;
     private float m_JumpStrength;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
@@ -21,6 +25,7 @@ public class EmetBehaviour : Golem
     // Start is called before the first frame update
     void Start()
     {
+        m_Type = Type.EMET;
         m_Player = FindObjectOfType<PlayerMovement>();
         m_CancelAnimator = 1f;
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
@@ -45,7 +50,7 @@ public class EmetBehaviour : Golem
     {
         if (m_CarriedObject != null)
         {
-            Drop();
+            Drop(timePressed);
             return;
         }
 
@@ -76,7 +81,7 @@ public class EmetBehaviour : Golem
             m_Player.SetJumpStrength(0);
 
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
-            m_CarriedObject.transform.position = transform.position + m_ObjectDist * transform.forward;
+            m_CarriedObject.transform.position = transform.position + m_ObjectDistance * transform.forward;
             m_CarriedObject.transform.Translate(0, m_ObjectHeight, 0);
 
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
@@ -91,15 +96,27 @@ public class EmetBehaviour : Golem
         }
 
     }
-    private void Drop()
+    private void Drop(double timePressed)
     {
-        m_CarriedObject.transform.parent = null;
+        
         m_Player.SetJumpStrength(m_JumpStrength);
         m_CarriedObject.GetComponent<Rigidbody>().isKinematic = false;
 
         BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
         objectCollider.enabled = true;
         m_ObjectCollider.enabled = false;
+
+        if (timePressed >= m_TimeKeyPressedToThrow)
+        {
+            m_CarriedObject.GetComponent<Rigidbody>().AddForce(transform.forward * m_ThrowForce, ForceMode.Impulse);
+        }
+        else
+        {
+            Vector3 position = m_CarriedObject.transform.position;
+            Vector3 offset = new(transform.forward.x * m_ObjectDropDistance, 0, transform.forward.z);
+            m_CarriedObject.transform.position = position + offset;
+        }
+        m_CarriedObject.transform.parent = null;
 
         m_CarriedObject = null;
     }

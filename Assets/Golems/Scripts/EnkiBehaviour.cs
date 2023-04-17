@@ -12,6 +12,7 @@ public class EnkiBehaviour : Golem
     // Start is called before the first frame update
     void Start()
     {
+        m_Type = Type.ENKI;
         m_Player = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
         m_Freezed = false;
