@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_JumpStrength;
-    private Vector3 m_MoveDirection;
+    public Vector3 m_MoveDirection;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;

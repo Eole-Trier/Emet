@@ -19,6 +19,7 @@ public class EmetBehaviour : Golem
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
 
+    private Golem m_Golem;
     [SerializeField]
     BoxCollider m_ObjectCollider;
 
@@ -31,13 +32,12 @@ public class EmetBehaviour : Golem
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
         m_CarriedObject = null;
         m_JumpStrength = m_Player.GetJumpStrength();
-
-        // m_ObjectCollider = new();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (m_CarriedObject != null)
         {
             
@@ -76,6 +76,10 @@ public class EmetBehaviour : Golem
 
         if (m_CarriedObject != null)
         {
+            if (m_CarriedObject.TryGetComponent(out Golem golem))
+            {
+                golem.m_CancelAnimator = 0;
+            }
             m_CarriedObject.transform.rotation = Quaternion.identity;
             m_CarriedObject.transform.localPosition = Vector3.zero;
             m_Player.SetJumpStrength(0);
@@ -98,7 +102,11 @@ public class EmetBehaviour : Golem
     }
     private void Drop(double timePressed)
     {
-        
+
+        if (m_CarriedObject.TryGetComponent(out Golem golem))
+        {
+            golem.m_CancelAnimator = 1;
+        }
         m_Player.SetJumpStrength(m_JumpStrength);
         m_CarriedObject.GetComponent<Rigidbody>().isKinematic = false;
 

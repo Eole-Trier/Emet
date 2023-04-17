@@ -13,7 +13,7 @@ public abstract class Golem : MonoBehaviour
         EOLE,
         EFRIT
     }
-    [HideInInspector] public float m_CancelAnimator;
+     public float m_CancelAnimator;
     [HideInInspector] public Type m_Type;
     // Start is called before the first frame update
     void Start()

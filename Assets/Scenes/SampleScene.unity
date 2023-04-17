@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Golems:
   - {fileID: 1115557083}
   - {fileID: 639392237}
-  m_CurrentGolem: 0
+  m_CurrentGolem: 1
 --- !u!114 &515822066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 250
-  m_JumpStrength: 150
+  m_JumpStrength: 1500
 --- !u!1 &534640395
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +748,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1051933369}
     m_Modifications:
+    - target: {fileID: 2131033176468173474, guid: 7609355f75917c4448954deecfbc9d11,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2131033176468173474, guid: 7609355f75917c4448954deecfbc9d11,
         type: 3}
       propertyPath: m_Constraints
