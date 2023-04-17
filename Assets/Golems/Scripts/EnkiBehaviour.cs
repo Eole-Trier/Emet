@@ -24,7 +24,7 @@ public class EnkiBehaviour : Golem
 
     }
 
-    public override void UseCapacity()
+    public override void UseCapacity(double timePressed)
     {
         if (!m_Freezed)
         {

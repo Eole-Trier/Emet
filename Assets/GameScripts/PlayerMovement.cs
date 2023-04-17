@@ -68,7 +68,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_context.started)
         {
-            m_Golem.UseCapacity();
+            double time = _context.time;
+            m_Golem.UseCapacity(time);
         }
     }
 

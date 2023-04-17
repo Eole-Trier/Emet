@@ -31,7 +31,7 @@ public class EoleBehaviour : Golem
         }
     }
 
-    public override void UseCapacity()
+    public override void UseCapacity(double timePressed)
     {
         m_WindActive ^= true;
     }

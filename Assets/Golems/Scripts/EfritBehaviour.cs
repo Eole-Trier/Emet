@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EfritBehaviour : Golem
 {
-    public override void UseCapacity()
-    {
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -18,5 +16,10 @@ public class EfritBehaviour : Golem
     void Update()
     {
         
+    }
+
+    public override void UseCapacity(double timePressed)
+    {
+
     }
 }

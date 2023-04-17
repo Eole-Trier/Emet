@@ -14,7 +14,10 @@ public class EmetBehaviour : Golem
     private float m_JumpStrength;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
+
+    [SerializeField]
     BoxCollider m_ObjectCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,8 @@ public class EmetBehaviour : Golem
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
         m_CarriedObject = null;
         m_JumpStrength = m_Player.GetJumpStrength();
+
+        // m_ObjectCollider = new();
     }
 
     // Update is called once per frame
@@ -36,27 +41,16 @@ public class EmetBehaviour : Golem
         }
     }
 
-    public override void UseCapacity()
+    public override void UseCapacity(double timePressed)
     {
         if (m_CarriedObject != null)
-            Drop();
-        else 
-            if (m_Player.GetIsGrounded())
-                PickUp();
-
-    }
-
-    Component CopyComponent(Component original, GameObject destination)
-    {
-        System.Type type = original.GetType();
-        Component copy = destination.AddComponent(type);
-        // Copied fields can be restricted with BindingFlags
-        System.Reflection.FieldInfo[] fields = type.GetFields();
-        foreach (System.Reflection.FieldInfo field in fields)
         {
-            field.SetValue(copy, field.GetValue(original));
+            Drop();
+            return;
         }
-        return copy;
+
+        if (m_Player.GetIsGrounded())
+            PickUp();
     }
 
     private void PickUp()
@@ -74,22 +68,26 @@ public class EmetBehaviour : Golem
                 dist = newDist;
             }
         }
+
         if (m_CarriedObject != null)
         {
-            m_CarriedObject.transform.rotation = new(0, 0, 0, 1);
+            m_CarriedObject.transform.rotation = Quaternion.identity;
+            m_CarriedObject.transform.localPosition = Vector3.zero;
             m_Player.SetJumpStrength(0);
-
 
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
             m_CarriedObject.transform.position = transform.position + m_ObjectDist * transform.forward;
             m_CarriedObject.transform.Translate(0, m_ObjectHeight, 0);
 
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
-            m_ObjectCollider = CopyComponent(objectCollider, gameObject) as BoxCollider;
-            Destroy(objectCollider);
 
-            m_ObjectCollider.center = new(0, 1, 1);
+            m_ObjectCollider.enabled = true;
+            m_ObjectCollider.center = new(0, m_ObjectHeight, 0);
+            m_ObjectCollider.size = objectCollider.size;
 
+            objectCollider.enabled = false;
+
+            m_ObjectCollider.center = new(0, m_ObjectHeight, 0);
         }
 
     }
@@ -99,8 +97,10 @@ public class EmetBehaviour : Golem
         m_Player.SetJumpStrength(m_JumpStrength);
         m_CarriedObject.GetComponent<Rigidbody>().isKinematic = false;
 
-        CopyComponent(m_ObjectCollider, m_CarriedObject);
-        Destroy(m_ObjectCollider);
+        BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
+        objectCollider.enabled = true;
+        m_ObjectCollider.enabled = false;
+
         m_CarriedObject = null;
     }
 }

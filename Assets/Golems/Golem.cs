@@ -18,5 +18,5 @@ public abstract class Golem : MonoBehaviour
         
     }
 
-    public abstract void UseCapacity();
+    public abstract void UseCapacity(double timePressed);
 }
