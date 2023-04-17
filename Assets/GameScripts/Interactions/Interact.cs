@@ -6,43 +6,38 @@ using UnityEngine.InputSystem;
 
 public class Interact : MonoBehaviour
 {
-    [SerializeField] private List<Interactibles> m_Interactibles;
+    [SerializeField] public List<Interactibles> m_Interactibles;
     [SerializeField] private List<Mechanism> m_Mechanism;
-    private bool m_Action;
+    [HideInInspector] public bool action;
+    public float rangeToActivate;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        action = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(m_Action)
+        SortList();
+        if(action)
         {
             Interacted();
-            m_Action = false;
+            action = false;
         }
-            
-    }
-
-    public void OnAction(InputAction.CallbackContext _context)
-    {
-        if(_context.started)
-            m_Action = true;
     }
 
     public void Interacted()
     {
         foreach(Interactibles interactibles in m_Interactibles)
         {
-            if (interactibles.tag == "Lever")
+            if (interactibles.tag == "Interactible")
                 interactibles.OnOff();
         }    
     }
 
-    private void SortList()
+    public void SortList()
     {
         m_Interactibles.Sort((Interactibles a, Interactibles b) => {
             float distanceA = (transform.position - a.transform.position).sqrMagnitude;

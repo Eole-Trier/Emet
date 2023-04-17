@@ -8,15 +8,15 @@ using UnityEngine.UIElements;
 
 public class PlayerSwitch : MonoBehaviour
 {
-    [SerializeField] private List<Golem> m_Golems;
+    [SerializeField] public List<Golem> golems;
     [SerializeField] public int m_CurrentGolem;
     private PlayerMovement m_Player;
 
     private void Start()
     {
         m_Player = FindObjectOfType<PlayerMovement>();
-        Assert.IsTrue(m_Golems.Count != 0);
-        m_Player.SetGolem(m_Golems[m_CurrentGolem]);
+        Assert.IsTrue(golems.Count != 0);
+        m_Player.SetGolem(golems[m_CurrentGolem]);
     }
 
     // Update is called once per frame
@@ -28,10 +28,10 @@ public class PlayerSwitch : MonoBehaviour
     {
        if (_context.started)
        {
-            if (m_Golems[1] != null)
+            if (golems[1] != null)
             {
-                m_CurrentGolem = (m_CurrentGolem + 1) % m_Golems.Count;
-                m_Player.SetGolem(m_Golems[m_CurrentGolem]);
+                m_CurrentGolem = (m_CurrentGolem + 1) % golems.Count;
+                m_Player.SetGolem(golems[m_CurrentGolem]);
             }
         }
     }

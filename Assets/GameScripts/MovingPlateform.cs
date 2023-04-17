@@ -42,9 +42,8 @@ public class MovingPlateform : MonoBehaviour
         m_CurrentWaypoint = 0;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
-        other.transform.position += m_MovementOfCurrentFrame;
+        collision.transform.position += m_MovementOfCurrentFrame;
     }
-
 }

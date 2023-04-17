@@ -11,6 +11,6 @@ public class PressurePlate : Interactibles
 
     public override void Update()
     {
-        isOn = Physics.Raycast(transform.position + Vector3.down * 0.05f, Vector3.up, 0.25f);
+        IsOn = Physics.Raycast(transform.position + Vector3.down * 0.05f, Vector3.up, 0.25f);
     }
 }

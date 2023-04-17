@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226629122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5571065, y: 3.0654445, z: 0.80792576}
+  m_LocalPosition: {x: 0.5571065, y: 3.0654445, z: 2.04}
   m_LocalScale: {x: 1, y: 2.45, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -365,9 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
-  Object: {fileID: 315648867}
-  Material1: {fileID: 2100000, guid: 5344d8f6e288d554f8ed456a099ff9d2, type: 2}
-  Material2: {fileID: 2100000, guid: ef87d719211179440856d43137855b8b, type: 2}
 --- !u!65 &315648866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -652,19 +649,7 @@ MonoBehaviour:
     m_ActionId: 96796251-3da5-4666-bb14-250445c4d531
     m_ActionName: Keyboard/Switch[/Keyboard/q]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 428333594}
-        m_TargetAssemblyTypeName: Interact, Assembly-CSharp
-        m_MethodName: OnAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 74102120-a5f7-43ee-be86-7299e3f33697
     m_ActionName: Keyboard/Interact[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
@@ -699,10 +684,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c7d7835adf2b14f8bba98133295cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Golems:
+  golems:
   - {fileID: 1995678664}
   - {fileID: 1937304806}
-  - {fileID: 0}
+  - {fileID: 1783452052}
   m_CurrentGolem: 0
 --- !u!114 &428333593
 MonoBehaviour:
@@ -734,6 +719,8 @@ MonoBehaviour:
   - {fileID: 1489225634}
   - {fileID: 315648865}
   m_Mechanism: []
+  action: 0
+  rangeToActivate: 0
 --- !u!1 &494467625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1237,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448667718}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1}
@@ -1267,7 +1254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac6650c30c4a2c4b8686bbc3b35b5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlateformPath: []
+  m_PlateformPath:
+  - {fileID: 417584746}
+  - {fileID: 568474484}
   m_Speed: 5
 --- !u!65 &1448667721
 BoxCollider:
@@ -1374,7 +1363,7 @@ GameObject:
   - component: {fileID: 1489225634}
   m_Layer: 0
   m_Name: Lever
-  m_TagString: Lever
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1450,7 +1439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489225628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7871065, y: 1.1754444, z: 0.43792576}
+  m_LocalPosition: {x: 0.7871065, y: 1.1754444, z: -0.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1470,9 +1459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
-  Object: {fileID: 1489225631}
-  Material1: {fileID: 2100000, guid: 5344d8f6e288d554f8ed456a099ff9d2, type: 2}
-  Material2: {fileID: 2100000, guid: ef87d719211179440856d43137855b8b, type: 2}
 --- !u!1001 &1783452048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1602,6 +1588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CancelAnimator: 0
+  m_Type: 0
 --- !u!95 &1783452053
 Animator:
   serializedVersion: 4
@@ -1771,9 +1758,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CancelAnimator: 0
+  m_Type: 0
   m_WindForce: 20
-  m_ListCollider: []
-  m_WindActive: 0
+  listCollider: []
+  windActive: 0
 --- !u!136 &1937304807
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1847,6 +1835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CancelAnimator: 0
+  m_Type: 0
 --- !u!95 &1995678667
 Animator:
   serializedVersion: 4

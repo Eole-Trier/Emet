@@ -19,6 +19,6 @@ public class Lever : Interactibles
     public override void OnOff()
     {
         if (Vector3.Distance(m_PlayerMovement.transform.position, transform.position) < 1.5f)
-            isOn ^= true;
+            IsOn ^= true;
     }
 }
