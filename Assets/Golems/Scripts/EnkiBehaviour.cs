@@ -17,6 +17,8 @@ public class EnkiBehaviour : Golem
         m_RigidBody = GetComponent<Rigidbody>();
         m_Freezed = false;
         m_CancelAnimator = false;
+        m_InitialJumpStrength = m_JumpStrength;
+        m_InitialSpeed = m_Speed;
     }
 
     // Update is called once per frame

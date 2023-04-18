@@ -19,6 +19,8 @@ public class EoleBehaviour : Golem
         m_Type = Type.EOLE;
         m_CancelAnimator = false;
         windActive = false;
+        m_InitialJumpStrength = m_JumpStrength;
+        m_InitialSpeed = m_Speed;
     }
 
     // Update is called once per frame

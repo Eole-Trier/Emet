@@ -7,8 +7,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float m_Speed;
-    [SerializeField] private float m_JumpStrength;
+    
     private Vector3 m_MoveDirection;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
@@ -83,12 +82,13 @@ public class PlayerMovement : MonoBehaviour
             if (_context.started)
             {
                 double time = _context.time;
-                if (Vector3.Distance(m_Interact.m_Interactibles[0].transform.position, transform.position) < m_Interact.rangeToActivate &&
+                /*if (Vector3.Distance(m_Interact.m_Interactibles[0].transform.position, transform.position) < m_Interact.rangeToActivate &&
                     m_Interact.m_Interactibles[0].CompareTag("Interactible"))
                 {
                     m_Interact.action = true;
                 }
                 else
+                */
                     StartCoroutine(m_Golem.UseCapacity(time));
             }
         }
@@ -108,20 +108,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 currentVelocity = m_Rigidbody.velocity;
         currentVelocity.y = 0;
         m_Rigidbody.velocity = currentVelocity;
-        m_Rigidbody.AddForce(transform.up * m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+        m_Rigidbody.AddForce(transform.up * m_Golem.m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
     }
     private void Movement()
     {
-        Vector3 vel = new(m_MoveDirection.x * m_Speed * Time.fixedDeltaTime,
-            m_Rigidbody.velocity.y, m_MoveDirection.z * m_Speed * Time.fixedDeltaTime);
+        Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
+            m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
         m_Rigidbody.velocity = vel;
 
     }
     public Golem GetGolem() => m_Golem;
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
-    public void SetJumpStrength(float strength) => m_JumpStrength = strength;
+    //public void SetJumpStrength(float strength) => m_JumpStrength = strength;
     public Vector3 GetMoveDirection() => m_MoveDirection;
-    public float GetJumpStrength() => m_JumpStrength;
+    //public float GetJumpStrength() => m_JumpStrength;
     public bool GetIsGrounded() => IsGrounded;
 }
