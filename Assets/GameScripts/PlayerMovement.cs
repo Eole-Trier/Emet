@@ -82,8 +82,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_context.started)
             {
-                double time = _context.duration;
-                StartCoroutine(m_Golem.UseCapacity(time));
+                double time = _context.time;
+                if (Vector3.Distance(m_Interact.m_Interactibles[0].transform.position, transform.position) < m_Interact.rangeToActivate &&
+                    m_Interact.m_Interactibles[0].CompareTag("Interactible"))
+                {
+                    m_Interact.action = true;
+                }
+                else
+                    StartCoroutine(m_Golem.UseCapacity(time));
             }
         }
     }
