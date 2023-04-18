@@ -19,8 +19,8 @@ public class EfritBehaviour : Golem
         
     }
 
-    public override void UseCapacity(double timePressed)
+    public override IEnumerator UseCapacity(double timePressed)
     {
-
+        yield return null;
     }
 }

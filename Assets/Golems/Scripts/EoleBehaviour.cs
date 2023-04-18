@@ -18,9 +18,7 @@ public class EoleBehaviour : Golem
     {
         m_Type = Type.EOLE;
         m_CancelAnimator = 1.0f;
-        windActive = false;
-        m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
-        m_PlayerMovement = FindObjectOfType<PlayerMovement>();
+        m_WindActive = false;
     }
 
     // Update is called once per frame
@@ -50,9 +48,9 @@ public class EoleBehaviour : Golem
         }
     }
 
-    public override void UseCapacity(double timePressed)
+    public override IEnumerator UseCapacity(double timePressed)
     {
-        windActive ^= true;
+        m_WindActive ^= true;
     }
 
     private void OnTriggerEnter(Collider other)

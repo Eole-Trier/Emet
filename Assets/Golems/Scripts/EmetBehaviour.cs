@@ -28,7 +28,7 @@ public class EmetBehaviour : Golem
     {
         m_Type = Type.EMET;
         m_Player = FindObjectOfType<PlayerMovement>();
-        m_CancelAnimator = 1f;
+        m_CancelAnimator = false;
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
         m_CarriedObject = null;
         m_JumpStrength = m_Player.GetJumpStrength();
@@ -46,16 +46,18 @@ public class EmetBehaviour : Golem
         }
     }
 
-    public override void UseCapacity(double timePressed)
+    public override IEnumerator UseCapacity(double timePressed)
     {
         if (m_CarriedObject != null)
         {
             Drop(timePressed);
-            return;
+            yield return null;
         }
 
         if (m_Player.GetIsGrounded())
             PickUp();
+        
+        yield return null;
     }
 
     private void PickUp()
@@ -78,7 +80,15 @@ public class EmetBehaviour : Golem
         {
             if (m_CarriedObject.TryGetComponent(out Golem golem))
             {
-                golem.m_CancelAnimator = 0;
+                golem.m_CancelAnimator = true;
+                if (m_CarriedObject.TryGetComponent(out EnkiBehaviour enki))
+                {
+                    if (enki.IsFreezed())
+                    {
+                        m_CarriedObject = null;
+                        return;
+                    }
+                }
             }
             m_CarriedObject.transform.rotation = Quaternion.identity;
             m_CarriedObject.transform.localPosition = Vector3.zero;
@@ -105,7 +115,7 @@ public class EmetBehaviour : Golem
 
         if (m_CarriedObject.TryGetComponent(out Golem golem))
         {
-            golem.m_CancelAnimator = 1;
+            golem.m_CancelAnimator = false;
         }
         m_Player.SetJumpStrength(m_JumpStrength);
         m_CarriedObject.GetComponent<Rigidbody>().isKinematic = false;

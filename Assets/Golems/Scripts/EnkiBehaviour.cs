@@ -16,7 +16,7 @@ public class EnkiBehaviour : Golem
         m_Player = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
         m_Freezed = false;
-        m_CancelAnimator = 1f;
+        m_CancelAnimator = false;
     }
 
     // Update is called once per frame
@@ -25,20 +25,22 @@ public class EnkiBehaviour : Golem
 
     }
 
-    public override void UseCapacity(double timePressed)
+    public override IEnumerator UseCapacity(double timePressed)
     {
         if (!m_Freezed)
         {
             m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
             m_Freezed = true;
             m_Player.SetMoveDirection(Vector3.zero);
-            m_CancelAnimator = 0.0f;
+            m_CancelAnimator = true;
         }
         else
         {
             m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             m_Freezed = false;
-            m_CancelAnimator = 1.0f;
+            m_CancelAnimator = false;
         }
+        yield return null;
     }
+    public bool IsFreezed() => m_Freezed;
 }

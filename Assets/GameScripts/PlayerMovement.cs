@@ -27,17 +27,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        m_Animator.SetFloat("SpeedX", m_MoveDirection.x * m_Golem.m_CancelAnimator);
-        m_Animator.SetFloat("SpeedY", m_MoveDirection.y * m_Golem.m_CancelAnimator);
-
-        if (m_MoveDirection != Vector3.zero && m_Golem.m_CancelAnimator != 0)
-        {
-            Quaternion ToRotation = Quaternion.LookRotation(m_MoveDirection, Vector3.up);
-            m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, ToRotation, 720 * Time.deltaTime);
-        }
-
         CopyTransform(m_GolemTransform);
+
+        if (m_Golem.m_CancelAnimator != false)
+            return;
+
+        m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
+        m_Animator.SetFloat("SpeedY", m_MoveDirection.y);
+
+        if (m_MoveDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(m_MoveDirection, Vector3.up);
+            m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, toRotation, 720 * Time.deltaTime);
+        }
     }
 
     private void FixedUpdate()
@@ -73,20 +75,16 @@ public class PlayerMovement : MonoBehaviour
             if (_context.canceled)
             {
                 double time = _context.duration;
-                m_Golem.UseCapacity(time);
+                StartCoroutine(m_Golem.UseCapacity(time));
             }
         }
         else
-            if (_context.started)
         {
-            double time = _context.time;
-            if (Vector3.Distance(m_Interact.m_Interactibles[0].transform.position, transform.position) < m_Interact.rangeToActivate &&
-                m_Interact.m_Interactibles[0].tag == "Interactible")
+            if (_context.started)
             {
-                m_Interact.action = true;
+                double time = _context.duration;
+                StartCoroutine(m_Golem.UseCapacity(time));
             }
-            else
-                m_Golem.UseCapacity(time);
         }
     }
 
