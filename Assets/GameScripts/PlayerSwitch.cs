@@ -11,17 +11,21 @@ public class PlayerSwitch : MonoBehaviour
     [SerializeField] public List<Golem> golems;
     [SerializeField] public int m_CurrentGolem;
     private PlayerMovement m_Player;
+    private EoleBehaviour m_Eole;
 
     private void Start()
     {
         m_Player = FindObjectOfType<PlayerMovement>();
         Assert.IsTrue(golems.Count != 0);
         m_Player.SetGolem(golems[m_CurrentGolem]);
+        m_Eole = FindObjectOfType<EoleBehaviour>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (golems[m_CurrentGolem].m_Type != Golem.Type.EOLE)
+            m_Eole.EoleUpdate();
     }
 
     public void OnSwitch(InputAction.CallbackContext _context)
