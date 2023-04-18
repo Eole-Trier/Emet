@@ -1899,6 +1899,7 @@ GameObject:
   - component: {fileID: 3263108368669392461}
   - component: {fileID: 3263108367638851470}
   - component: {fileID: 3263108367638851471}
+  - component: {fileID: 5958143531400999814}
   m_Layer: 0
   m_Name: Enki
   m_TagString: Untagged
@@ -1951,6 +1952,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 1.9, z: 0.7}
   m_Center: {x: -0, y: 0.95, z: 0}
+--- !u!95 &5958143531400999814
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3263108369415368717}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
+  m_Controller: {fileID: 9100000, guid: ac745388ca8f7514eb99e709a161f702, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3263108369452926740
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,38 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class EnkiBehaviour : Golem
 {
-    private Rigidbody m_RigidBody;
+    Rigidbody m_RigidBody;
     private bool m_Freezed;
     private PlayerMovement m_Player;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_Type = Type.ENKI;
         m_Player = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
         m_Freezed = false;
+        m_CancelAnimator = false;
+        m_InitialJumpStrength = m_JumpStrength;
+        m_InitialSpeed = m_Speed;
     }
 
-    public override void UseCapacity()
+    // Update is called once per frame
+    void Update()
     {
-        if (m_Freezed == false)
-        {
-            m_Freezed = true;
-            m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
-            m_Player.SetMoveDirection(Vector3.zero);
-            transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.z);
-        }
 
+    }
+
+    public override IEnumerator UseCapacity(double timePressed)
+    {
+        if (!m_Freezed)
+        {
+            m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            m_Freezed = true;
+            m_Player.SetMoveDirection(Vector3.zero);
+            m_CancelAnimator = true;
+        }
         else
         {
-            m_Freezed = false;
             m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
+            m_Freezed = false;
+            m_CancelAnimator = false;
         }
+        yield return null;
     }
+    public bool IsFreezed() => m_Freezed;
 }

@@ -1138,7 +1138,7 @@ GameObject:
   - component: {fileID: 4244012077930919759}
   - component: {fileID: 606097154372597738}
   - component: {fileID: 712657811289908700}
-  - component: {fileID: 4263884971210112468}
+  - component: {fileID: 743020240062011167}
   m_Layer: 0
   m_Name: Enki
   m_TagString: Untagged
@@ -1211,7 +1211,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0191386, z: 0.43874133}
   m_Center: {x: 0, y: 0.9822463, z: 0.036714584}
---- !u!114 &4263884971210112468
+--- !u!114 &743020240062011167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1220,9 +1220,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5388503363170058257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15ae6fc653daab439307a3bfa9e8d3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 17acf2b2994dc1b47ab22f35077d7702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Speed: 200
+  m_JumpStrength: 200
+  m_InitialSpeed: 0
+  m_InitialJumpStrength: 0
+  m_CancelAnimator: 0
+  m_Type: 0
 --- !u!1 &5782026568901757671
 GameObject:
   m_ObjectHideFlags: 0

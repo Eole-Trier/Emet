@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    private PlayerMovement m_Player;
+    [SerializeField] private PlayerMovement m_Player;
     [SerializeField] private Vector3 m_PositionFromPlayer;
-
-
-    private void Start()
-    {
-        m_Player = FindObjectOfType<PlayerMovement>();
-    }
 
     // Update is called once per frame
     void Update()
