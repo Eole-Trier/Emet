@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class Golem : MonoBehaviour
 {
     [HideInInspector]
@@ -13,18 +14,14 @@ public abstract class Golem : MonoBehaviour
         EOLE,
         EFRIT
     }
-     public float m_CancelAnimator;
+
+    public float m_Speed;
+    public float m_JumpStrength;
+    [HideInInspector] public float m_InitialSpeed;
+    [HideInInspector] public float m_InitialJumpStrength;
+    [HideInInspector] public bool m_CancelAnimator;
     [HideInInspector] public Type m_Type;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract IEnumerator UseCapacity(double timePressed);
 
-    public abstract void UseCapacity(double timePressed);
 }

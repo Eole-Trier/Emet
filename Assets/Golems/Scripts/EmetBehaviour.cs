@@ -9,15 +9,15 @@ public class EmetBehaviour : Golem
 {
     private PlayerMovement m_Player;
 
-    [SerializeField] private float m_ThrowForce = 100f;
+    [SerializeField] private float m_ThrowForce = 75f;
     [SerializeField] private float m_PickUpDist = 1f;
     [SerializeField] private float m_ObjectDropDistance = 1f;
     [SerializeField] private float m_ObjectDistance = 1f;
     [SerializeField] private float m_ObjectHeight = 1f;
     [SerializeField] private float m_TimeKeyPressedToThrow;
-    private float m_JumpStrength;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
+
 
     private Golem m_Golem;
     [SerializeField]
@@ -28,10 +28,11 @@ public class EmetBehaviour : Golem
     {
         m_Type = Type.EMET;
         m_Player = FindObjectOfType<PlayerMovement>();
-        m_CancelAnimator = 1f;
+        m_CancelAnimator = false;
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
         m_CarriedObject = null;
-        m_JumpStrength = m_Player.GetJumpStrength();
+        m_InitialJumpStrength = m_JumpStrength;
+        m_InitialSpeed = m_Speed;
     }
 
     // Update is called once per frame
@@ -46,20 +47,19 @@ public class EmetBehaviour : Golem
         }
     }
 
-    public override void UseCapacity(double timePressed)
+    public override IEnumerator UseCapacity(double timePressed)
     {
         if (m_CarriedObject != null)
-        {
             Drop(timePressed);
-            return;
-        }
-
-        if (m_Player.GetIsGrounded())
+        else if (m_Player.GetIsGrounded())
             PickUp();
+
+        yield return null;
     }
 
     private void PickUp()
     {
+        m_JumpStrength = 0;
         Collider[] pickups = Physics.OverlapSphere(transform.position, m_PickUpDist, m_PickupLayer);
 
         float dist = Mathf.Infinity;
@@ -78,11 +78,18 @@ public class EmetBehaviour : Golem
         {
             if (m_CarriedObject.TryGetComponent(out Golem golem))
             {
-                golem.m_CancelAnimator = 0;
+                golem.m_CancelAnimator = true;
+                if (m_CarriedObject.TryGetComponent(out EnkiBehaviour enki))
+                {
+                    if (enki.IsFreezed())
+                    {
+                        m_CarriedObject = null;
+                        return;
+                    }
+                }
             }
             m_CarriedObject.transform.rotation = Quaternion.identity;
             m_CarriedObject.transform.localPosition = Vector3.zero;
-            m_Player.SetJumpStrength(0);
 
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
             m_CarriedObject.transform.position = transform.position + m_ObjectDistance * transform.forward;
@@ -102,12 +109,11 @@ public class EmetBehaviour : Golem
     }
     private void Drop(double timePressed)
     {
-
+        m_JumpStrength = m_InitialJumpStrength;
         if (m_CarriedObject.TryGetComponent(out Golem golem))
         {
-            golem.m_CancelAnimator = 1;
+            golem.m_CancelAnimator = false;
         }
-        m_Player.SetJumpStrength(m_JumpStrength);
         m_CarriedObject.GetComponent<Rigidbody>().isKinematic = false;
 
         BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
@@ -116,7 +122,8 @@ public class EmetBehaviour : Golem
 
         if (timePressed >= m_TimeKeyPressedToThrow)
         {
-            m_CarriedObject.GetComponent<Rigidbody>().AddForce(transform.forward * m_ThrowForce, ForceMode.Impulse);
+            Vector3 test = new Vector3(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
+            m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
         }
         else
         {

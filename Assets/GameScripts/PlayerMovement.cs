@@ -7,8 +7,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float m_Speed;
-    [SerializeField] private float m_JumpStrength;
+    
     private Vector3 m_MoveDirection;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
@@ -27,17 +26,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        m_Animator.SetFloat("SpeedX", m_MoveDirection.x * m_Golem.m_CancelAnimator);
-        m_Animator.SetFloat("SpeedY", m_MoveDirection.y * m_Golem.m_CancelAnimator);
-
-        if (m_MoveDirection != Vector3.zero && m_Golem.m_CancelAnimator != 0)
-        {
-            Quaternion ToRotation = Quaternion.LookRotation(m_MoveDirection, Vector3.up);
-            m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, ToRotation, 720 * Time.deltaTime);
-        }
-
         CopyTransform(m_GolemTransform);
+
+        if (m_Golem.m_CancelAnimator != false)
+            return;
+
+        m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
+        m_Animator.SetFloat("SpeedY", m_MoveDirection.y);
+
+        if (m_MoveDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(m_MoveDirection, Vector3.up);
+            m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, toRotation, 720 * Time.deltaTime);
+        }
     }
 
     private void FixedUpdate()
@@ -73,20 +74,23 @@ public class PlayerMovement : MonoBehaviour
             if (_context.canceled)
             {
                 double time = _context.duration;
-                m_Golem.UseCapacity(time);
+                StartCoroutine(m_Golem.UseCapacity(time));
             }
         }
         else
-            if (_context.started)
         {
-            double time = _context.time;
-            if (Vector3.Distance(m_Interact.m_Interactibles[0].transform.position, transform.position) < m_Interact.rangeToActivate &&
-                m_Interact.m_Interactibles[0].tag == "Interactible")
+            if (_context.started)
             {
-                m_Interact.action = true;
+                double time = _context.time;
+                /*if (Vector3.Distance(m_Interact.m_Interactibles[0].transform.position, transform.position) < m_Interact.rangeToActivate &&
+                    m_Interact.m_Interactibles[0].CompareTag("Interactible"))
+                {
+                    m_Interact.action = true;
+                }
+                else
+                */
+                    StartCoroutine(m_Golem.UseCapacity(time));
             }
-            else
-                m_Golem.UseCapacity(time);
         }
     }
 
@@ -104,20 +108,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 currentVelocity = m_Rigidbody.velocity;
         currentVelocity.y = 0;
         m_Rigidbody.velocity = currentVelocity;
-        m_Rigidbody.AddForce(transform.up * m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+        m_Rigidbody.AddForce(transform.up * m_Golem.m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
     }
     private void Movement()
     {
-        Vector3 vel = new(m_MoveDirection.x * m_Speed * Time.fixedDeltaTime,
-            m_Rigidbody.velocity.y, m_MoveDirection.z * m_Speed * Time.fixedDeltaTime);
+        Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
+            m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
         m_Rigidbody.velocity = vel;
 
     }
     public Golem GetGolem() => m_Golem;
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
-    public void SetJumpStrength(float strength) => m_JumpStrength = strength;
+    //public void SetJumpStrength(float strength) => m_JumpStrength = strength;
     public Vector3 GetMoveDirection() => m_MoveDirection;
-    public float GetJumpStrength() => m_JumpStrength;
+    //public float GetJumpStrength() => m_JumpStrength;
     public bool GetIsGrounded() => IsGrounded;
 }

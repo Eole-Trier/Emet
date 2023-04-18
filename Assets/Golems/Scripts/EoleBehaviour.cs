@@ -22,7 +22,7 @@ public class EoleBehaviour : Golem
     {
         forward = true;
         m_Type = Type.EOLE;
-        m_CancelAnimator = 1.0f;
+        m_CancelAnimator = false;
         windActive = false;
         m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
@@ -40,6 +40,8 @@ public class EoleBehaviour : Golem
                 m_WindCollider[1].enabled = true;
             }
         }
+        m_InitialJumpStrength = m_JumpStrength;
+        m_InitialSpeed = m_Speed;
     }
 
     // Update is called once per frame
@@ -89,12 +91,14 @@ public class EoleBehaviour : Golem
         }
     }
 
-    public override void UseCapacity(double timePressed)
+    public override IEnumerator UseCapacity(double timePressed)
     {
         listCollider.Clear();
         m_WindCollider[0].enabled ^= true;
         m_WindCollider[1].enabled ^= true;
         forward ^= true;
+        windActive ^= true;
+        yield return null;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -10,7 +10,8 @@ public class EfritBehaviour : Golem
     void Start()
     {
         m_Type = Type.EFRIT;
-
+        m_InitialJumpStrength = m_JumpStrength;
+        m_InitialSpeed = m_Speed;
     }
 
     // Update is called once per frame
@@ -19,8 +20,8 @@ public class EfritBehaviour : Golem
         
     }
 
-    public override void UseCapacity(double timePressed)
+    public override IEnumerator UseCapacity(double timePressed)
     {
-
+        yield return null;
     }
 }
