@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve
-  m_Shader: {fileID: -6465566751694194690, guid: 89bb91fdbbe371c4db9b23728f3b9e4d,
+  m_Name: Dissolve2
+  m_Shader: {fileID: -6465566751694194690, guid: 729ecd4b33b17244dafb67c117003c9f,
     type: 3}
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: -1
   stringTagMap:
     RenderType: TransparentCutout
   disabledShaderPasses: []
@@ -41,10 +41,10 @@ Material:
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
-    - _DissolveAmount: 0
-    - _DissolveScale: 70
-    - _DissolveWidth: 0.04
+    - _Cutoff: 0
     - _DstBlend: 0
+    - _NoiseScale: 40
+    - _NoiseStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -55,9 +55,9 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _DissolveColor: {r: 2.6287735, g: 0.28838864, b: 0, a: 1}
+    - _Color: {r: 0.9339623, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &5027914785086773890
+--- !u!114 &4121575256743316880
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
