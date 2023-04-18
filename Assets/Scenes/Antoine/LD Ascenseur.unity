@@ -1394,6 +1394,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2561049045407940658, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07969189
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561049045407940668, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561049045407940668, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: SmokeSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561049045407940668, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561049045407940668, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561049045407940668, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 90.98357
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561049045407940668, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 9.563397
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561049045407940668, guid: b317235ada6dfc94ebc14e5e54f82d56,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 0.5722124
+      objectReference: {fileID: 0}
     - target: {fileID: 2607309925948035558, guid: b317235ada6dfc94ebc14e5e54f82d56,
         type: 3}
       propertyPath: m_RootOrder
