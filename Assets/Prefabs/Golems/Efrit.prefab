@@ -1218,6 +1218,7 @@ GameObject:
   - component: {fileID: 935573446948658011}
   - component: {fileID: 4044062968907128753}
   - component: {fileID: 6161449321441231071}
+  - component: {fileID: -3883139254206195785}
   m_Layer: 0
   m_Name: Efrit
   m_TagString: Untagged
@@ -1290,6 +1291,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-3883139254206195785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853690516235921773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c31f3adda353d4db00e8d576629ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Speed: 250
+  m_JumpStrength: 200
+  m_InitialSpeed: 0
+  m_InitialJumpStrength: 0
+  m_CancelAnimator: 0
+  m_Type: 0
 --- !u!1 &5024058366142213904
 GameObject:
   m_ObjectHideFlags: 0
