@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement2 : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
-    private PlayerMovement2 m_Player;
+    [SerializeField] private PlayerMovement m_Player;
     [SerializeField] private Vector3 m_PositionFromPlayer;
-
-
-    private void Start()
-    {
-        m_Player = FindObjectOfType<PlayerMovement2>();
-    }
 
     // Update is called once per frame
     void Update()
