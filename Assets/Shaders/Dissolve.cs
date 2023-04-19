@@ -28,9 +28,9 @@ public class Dissolve : MonoBehaviour
     {
         VFXGraph.Play();
         float counter = 0;
-        while(Material.GetFloat("_DissolveAmount") < 1)
+        while(Material.GetFloat("_DissolveAmount") < 10)
         {
-            counter += dissolveRate;
+            counter += dissolveRate;            
             Material.SetFloat("_DissolveAmount", counter);
             yield return new WaitForSeconds(refreshRate);
         }
