@@ -31,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
         if (m_Golem.m_CancelAnimator != false)
             return;
 
-        m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
-        m_Animator.SetFloat("SpeedY", m_MoveDirection.y);
+        //m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
+        //m_Animator.SetFloat("SpeedY", m_MoveDirection.y);
 
         if (m_MoveDirection != Vector3.zero)
         {

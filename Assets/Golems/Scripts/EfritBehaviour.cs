@@ -22,6 +22,11 @@ public class EfritBehaviour : Golem
 
     public override IEnumerator UseCapacity(double timePressed)
     {
+        Burn();
         yield return null;
+    }
+    private void Burn()
+    {
+
     }
 }
