@@ -349,7 +349,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 811853597}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580588303}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e91978b9e90165c488a73ed49b041c14, type: 3}
@@ -790,7 +790,7 @@ MonoBehaviour:
     m_ActionName: Keyboard/Interact[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Keyboard
+  m_DefaultActionMap: aaa8d150-cdbc-4491-96d0-268ece3d3d28
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 494467627}
 --- !u!4 &428333591
@@ -1788,40 +1788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0caab8d028e3945b0f1b48c23b61bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1580588303 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4394048441320458073, guid: da22c17e8c72b674ebc7358a4fb34df7,
-    type: 3}
-  m_PrefabInstance: {fileID: 811853597}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1580588308
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580588303}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.82, z: 1.81}
---- !u!136 &1580588309
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580588303}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 2.86, z: 0}
 --- !u!1 &2025032620
 GameObject:
   m_ObjectHideFlags: 0
