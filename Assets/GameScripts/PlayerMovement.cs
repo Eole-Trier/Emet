@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if (IsGrounded)
+        if (IsGrounded && _context.started)
         {
             Jump();
         }
@@ -105,9 +105,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        Vector3 currentVelocity = m_Rigidbody.velocity;
-        currentVelocity.y = 0;
-        m_Rigidbody.velocity = currentVelocity;
         m_Rigidbody.AddForce(transform.up * m_Golem.m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
     }
     private void Movement()

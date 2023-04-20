@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class EfritBehaviour : Golem
+public class BraseroBurn : MonoBehaviour
 {
     public bool IsBurning;
     [SerializeField] private float m_BurnDistance;
-    private List <GameObject> m_GameObjects = new();
+    private List<GameObject> m_GameObjects = new();
     [SerializeField] private VisualEffect flame;
     private int m_BurnableLayer;
 
@@ -16,11 +15,7 @@ public class EfritBehaviour : Golem
     // Start is called before the first frame update
     void Start()
     {
-        m_Type = Type.EFRIT;
-        m_InitialJumpStrength = m_JumpStrength;
-        m_InitialSpeed = m_Speed;
         m_BurnableLayer = 1 << LayerMask.NameToLayer("Burnable");
-
     }
 
     // Update is called once per frame
@@ -37,14 +32,10 @@ public class EfritBehaviour : Golem
         }
     }
 
-    public override IEnumerator UseCapacity(double timePressed)
-    {
-        yield return null;
-    }
     private void Burn()
     {
         Collider[] burn = Physics.OverlapSphere(transform.position, m_BurnDistance, m_BurnableLayer);
-        
+
         foreach (Collider c in burn)
         {
             GameObject gameObject = c.gameObject;
@@ -53,7 +44,7 @@ public class EfritBehaviour : Golem
                 continue;
             }
             m_GameObjects.Add(gameObject);
-            
+
             if (gameObject.TryGetComponent(out EfritBehaviour efrit))
             {
                 efrit.IsBurning = true;
