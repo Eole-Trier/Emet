@@ -14,13 +14,12 @@ public class EmetBehaviour : Golem
     [SerializeField] private float m_ObjectDistance = 1f;
     [SerializeField] private float m_ObjectHeight = 1f;
     [SerializeField] private float m_TimeKeyPressedToThrow;
+    [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
 
-
     private Golem m_Golem;
-    [SerializeField]
-    BoxCollider m_ObjectCollider;
+
 
     // Start is called before the first frame update
     void Start()

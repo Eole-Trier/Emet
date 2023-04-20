@@ -97,7 +97,20 @@ public class EoleBehaviour : Golem
         listCollider.Clear();
         m_WindCollider[0].enabled ^= true;
         m_WindCollider[1].enabled ^= true;
-        forward ^= true;
+        if (m_PlayerMovement.GetIsGrounded() && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
+        {
+            forward ^= true;
+            if (!forward)
+            {
+                m_PlayerMovement.GetAnimator().Play("EoleVertical");
+                m_PlayerMovement.GetAnimator().SetBool("LookingUP", true);
+            }
+            else if (forward)
+            {
+                m_PlayerMovement.GetAnimator().Play("EoleHorizontal");
+                m_PlayerMovement.GetAnimator().SetBool("LookingUP", false);
+            }
+        }
         windActive ^= true;
         yield return null;
     }

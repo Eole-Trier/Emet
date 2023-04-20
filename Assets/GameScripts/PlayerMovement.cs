@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private Interact m_Interact;
     private Golem m_Golem;
 
-    private bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.05f, Vector3.down, 0.1f); } }
+    private bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.10f); } }
+    private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +32,10 @@ public class PlayerMovement : MonoBehaviour
         if (m_Golem.m_CancelAnimator != false)
             return;
 
-        //m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
-        //m_Animator.SetFloat("SpeedY", m_MoveDirection.y);
+        m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
+        m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
+        m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
+        m_Animator.SetBool("Moving", m_IsMoving);
 
         if (m_MoveDirection != Vector3.zero)
         {
@@ -63,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded && _context.started)
         {
+            m_Animator.Play("Jump");
             Jump();
         }
     }
@@ -112,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
             m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
         m_Rigidbody.velocity = vel;
-
     }
     public Golem GetGolem() => m_Golem;
 
@@ -121,4 +124,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetMoveDirection() => m_MoveDirection;
     //public float GetJumpStrength() => m_JumpStrength;
     public bool GetIsGrounded() => IsGrounded;
+
+    public Animator GetAnimator() => m_Animator;
 }
