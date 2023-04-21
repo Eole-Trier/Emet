@@ -11,7 +11,9 @@ public class EoleBehaviour : Golem
     [HideInInspector] public List<Collider> listCollider = new();
     [SerializeField] private float m_WindForceHorizontal;
     [SerializeField] private float m_WindForceVertical;
+    [SerializeField] private float m_TimeBeforeIdle;
     [HideInInspector] public bool windActive;
+    private float m_IdleTimer;
     private List<CapsuleCollider> m_WindCollider = new();
     private PlayerSwitch m_PlayerSwitch;
     private PlayerMovement m_PlayerMovement;
@@ -44,6 +46,21 @@ public class EoleBehaviour : Golem
         m_InitialSpeed = m_Speed;
     }
 
+    private void FixedUpdate()
+    {
+        if (m_PlayerMovement.GetMoveDirection() == Vector3.zero)
+        {
+            m_IdleTimer -= Time.fixedDeltaTime;
+            if (m_IdleTimer <= 0)
+            {
+                m_PlayerMovement.GetAnimator().Play("Idle");
+                m_IdleTimer = m_TimeBeforeIdle;
+            }
+        }
+        else
+            m_IdleTimer = m_TimeBeforeIdle;
+    }
+
     // Update is called once per frame
     public void EoleUpdate()
     {
@@ -56,6 +73,7 @@ public class EoleBehaviour : Golem
             Rigidbody rb = collider.attachedRigidbody;
             if (collider.TryGetComponent(out Golem golem) && collider.name == m_PlayerSwitch.golems[m_PlayerSwitch.m_CurrentGolem].name)
             {
+                if(m_PlayerMovement.GetMoveDirection() == Vector3.zero)
                 //if wind is in front of eole
                 if (forward)
                 {
