@@ -23,16 +23,9 @@ public class BurningObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        m_GivedFlame.enabled = IsBurning;
         if (IsBurning)
-        {
-            m_GivedFlame.enabled = true;
             Burn();
-        }
-        else
-        {
-            m_GivedFlame.enabled = false;
-        }
-
     }
 
     private void Burn()

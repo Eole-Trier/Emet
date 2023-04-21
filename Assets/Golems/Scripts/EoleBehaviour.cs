@@ -115,7 +115,7 @@ public class EoleBehaviour : Golem
         listCollider.Clear();
         m_WindCollider[0].enabled ^= true;
         m_WindCollider[1].enabled ^= true;
-        if (m_PlayerMovement.GetIsGrounded() && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
+        if (m_PlayerMovement.IsGrounded() && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
         {
             forward ^= true;
             if (!forward)

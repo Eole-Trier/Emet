@@ -14,8 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private Transform m_GolemTransform;
     private Interact m_Interact;
     private Golem m_Golem;
-
-    private bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.20f, Vector3.down, 0.20f); } }
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
@@ -64,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if (IsGrounded && _context.started)
+        if (IsGrounded() && _context.started)
         {
             //m_Animator.Play("Jump");
             Jump();
@@ -123,7 +121,11 @@ public class PlayerMovement : MonoBehaviour
     //public void SetJumpStrength(float strength) => m_JumpStrength = strength;
     public Vector3 GetMoveDirection() => m_MoveDirection;
     //public float GetJumpStrength() => m_JumpStrength;
-    public bool GetIsGrounded() => IsGrounded;
 
     public Animator GetAnimator() => m_Animator;
+
+    public bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.20f);
+    }
 }
