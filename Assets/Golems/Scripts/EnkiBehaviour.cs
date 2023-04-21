@@ -18,7 +18,7 @@ public class EnkiBehaviour : Golem
     {
         m_BoxCollider = new(GetComponents<BoxCollider>());
         m_Type = GolemType.ENKI;
-        m_Player = FindObjectOfType<PlayerMovement>();
+        m_PlayerMovement = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
         m_Freezed = false;
         m_CancelAnimator = false;
