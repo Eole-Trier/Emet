@@ -24,7 +24,7 @@ public class PlayerSwitch : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (golems[m_CurrentGolem].m_Type != Golem.Type.EOLE && golems.Contains(m_Eole))
+        if (golems[m_CurrentGolem].m_Type != Golem.GolemType.EOLE && golems.Contains(m_Eole))
             m_Eole.EoleUpdate();
     }
 

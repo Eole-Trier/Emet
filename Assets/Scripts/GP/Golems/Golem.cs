@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class Golem : MonoBehaviour
 {
     [HideInInspector]
-    public enum Type
+    public enum GolemType
     {
         EMET,
         ENKI,
@@ -20,7 +20,7 @@ public abstract class Golem : MonoBehaviour
     [HideInInspector] public float m_InitialSpeed;
     [HideInInspector] public float m_InitialJumpStrength;
     [HideInInspector] public bool m_CancelAnimator;
-    [HideInInspector] public Type m_Type;
+    [HideInInspector] public GolemType m_Type;
 
     public abstract IEnumerator UseCapacity(double timePressed);
 
