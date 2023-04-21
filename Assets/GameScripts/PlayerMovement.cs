@@ -32,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
         if (m_Golem.m_CancelAnimator != false)
             return;
 
-        //m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
-        //m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
-        //m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
-        //m_Animator.SetBool("Moving", m_IsMoving);
+        m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
+        m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
+        m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
+        m_Animator.SetBool("Moving", m_IsMoving);
 
         if (m_MoveDirection != Vector3.zero)
         {
