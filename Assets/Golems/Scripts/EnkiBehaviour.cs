@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,10 +11,12 @@ public class EnkiBehaviour : Golem
     private PlayerMovement m_PlayerMovement;
     private float m_IdleTimer;
     private bool m_Freezed;
+    private List<BoxCollider> m_BoxCollider;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_BoxCollider = new(GetComponents<BoxCollider>());
         m_Type = Type.ENKI;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
@@ -26,7 +29,7 @@ public class EnkiBehaviour : Golem
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_PlayerMovement.GetMoveDirection() == Vector3.zero)
+        if (m_PlayerMovement.GetMoveDirection() == Vector3.zero && !m_Freezed)
         {
             m_IdleTimer -= Time.fixedDeltaTime;
             if (m_IdleTimer <= 0)
@@ -47,6 +50,7 @@ public class EnkiBehaviour : Golem
             m_Freezed = true;
             m_PlayerMovement.SetMoveDirection(Vector3.zero);
             m_CancelAnimator = true;
+            m_BoxCollider.ForEach((box) => box.enabled ^= true);
             m_PlayerMovement.GetAnimator().Play("EnkiPlateform");
         }
         else
@@ -54,6 +58,7 @@ public class EnkiBehaviour : Golem
             m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             m_Freezed = false;
             m_CancelAnimator = false;
+            m_BoxCollider.ForEach((box) => box.enabled ^= true);
             m_PlayerMovement.GetAnimator().Play("EnkiGolem");
         }
         yield return null;
