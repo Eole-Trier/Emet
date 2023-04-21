@@ -1104,6 +1104,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4131025970730266858}
+  - component: {fileID: 8046767056548517009}
+  - component: {fileID: 1610525814988642700}
+  - component: {fileID: -7387930306448996027}
+  - component: {fileID: 498291752534593496}
+  - component: {fileID: 6861984472444755059}
   m_Layer: 0
   m_Name: EnkiScaled
   m_TagString: Untagged
@@ -1127,6 +1132,87 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8046767056548517009
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652437056770714486}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d3520b9b61d07a44a68461b7994e978, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &1610525814988642700
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652437056770714486}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &-7387930306448996027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652437056770714486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a4ba48fd5212c49a5fb4c5cbbe7467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Speed: 200
+  m_JumpStrength: 200
+  m_InitialSpeed: 0
+  m_InitialJumpStrength: 0
+  m_CancelAnimator: 0
+  m_Type: 0
+  m_TimeBeforeIdle: 5
+--- !u!65 &498291752534593496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652437056770714486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.0191386, z: 0.43874133}
+  m_Center: {x: 0, y: 0.9822463, z: 0.036714584}
+--- !u!65 &6861984472444755059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652437056770714486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3759869, y: 0.8748312, z: 0.6077199}
+  m_Center: {x: 0.0048460276, y: 0.835099, z: -0.19613992}
 --- !u!1 &5698344228368462092
 GameObject:
   m_ObjectHideFlags: 0
