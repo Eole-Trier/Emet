@@ -597,8 +597,8 @@ GameObject:
   - component: {fileID: 4096123198069971552}
   - component: {fileID: 1386846495226876904}
   - component: {fileID: 3452026217626733041}
-  - component: {fileID: 3329865898381579345}
   - component: {fileID: -320970620134095237}
+  - component: {fileID: 387601535686919657}
   - component: {fileID: 8080686724024464156}
   m_Layer: 0
   m_Name: Emet
@@ -616,7 +616,7 @@ Transform:
   m_GameObject: {fileID: 3716466898817433818}
   m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 0.09, y: -0.029000044, z: -0.14273739}
-  m_LocalScale: {x: 0.018090615, y: 0.018090615, z: 0.018090615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 21908949960126651}
@@ -633,7 +633,7 @@ Animator:
   m_GameObject: {fileID: 3716466898817433818}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 81f5f89823daf3c478bd7beba1c91c99, type: 2}
+  m_Controller: {fileID: 9100000, guid: cacd15006df301943aa2c8433223e0d5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -659,7 +659,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &3329865898381579345
+--- !u!65 &-320970620134095237
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -670,9 +670,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 65.6355, y: 122.524124, z: 32.230556}
-  m_Center: {x: -1.5289521, y: 60.76207, z: -1.7307459}
---- !u!65 &-320970620134095237
+  m_Size: {x: 1.5924772, y: 2.0927336, z: 0.6736344}
+  m_Center: {x: -0.013718426, y: 1.1887828, z: 0.0016494393}
+--- !u!65 &387601535686919657
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_ObjectDistance: 1
   m_ObjectHeight: 1
   m_TimeKeyPressedToThrow: 2
-  m_ObjectCollider: {fileID: -320970620134095237}
+  m_ObjectCollider: {fileID: 387601535686919657}
 --- !u!1 &4200385529900281750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,8 +1662,8 @@ Transform:
   m_GameObject: {fileID: 6562341037414639280}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 55.27728, y: 55.27728, z: 55.27728}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4080467925727370601}
   - {fileID: 7480283076789298152}
