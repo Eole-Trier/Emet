@@ -694,7 +694,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3716466898817433818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4853fde1e76b9f49ac8c19754d6bef9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5393cd6a66a6fe046ba8a0d770caa418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 200
@@ -703,12 +703,12 @@ MonoBehaviour:
   m_InitialJumpStrength: 0
   m_CancelAnimator: 0
   m_Type: 0
-  m_ThrowForce: 7.5
+  m_ThrowForce: 75
   m_PickUpDist: 1
   m_ObjectDropDistance: 1
   m_ObjectDistance: 1
   m_ObjectHeight: 1
-  m_TimeKeyPressedToThrow: 1
+  m_TimeKeyPressedToThrow: 2
   m_ObjectCollider: {fileID: -320970620134095237}
 --- !u!1 &4200385529900281750
 GameObject:
