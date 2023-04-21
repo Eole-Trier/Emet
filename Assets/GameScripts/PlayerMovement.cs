@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Interact m_Interact;
     private Golem m_Golem;
 
-    private bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.10f); } }
+    private bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.20f, Vector3.down, 0.20f); } }
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
