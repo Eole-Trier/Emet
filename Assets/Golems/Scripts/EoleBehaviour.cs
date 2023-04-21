@@ -21,7 +21,7 @@ public class EoleBehaviour : Golem
     void Start()
     {
         forward = true;
-        m_Type = Type.EOLE;
+        m_Type = GolemType.EOLE;
         m_CancelAnimator = false;
         windActive = false;
         m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();

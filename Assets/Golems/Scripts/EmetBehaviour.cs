@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using static ObjectType;
 
 public class EmetBehaviour : Golem
 {
@@ -20,17 +19,20 @@ public class EmetBehaviour : Golem
 
     private Golem m_Golem;
 
+    private float m_GDShit;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Type = Type.EMET;
+        m_Type = GolemType.EMET;
         m_Player = FindObjectOfType<PlayerMovement>();
         m_CancelAnimator = false;
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
         m_CarriedObject = null;
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
+        m_GDShit = 55.27727f;
     }
 
     // Update is called once per frame
@@ -49,7 +51,7 @@ public class EmetBehaviour : Golem
     {
         if (m_CarriedObject != null)
             Drop(timePressed);
-        else if (m_Player.GetIsGrounded())
+        else if (true)//m_Player.GetIsGrounded())
             PickUp();
 
         yield return null;
@@ -58,17 +60,24 @@ public class EmetBehaviour : Golem
     private void PickUp()
     {
         m_JumpStrength = 0;
-        Collider[] pickups = Physics.OverlapSphere(transform.position, m_PickUpDist, m_PickupLayer);
+        Collider[] pickups = Physics.OverlapSphere(transform.position, m_PickUpDist);
 
         float dist = Mathf.Infinity;
         for (int i = 0; i < pickups.Length; i++)
         {
-            float newDist = (transform.position - pickups[i].transform.position).sqrMagnitude;
-            if (newDist < dist)
-            {
-                m_CarriedObject = pickups[i].gameObject;
+            GameObject go = pickups[i].gameObject;
+            if (go == gameObject)
+                continue;
 
-                dist = newDist;
+            if (go.TryGetComponent(out ObjectType type) && type.ObjType.HasFlag(Type.Pickup))
+            {
+                float newDist = (transform.position - pickups[i].transform.position).sqrMagnitude;
+                if (newDist < dist)
+                {
+                    m_CarriedObject = go;
+
+                    dist = newDist;
+                }
             }
         }
 
@@ -96,12 +105,11 @@ public class EmetBehaviour : Golem
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
 
             m_ObjectCollider.enabled = true;
-            m_ObjectCollider.center = new(0, m_ObjectHeight, 0);
-            m_ObjectCollider.size = objectCollider.size;
+            m_ObjectCollider.center = new(0, m_ObjectHeight * m_GDShit, 0);
+            m_ObjectCollider.size = objectCollider.size * m_GDShit;
 
             objectCollider.enabled = false;
 
-            m_ObjectCollider.center = new(0, m_ObjectHeight, 0);
         }
 
     }
@@ -132,5 +140,11 @@ public class EmetBehaviour : Golem
         m_CarriedObject.transform.parent = null;
 
         m_CarriedObject = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, m_PickUpDist);
     }
 }
