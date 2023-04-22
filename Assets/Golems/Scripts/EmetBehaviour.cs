@@ -6,15 +6,26 @@ public class EmetBehaviour : Golem
 {
     private PlayerMovement m_Player;
 
+<<<<<<< HEAD
     [SerializeField] private float m_ThrowForce;
     [SerializeField] private float m_PickUpDist;
     [SerializeField] private float m_ObjectDropDistance;
     [SerializeField] private float m_ObjectHeight;
+=======
+    [SerializeField] private float m_ThrowForce = 7.5f;
+    [SerializeField] private float m_PickUpDist = 1f;
+    [SerializeField] private float m_ObjectDropDistance = 1f;
+    [SerializeField] private float m_ObjectHeight = 3f;
+>>>>>>> 9dc4369945b7de8e2903947491a22deba55332c3
     [SerializeField] private float m_TimeKeyPressedToThrow;
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
     private Golem m_Golem;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 9dc4369945b7de8e2903947491a22deba55332c3
 
     // Start is called before the first frame update
     void Start()
