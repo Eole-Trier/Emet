@@ -6,17 +6,16 @@ public class EmetBehaviour : Golem
 {
     private PlayerMovement m_Player;
 
-    [SerializeField] private float m_ThrowForce = 75f;
+    [SerializeField] private float m_ThrowForce = 7.5f;
     [SerializeField] private float m_PickUpDist = 1f;
     [SerializeField] private float m_ObjectDropDistance = 1f;
-    [SerializeField] private float m_ObjectDistance = 1f;
-    [SerializeField] private float m_ObjectHeight = 1f;
+    [SerializeField] private float m_ObjectHeight = 3f;
     [SerializeField] private float m_TimeKeyPressedToThrow;
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
     private Golem m_Golem;
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -92,7 +91,7 @@ public class EmetBehaviour : Golem
             m_CarriedObject.transform.localPosition = Vector3.zero;
 
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
-            m_CarriedObject.transform.position = transform.position + m_ObjectDistance * transform.forward;
+            m_CarriedObject.transform.position = transform.position;
             m_CarriedObject.transform.Translate(0, m_ObjectHeight, 0);
 
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
