@@ -6,17 +6,15 @@ public class EmetBehaviour : Golem
 {
     private PlayerMovement m_Player;
 
-    [SerializeField] private float m_ThrowForce = 75f;
-    [SerializeField] private float m_PickUpDist = 1f;
-    [SerializeField] private float m_ObjectDropDistance = 1f;
-    [SerializeField] private float m_ObjectDistance = 1f;
-    [SerializeField] private float m_ObjectHeight = 1f;
+    [SerializeField] private float m_ThrowForce;
+    [SerializeField] private float m_PickUpDist;
+    [SerializeField] private float m_ObjectDropDistance;
+    [SerializeField] private float m_ObjectHeight;
     [SerializeField] private float m_TimeKeyPressedToThrow;
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
     private Golem m_Golem;
-
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +74,8 @@ public class EmetBehaviour : Golem
 
         if (m_CarriedObject != null)
         {
+            m_Player.GetAnimator().Play("EmetLift");
+            m_Player.GetAnimator().SetBool("Lifting", true);
             if (m_CarriedObject.TryGetComponent(out Golem golem))
             {
                 golem.m_CancelAnimator = true;
@@ -92,7 +92,7 @@ public class EmetBehaviour : Golem
             m_CarriedObject.transform.localPosition = Vector3.zero;
 
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
-            m_CarriedObject.transform.position = transform.position + 0 * transform.forward;
+            m_CarriedObject.transform.position = transform.position;
             m_CarriedObject.transform.Translate(0, m_ObjectHeight, 0);
 
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
@@ -108,6 +108,7 @@ public class EmetBehaviour : Golem
     }
     private void Drop(double timePressed)
     {
+        m_Player.GetAnimator().SetBool("Lifting", false);
         m_JumpStrength = m_InitialJumpStrength;
         if (m_CarriedObject.TryGetComponent(out Golem golem))
         {
@@ -121,13 +122,13 @@ public class EmetBehaviour : Golem
 
         if (timePressed >= m_TimeKeyPressedToThrow)
         {
-            m_Player.GetComponent<Animator>().Play("EmetThrow");
+            m_Player.GetAnimator().Play("EmetThrowing");
             Vector3 test = new Vector3(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
             m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
         }
         else
         {
-            m_Player.GetComponent<Animator>().Play("EmetLift");
+            m_Player.GetAnimator().Play("EmetDropping");
             Vector3 position = m_CarriedObject.transform.position;
             Vector3 offset = new(transform.forward.x * m_ObjectDropDistance, 0, transform.forward.z);
             m_CarriedObject.transform.position = position + offset;
