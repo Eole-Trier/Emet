@@ -92,7 +92,7 @@ public class EmetBehaviour : Golem
             m_CarriedObject.transform.localPosition = Vector3.zero;
 
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;
-            m_CarriedObject.transform.position = transform.position + m_ObjectDistance * transform.forward;
+            m_CarriedObject.transform.position = transform.position + 0 * transform.forward;
             m_CarriedObject.transform.Translate(0, m_ObjectHeight, 0);
 
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
