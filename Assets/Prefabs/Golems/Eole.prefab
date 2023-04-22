@@ -723,6 +723,7 @@ GameObject:
   - component: {fileID: 5757452814582298515}
   - component: {fileID: 5490808754486418053}
   - component: {fileID: 4487730656950159589}
+  - component: {fileID: 3738814422954296533}
   m_Layer: 0
   m_Name: Eole
   m_TagString: Untagged
@@ -846,6 +847,19 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 2.8, z: 0}
+--- !u!114 &3738814422954296533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394048441320458073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991e06c15e2fd7645bdb1788a4801dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjType: 1
 --- !u!1 &4626367100857585426
 GameObject:
   m_ObjectHideFlags: 0
