@@ -1219,6 +1219,8 @@ GameObject:
   - component: {fileID: 4044062968907128753}
   - component: {fileID: 6161449321441231071}
   - component: {fileID: 9164606651987214991}
+  - component: {fileID: 5244036765528173892}
+  - component: {fileID: 8293355618251965019}
   m_Layer: 0
   m_Name: Efrit
   m_TagString: Untagged
@@ -1252,7 +1254,7 @@ Animator:
   m_GameObject: {fileID: 4853690516235921773}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4ac05e923f6064540a9fcd7bf9f05cef, type: 2}
+  m_Controller: {fileID: 9100000, guid: b07a99aeb7663704c8dcefafe8ec7661, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1273,8 +1275,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4914899, y: 3.830577, z: 1}
-  m_Center: {x: 0.045491576, y: 1.9876137, z: 0}
+  m_Size: {x: 1.2, y: 1.9, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &6161449321441231071
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1304,11 +1306,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 200
-  m_JumpStrength: 250
+  m_JumpStrength: 200
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
   m_CancelAnimator: 0
   m_Type: 0
+--- !u!114 &5244036765528173892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853690516235921773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d165d9e0e59de4cb1450f9767c253e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsBurning: 0
+  m_BurnDistance: 1
+  m_GivedFlame: {fileID: 2561049045407940668}
+  m_BurningTime: 1
+--- !u!114 &8293355618251965019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853690516235921773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991e06c15e2fd7645bdb1788a4801dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjType: -1
 --- !u!1 &5024058366142213904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,6 +2392,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3afb8d828a47735409974751f1a0d78d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee4b3b73e4f8ea479be362a5b43c2c8, type: 3}
+--- !u!2083052967 &2561049045407940668 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2998457044977273548, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 726773073189505776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2561049045519566061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2998457045399342621, guid: fee4b3b73e4f8ea479be362a5b43c2c8,

@@ -600,6 +600,7 @@ GameObject:
   - component: {fileID: -320970620134095237}
   - component: {fileID: 387601535686919657}
   - component: {fileID: 8080686724024464156}
+  - component: {fileID: 3476575728911752632}
   m_Layer: 0
   m_Name: Emet
   m_TagString: Untagged
@@ -614,7 +615,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716466898817433818}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 0.09, y: -0.029000044, z: -0.14273739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -698,18 +699,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 200
-  m_JumpStrength: 250
+  m_JumpStrength: 200
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
   m_CancelAnimator: 0
   m_Type: 0
-  m_ThrowForce: 75
+  m_ThrowForce: 7.5
   m_PickUpDist: 1
   m_ObjectDropDistance: 1
-  m_ObjectDistance: 1
-  m_ObjectHeight: 1
-  m_TimeKeyPressedToThrow: 2
+  m_ObjectHeight: 3
+  m_TimeKeyPressedToThrow: 0.3
   m_ObjectCollider: {fileID: 387601535686919657}
+--- !u!114 &3476575728911752632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716466898817433818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991e06c15e2fd7645bdb1788a4801dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjType: 1
 --- !u!1 &4200385529900281750
 GameObject:
   m_ObjectHideFlags: 0
