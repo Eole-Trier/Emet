@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 200
-  m_JumpStrength: 200
+  m_JumpStrength: 250
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
   m_CancelAnimator: 0
@@ -800,7 +800,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.52357596, y: 1.3144226, z: 0.54126835}
+  m_Size: {x: 0.4, y: 1.3144226, z: 0.54126835}
   m_Center: {x: -0.012090345, y: 0.6319494, z: 0.06243807}
 --- !u!54 &5757452814582298515
 Rigidbody:
