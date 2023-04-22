@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,7 +28,7 @@ public class EnkiBehaviour : Golem
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_PlayerMovement.GetMoveDirection() == Vector3.zero && !m_Freezed)
+        /*if (m_PlayerMovement.GetMoveDirection() == Vector3.zero && !m_Freezed)
         {
             m_IdleTimer -= Time.fixedDeltaTime;
             if (m_IdleTimer <= 0)
@@ -39,7 +38,7 @@ public class EnkiBehaviour : Golem
             }
         }
         else
-            m_IdleTimer = m_TimeBeforeIdle;
+            m_IdleTimer = m_TimeBeforeIdle;*/
     }
 
     public override IEnumerator UseCapacity(double timePressed)

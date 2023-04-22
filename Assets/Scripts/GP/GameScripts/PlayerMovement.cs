@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded() && _context.started)
         {
-            //m_Animator.Play("Jump");
+            m_Animator.Play("Jump");
             Jump();
         }
     }
