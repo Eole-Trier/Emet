@@ -46,21 +46,6 @@ public class EoleBehaviour : Golem
         m_InitialSpeed = m_Speed;
     }
 
-    private void FixedUpdate()
-    {
-        if (m_PlayerMovement.GetMoveDirection() == Vector3.zero)
-        {
-            m_IdleTimer -= Time.fixedDeltaTime;
-            if (m_IdleTimer <= 0)
-            {
-                m_PlayerMovement.GetAnimator().Play("Idle");
-                m_IdleTimer = m_TimeBeforeIdle;
-            }
-        }
-        else
-            m_IdleTimer = m_TimeBeforeIdle;
-    }
-
     // Update is called once per frame
     public void EoleUpdate()
     {
@@ -144,17 +129,7 @@ public class EoleBehaviour : Golem
     {
         if (listCollider.Contains(other))
         {
-            if (other.GetComponent<Rigidbody>() != null && other.TryGetComponent(out Golem golem) && other == m_PlayerSwitch.golems[m_PlayerSwitch.m_CurrentGolem])
-            {
-                listCollider.Remove(other);
-            }
-            else if (other.GetComponent<Rigidbody>() != null)
-            {
-                //other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                listCollider.Remove(other);
-            }
-            else
-                listCollider.Remove(other);
+            listCollider.Remove(other);
         }
     }
 }

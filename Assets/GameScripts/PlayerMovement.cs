@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -32,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
         m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
         m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
+        if(IsGrounded())
+            m_Animator.SetFloat("SpeedY", 0);
         m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
         m_Animator.SetBool("Moving", m_IsMoving);
 

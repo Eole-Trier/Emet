@@ -190,6 +190,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8080686724024464156, guid: 43427eb556836bf4aa2933bb527d5256,
+        type: 3}
+      propertyPath: m_ThrowForce
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080686724024464156, guid: 43427eb556836bf4aa2933bb527d5256,
+        type: 3}
+      propertyPath: m_ObjectHeight
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43427eb556836bf4aa2933bb527d5256, type: 3}
 --- !u!1 &226629122
@@ -523,6 +533,7 @@ GameObject:
   - component: {fileID: 364342214}
   - component: {fileID: 364342213}
   - component: {fileID: 364342217}
+  - component: {fileID: 364342218}
   m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -624,6 +635,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &364342218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364342212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991e06c15e2fd7645bdb1788a4801dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjType: 1
 --- !u!1 &417584745
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,18 +679,6 @@ Transform:
   m_Father: {fileID: 1440045471}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &428333593 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6750812620780612619, guid: 0f1b420deec058e419d9dc8eb76c0742,
-    type: 3}
-  m_PrefabInstance: {fileID: 6750812620923467282}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5fa2eaaa1fcb2c4997807288c129248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &494467625
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07cabf162ecef114c9be83e82d7fcb39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Player: {fileID: 428333593}
   m_PositionFromPlayer: {x: 0, y: 1, z: -10}
 --- !u!1 &525926110
 GameObject:
@@ -1676,6 +1687,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 494467627}
+    - target: {fileID: 6750812620780612615, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: m_DefaultActionMap
+      value: aaa8d150-cdbc-4491-96d0-268ece3d3d28
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: golems.Array.size
