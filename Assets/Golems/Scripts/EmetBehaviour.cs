@@ -16,10 +16,7 @@ public class EmetBehaviour : Golem
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
     private int m_PickupLayer;
-
     private Golem m_Golem;
-
-    private float m_GDShit;
 
 
     // Start is called before the first frame update
@@ -32,7 +29,6 @@ public class EmetBehaviour : Golem
         m_CarriedObject = null;
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
-        m_GDShit = 55.27727f;
     }
 
     // Update is called once per frame
@@ -41,9 +37,7 @@ public class EmetBehaviour : Golem
         
         if (m_CarriedObject != null)
         {
-            
             m_CarriedObject.transform.parent = transform;
-            
         }
     }
 
@@ -105,8 +99,8 @@ public class EmetBehaviour : Golem
             BoxCollider objectCollider = m_CarriedObject.GetComponent<BoxCollider>();
 
             m_ObjectCollider.enabled = true;
-            m_ObjectCollider.center = new(0, m_ObjectHeight * m_GDShit, 0);
-            m_ObjectCollider.size = objectCollider.size * m_GDShit;
+            m_ObjectCollider.center = new(0, m_ObjectHeight, 0);
+            m_ObjectCollider.size = objectCollider.size;
 
             objectCollider.enabled = false;
 
@@ -128,11 +122,13 @@ public class EmetBehaviour : Golem
 
         if (timePressed >= m_TimeKeyPressedToThrow)
         {
+            m_Player.GetComponent<Animator>().Play("EmetThrow");
             Vector3 test = new Vector3(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
             m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
         }
         else
         {
+            m_Player.GetComponent<Animator>().Play("EmetLift");
             Vector3 position = m_CarriedObject.transform.position;
             Vector3 offset = new(transform.forward.x * m_ObjectDropDistance, 0, transform.forward.z);
             m_CarriedObject.transform.position = position + offset;

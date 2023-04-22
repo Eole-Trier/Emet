@@ -112,7 +112,7 @@
                 {
                     "name": "",
                     "id": "d2a33d4d-647e-495b-9b8a-aaf2653ed849",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -123,7 +123,18 @@
                 {
                     "name": "",
                     "id": "846123a8-f340-488e-83fa-679a30297f24",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4eaa1961-b94e-412f-a500-dad921493a8b",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -141,7 +152,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "ff600198-ed0b-459d-809b-eb7378121ee4",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -168,15 +179,6 @@
                     "name": "Switch",
                     "type": "Button",
                     "id": "96796251-3da5-4666-bb14-250445c4d531",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "74102120-a5f7-43ee-be86-7299e3f33697",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -269,17 +271,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Switch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "03f36bbf-bc9e-4b09-8496-17b98529a188",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
