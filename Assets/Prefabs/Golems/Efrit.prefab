@@ -2305,6 +2305,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 974802351775699214}
     m_Modifications:
+    - target: {fileID: 1435144986745968362, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435144986745968362, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2998457044977273538, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2390,6 +2400,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3afb8d828a47735409974751f1a0d78d, type: 2}
+    - target: {fileID: 5802131717674651319, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6696852362889614660, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
         type: 3}
       propertyPath: ShapeModule.radius.value
