@@ -42,7 +42,7 @@ public class EmetBehaviour : Golem
     {
         if (m_CarriedObject != null)
             Drop(timePressed);
-        else if (m_Player.IsGrounded())
+        else if (m_Player.IsGrounded)
             PickUp();
 
         yield return null;

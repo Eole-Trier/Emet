@@ -14,8 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;
-    private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
     [HideInInspector] public bool canJump;
+    public bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.20f); } }
+    private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
         m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
-        if(IsGrounded())
+        if(IsGrounded)
             m_Animator.SetFloat("SpeedY", 0);
         m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
         m_Animator.SetBool("Moving", m_IsMoving);
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if (IsGrounded() && _context.started && canJump)
+        if (IsGrounded && _context.started && canJump)
         {
             m_Animator.Play("Jump");
             Jump();
@@ -126,9 +127,4 @@ public class PlayerMovement : MonoBehaviour
     //public float GetJumpStrength() => m_JumpStrength;
 
     public Animator GetAnimator() => m_Animator;
-
-    public bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.20f);
-    }
 }

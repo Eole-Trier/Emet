@@ -13,10 +13,10 @@ public class EoleBehaviour : Golem
     [SerializeField] private float m_WindForceVertical;
     [SerializeField] private float m_TimeBeforeIdle;
     [HideInInspector] public bool windActive;
-    private float m_IdleTimer;
     private List<CapsuleCollider> m_WindCollider = new();
     private PlayerSwitch m_PlayerSwitch;
     private PlayerMovement m_PlayerMovement;
+    private float m_IdleTimer;
     private bool forward;
 
     // Start is called before the first frame update
@@ -99,7 +99,7 @@ public class EoleBehaviour : Golem
         listCollider.Clear();
         m_WindCollider[0].enabled ^= true;
         m_WindCollider[1].enabled ^= true;
-        if (m_PlayerMovement.IsGrounded() && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
+        if (m_PlayerMovement.IsGrounded && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
         {
             forward ^= true;
             if (!forward)
