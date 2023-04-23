@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    PlayerSwitch playerSwitch;
+    private PlayerSwitch m_PlayerSwitch;
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
+
     }
 
     // Update is called once per frame
@@ -22,11 +23,10 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.TryGetComponent(out Golem golem))
         {
-            if (playerSwitch.m_CurrentRoom + 1 < playerSwitch.Rooms.Count)
+            if (m_PlayerSwitch.m_CurrentRoom + 1 < m_PlayerSwitch.Rooms.Count)
             {
-                Debug.Log("Crok");
-                playerSwitch.m_CurrentRoom += 1;
-                Debug.Log(playerSwitch.m_CurrentRoom);
+                m_PlayerSwitch.m_CurrentRoom += 1;
+                m_PlayerSwitch.m_CurrentGolem = m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems.Count-1;
             }
             else
             {
