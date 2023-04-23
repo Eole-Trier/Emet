@@ -13,14 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
-    private Interact m_Interact;
     private Golem m_Golem;
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
+    [HideInInspector] public bool canJump;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Interact = FindObjectOfType<Interact>();
+        canJump = true;
     }
 
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if (IsGrounded() && _context.started)
+        if (IsGrounded() && _context.started && canJump)
         {
             m_Animator.Play("Jump");
             Jump();

@@ -718,7 +718,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5233222815238734256}
   - component: {fileID: 7441235429113793848}
-  - component: {fileID: 1410018856294636748}
   - component: {fileID: 3319379926495816467}
   - component: {fileID: 5757452814582298515}
   - component: {fileID: 5490808754486418053}
@@ -767,29 +766,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1410018856294636748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4394048441320458073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f84bda84ed972e439840ef9781268ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Speed: 200
-  m_JumpStrength: 200
-  m_InitialSpeed: 0
-  m_InitialJumpStrength: 0
-  m_CancelAnimator: 0
-  m_Type: 0
-  listCollider: []
-  m_WindForceHorizontal: 20
-  m_WindForceVertical: 20
-  m_TimeBeforeIdle: 5
-  windActive: 0
 --- !u!65 &3319379926495816467
 BoxCollider:
   m_ObjectHideFlags: 0

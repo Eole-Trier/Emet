@@ -58,7 +58,6 @@ public class EoleBehaviour : Golem
             Rigidbody rb = collider.attachedRigidbody;
             if (collider.TryGetComponent(out Golem golem) && collider.name == m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems[m_PlayerSwitch.m_CurrentGolem].name)
             {
-                if(m_PlayerMovement.GetMoveDirection() == Vector3.zero)
                 //if wind is in front of eole
                 if (forward)
                 {

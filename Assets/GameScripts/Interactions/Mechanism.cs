@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Mechanism : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<Interactibles> m_InteractiblesList = new();
 
     // Update is called once per frame
     void Update()
     {
-        
+        //m_InteractiblesList.
     }
 }

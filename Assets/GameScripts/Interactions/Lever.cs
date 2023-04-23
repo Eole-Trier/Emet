@@ -11,7 +11,7 @@ public class Lever : Interactibles
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
         return;
     }
