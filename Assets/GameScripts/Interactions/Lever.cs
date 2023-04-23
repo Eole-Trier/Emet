@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Lever : Interactibles
@@ -11,14 +12,10 @@ public class Lever : Interactibles
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
     }
 
-    public override void FixedUpdate()
-    {
-        return;
-    }
+    public override void FixedUpdate() {;}
 
     public override void OnOff()
     {
-        if (Vector3.Distance(m_PlayerMovement.transform.position, transform.position) < 1.5f)
-            IsOn ^= true;
+        IsOn ^= true;
     }
 }

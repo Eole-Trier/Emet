@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PressurePlate : Interactibles
 {
-    public List<Mechanism> mechanismsList  = new();
     public override void OnOff() {; }
 
     public override void FixedUpdate()
