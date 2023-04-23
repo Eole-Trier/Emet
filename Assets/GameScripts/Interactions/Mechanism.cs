@@ -11,7 +11,6 @@ public class Mechanism : MonoBehaviour
     {
         foreach (Interactibles interactible in m_InteractiblesList)
         {
-            Debug.Log(interactible.name);
             if (interactible.IsOn)
             {
                 if(!m_InteractiblesOnList.Contains(interactible))
@@ -27,7 +26,5 @@ public class Mechanism : MonoBehaviour
             gameObject.SetActive(false);
         else
             gameObject.SetActive(true);
-        Debug.Log(m_InteractiblesList.Count);
-        Debug.Log(m_InteractiblesOnList.Count);
     }
 }
