@@ -8,23 +8,33 @@ using UnityEngine.UIElements;
 
 public class PlayerSwitch : MonoBehaviour
 {
-    [SerializeField] public List<Golem> golems;
-    [SerializeField] public int m_CurrentGolem;
+    [System.Serializable]
+    public class GolemListWrapper
+    {
+        public List<Golem> Golems;
+    }
+
+    public List<GolemListWrapper> Rooms = new List<GolemListWrapper>();
+
+    //[SerializeField] public List<List<Golem>> golems;
+    public int m_CurrentRoom;
+    public int m_CurrentGolem;
     private PlayerMovement m_Player;
     private EoleBehaviour m_Eole;
-
+    private Golem m_Golem;
     private void Start()
     {
         m_Player = FindObjectOfType<PlayerMovement>();
-        Assert.IsTrue(golems.Count != 0);
-        m_Player.SetGolem(golems[m_CurrentGolem]);
+        Assert.IsTrue(Rooms[m_CurrentRoom].Golems.Count != 0);
+        m_Player.SetGolem(Rooms[m_CurrentRoom].Golems[m_CurrentGolem]);
         m_Eole = FindObjectOfType<EoleBehaviour>();
+        m_Golem = m_Player.GetGolem();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (golems[m_CurrentGolem].m_Type != Golem.GolemType.EOLE && golems.Contains(m_Eole))
+        if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type != Golem.GolemType.EOLE && Rooms[m_CurrentRoom].Golems.Contains(m_Eole))
             m_Eole.EoleUpdate();
     }
 
@@ -32,11 +42,12 @@ public class PlayerSwitch : MonoBehaviour
     {
        if (_context.started)
        {
-            if (golems[1] != null)
+            if (Rooms[m_CurrentRoom].Golems[1] != null)
             {
-                m_CurrentGolem = (m_CurrentGolem + 1) % golems.Count;
-                m_Player.SetGolem(golems[m_CurrentGolem]);
+                m_CurrentGolem = (m_CurrentGolem + 1) % Rooms[m_CurrentRoom].Golems.Count;
+                m_Player.SetGolem(Rooms[m_CurrentRoom].Golems[m_CurrentGolem]);
             }
         }
     }
+    
 }
