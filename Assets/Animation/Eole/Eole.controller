@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Jump
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2181915961105731746}
@@ -128,7 +128,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.1
   m_TransitionOffset: 0
   m_ExitTime: 0.6875
   m_HasExitTime: 0
@@ -412,7 +412,7 @@ AnimatorStateMachine:
     m_Position: {x: -450, y: -190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8943821395741088946}
-    m_Position: {x: 530, y: 360, z: 0}
+    m_Position: {x: 240, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7353661737975582444}
     m_Position: {x: 240, y: 360, z: 0}
@@ -592,7 +592,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EoleLanding
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2359844027216680134}
