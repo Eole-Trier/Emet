@@ -9,18 +9,23 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     
+    [SerializeField] private List<Interactibles> m_Interactibles = new();
     private Vector3 m_MoveDirection;
+    private Mechanism m_Mechanism;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
-    private Interact m_Interact;
     private Golem m_Golem;
+    [SerializeField] private float m_RangeToActivate;
+    [HideInInspector] public bool canJump;
+    public bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.20f); } }
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Interact = FindObjectOfType<Interact>();
+        m_Mechanism = FindObjectOfType<Mechanism>();
+        canJump = true;
     }
 
     // Update is called once per frame
@@ -33,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
         m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
-        if(IsGrounded())
+        if(IsGrounded)
             m_Animator.SetFloat("SpeedY", 0);
         m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
         m_Animator.SetBool("Moving", m_IsMoving);
@@ -48,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        m_Mechanism.MechanismUpdate();
     }
 
     private void CopyTransform(Transform _transform)
@@ -65,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if (IsGrounded() && _context.started)
+        if (IsGrounded && _context.started && canJump)
         {
             m_Animator.Play("Jump");
             Jump();
@@ -87,13 +93,12 @@ public class PlayerMovement : MonoBehaviour
             if (_context.started)
             {
                 double time = _context.time;
-                /*if (Vector3.Distance(m_Interact.m_Interactibles[0].transform.position, transform.position) < m_Interact.rangeToActivate &&
-                    m_Interact.m_Interactibles[0].CompareTag("Interactible"))
+                Interactibles interactible = m_Interactibles.Find((interactible) => Vector3.Distance(transform.position, interactible.transform.position) <= m_RangeToActivate);
+                if (interactible != null)
                 {
-                    m_Interact.action = true;
+                     interactible.OnOff();
                 }
                 else
-                */
                     StartCoroutine(m_Golem.UseCapacity(time));
             }
         }
@@ -126,9 +131,4 @@ public class PlayerMovement : MonoBehaviour
     //public float GetJumpStrength() => m_JumpStrength;
 
     public Animator GetAnimator() => m_Animator;
-
-    public bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.20f);
-    }
 }

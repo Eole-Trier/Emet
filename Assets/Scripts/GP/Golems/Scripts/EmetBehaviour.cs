@@ -42,7 +42,7 @@ public class EmetBehaviour : Golem
     {
         if (m_CarriedObject != null)
             Drop(timePressed);
-        else if (true)//m_Player.GetIsGrounded())
+        else if (m_Player.IsGrounded)
             PickUp();
 
         yield return null;
@@ -50,7 +50,7 @@ public class EmetBehaviour : Golem
 
     private void PickUp()
     {
-        m_JumpStrength = 0;
+        m_Player.canJump = false;
         Collider[] pickups = Physics.OverlapSphere(transform.position, m_PickUpDist);
 
         float dist = Mathf.Infinity;
@@ -108,6 +108,7 @@ public class EmetBehaviour : Golem
     }
     private void Drop(double timePressed)
     {
+        m_Player.canJump = true;
         m_Player.GetAnimator().SetBool("Lifting", false);
         m_JumpStrength = m_InitialJumpStrength;
         if (m_CarriedObject.TryGetComponent(out Golem golem))

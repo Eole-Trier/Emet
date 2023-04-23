@@ -15,7 +15,7 @@ public class Eolienne : Interactibles
     {
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
         if (m_EoleBehavior.windActive && m_EoleBehavior.listCollider.Contains(GetComponent<Collider>()))
             IsOn = true;

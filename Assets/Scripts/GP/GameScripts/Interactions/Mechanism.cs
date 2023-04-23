@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Mechanism : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<Interactibles> m_InteractiblesList = new();
+    private List<Interactibles> m_InteractiblesOnList = new();
 
-    // Update is called once per frame
-    void Update()
+    public void MechanismUpdate()
     {
-        
+        foreach (Interactibles interactible in m_InteractiblesList)
+        {
+            if (interactible.IsOn)
+            {
+                if(!m_InteractiblesOnList.Contains(interactible))
+                    m_InteractiblesOnList.Add(interactible);
+            }
+            else
+            {
+                if (m_InteractiblesOnList.Contains(interactible))
+                    m_InteractiblesOnList.Remove(interactible);
+            }
+        }
+        if (m_InteractiblesList.Count == m_InteractiblesOnList.Count)
+            gameObject.SetActive(false);
+        else
+            gameObject.SetActive(true);
     }
 }

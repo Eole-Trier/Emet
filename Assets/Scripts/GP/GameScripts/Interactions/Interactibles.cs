@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Interactibles : MonoBehaviour
 {
-    [HideInInspector] public bool IsOn { get; protected set; }
+    public bool IsOn { get; protected set; }
 
-    public abstract void Update();
+    public abstract void FixedUpdate();
     public abstract void OnOff();
 }
