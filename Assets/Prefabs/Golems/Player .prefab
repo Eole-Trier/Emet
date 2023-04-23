@@ -205,6 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fa2eaaa1fcb2c4997807288c129248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Interactibles: []
+  m_RangeToActivate: 2
+  canJump: 0
 --- !u!114 &6750812620780612618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,5 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c7d7835adf2b14f8bba98133295cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  golems: []
+  Rooms: []
+  m_CurrentRoom: 0
   m_CurrentGolem: 0
