@@ -1229,6 +1229,7 @@ MonoBehaviour:
   m_InteractiblesList:
   - {fileID: 1489225634}
   - {fileID: 315648865}
+  isOn: 0
 --- !u!1 &1489225628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,10 +1681,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 200
   m_JumpStrength: 200
+  PhysicMaterial: {fileID: 0}
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
   m_CancelAnimator: 0
   m_Type: 0
+  m_PlayerMovement: {fileID: 0}
   listCollider: []
   m_WindForceHorizontal: 20
   m_WindForceVertical: 20
@@ -1794,7 +1797,7 @@ PrefabInstance:
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
@@ -1809,6 +1812,206 @@ PrefabInstance:
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[2]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[3]
+      value: 
+      objectReference: {fileID: 591790756}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[4]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[5]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[6]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[7]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[8]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[9]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[10]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[11]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[12]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[13]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[14]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[15]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[16]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[17]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[18]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[19]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[20]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[21]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[22]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[23]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[24]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[25]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[26]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[27]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[28]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[29]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[30]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[31]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[32]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[33]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[34]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[35]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[36]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[37]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[38]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[39]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[40]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[41]
+      value: 
+      objectReference: {fileID: 2131620626}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
+      propertyPath: Rooms.Array.data[0].Golems.Array.data[42]
       value: 
       objectReference: {fileID: 2131620626}
     - target: {fileID: 6750812620780612619, guid: 0f1b420deec058e419d9dc8eb76c0742,

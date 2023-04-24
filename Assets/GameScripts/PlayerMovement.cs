@@ -25,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         m_Mechanism = FindObjectOfType<Mechanism>(true);
-        m_Mechanism.isOn = m_Mechanism.gameObject.activeSelf;
+        if(m_Mechanism != null)
+            m_Mechanism.isOn = m_Mechanism.gameObject.activeSelf;
         m_Interactibles = new(FindObjectsOfType<Lever>());
         canJump = true;
     }
