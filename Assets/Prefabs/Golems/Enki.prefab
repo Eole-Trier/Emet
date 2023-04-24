@@ -1207,7 +1207,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5388503363170058257}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1227,10 +1227,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 200
   m_JumpStrength: 200
+  PhysicMaterial: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
   m_CancelAnimator: 0
   m_Type: 0
+  m_PlayerMovement: {fileID: 0}
   m_TimeBeforeIdle: 5
 --- !u!65 &9061253652771893126
 BoxCollider:
@@ -1239,7 +1241,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5388503363170058257}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2

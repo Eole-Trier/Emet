@@ -7,10 +7,10 @@ public class EnkiBehaviour : Golem
 {
     [SerializeField] private float m_TimeBeforeIdle;
     private Rigidbody m_RigidBody;
-    private PlayerMovement m_PlayerMovement;
     private float m_IdleTimer;
     private bool m_Freezed;
     private List<BoxCollider> m_BoxCollider;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,20 @@ public class EnkiBehaviour : Golem
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (m_PlayerMovement.IsGrounded)
+        {
+            foreach(var collider in m_BoxCollider)
+            {
+                collider.material = null;
+            }
+        }
+        else
+        {
+            foreach (var collider in m_BoxCollider)
+            {
+                collider.material = PhysicMaterial;
+            }
+        }
         /*if (m_PlayerMovement.GetMoveDirection() == Vector3.zero && !m_Freezed)
         {
             m_IdleTimer -= Time.fixedDeltaTime;
@@ -62,5 +76,6 @@ public class EnkiBehaviour : Golem
         }
         yield return null;
     }
+
     public bool IsFreezed() => m_Freezed;
 }
