@@ -723,6 +723,7 @@ GameObject:
   - component: {fileID: 5490808754486418053}
   - component: {fileID: 4487730656950159589}
   - component: {fileID: 3738814422954296533}
+  - component: {fileID: 320340749502540560}
   m_Layer: 0
   m_Name: Eole
   m_TagString: Untagged
@@ -773,7 +774,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4394048441320458073}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -836,6 +837,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjType: 1
+--- !u!114 &320340749502540560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394048441320458073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f84bda84ed972e439840ef9781268ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Speed: 200
+  m_JumpStrength: 200
+  PhysicMaterial: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
+  m_InitialSpeed: 0
+  m_InitialJumpStrength: 0
+  m_CancelAnimator: 0
+  m_Type: 0
+  m_PlayerMovement: {fileID: 0}
+  listCollider: []
+  m_WindForceHorizontal: 20
+  m_WindForceVertical: 20
+  m_TimeBeforeIdle: 1
+  windActive: 0
 --- !u!1 &4626367100857585426
 GameObject:
   m_ObjectHideFlags: 0

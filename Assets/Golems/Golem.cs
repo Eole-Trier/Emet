@@ -17,11 +17,19 @@ public abstract class Golem : MonoBehaviour
 
     public float m_Speed;
     public float m_JumpStrength;
+    public PhysicMaterial PhysicMaterial;
     [HideInInspector] public float m_InitialSpeed;
     [HideInInspector] public float m_InitialJumpStrength;
     [HideInInspector] public bool m_CancelAnimator;
     [HideInInspector] public GolemType m_Type;
+    [HideInInspector] public PlayerMovement m_PlayerMovement;
 
     public abstract IEnumerator UseCapacity(double timePressed);
+
+    private void Start()
+    {
+        m_PlayerMovement = FindObjectOfType<PlayerMovement>();
+    }
+
 
 }
