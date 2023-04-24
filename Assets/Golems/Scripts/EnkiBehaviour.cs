@@ -57,7 +57,7 @@ public class EnkiBehaviour : Golem
 
     public override IEnumerator UseCapacity(double timePressed)
     {
-        if (transform.parent != null && !transform.parent.TryGetComponent(out Golem golem))
+        if (!(transform.parent != null && transform.parent.TryGetComponent(out Golem golem)))
         {
             if (!m_Freezed)
             {
@@ -66,6 +66,7 @@ public class EnkiBehaviour : Golem
                 m_PlayerMovement.SetMoveDirection(Vector3.zero);
                 m_CancelAnimator = true;
                 m_BoxCollider.ForEach((box) => box.enabled ^= true);
+                transform.eulerAngles = new Vector3(transform.rotation.x, 180, transform.rotation.z);
                 m_PlayerMovement.GetAnimator().Play("EnkiPlateform");
             }
             else

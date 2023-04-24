@@ -1665,37 +1665,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da22c17e8c72b674ebc7358a4fb34df7, type: 3}
---- !u!1 &2131620625 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4394048441320458073, guid: da22c17e8c72b674ebc7358a4fb34df7,
+--- !u!114 &2131620627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 320340749502540560, guid: da22c17e8c72b674ebc7358a4fb34df7,
     type: 3}
   m_PrefabInstance: {fileID: 2131620624}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2131620626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131620625}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f84bda84ed972e439840ef9781268ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 200
-  m_JumpStrength: 200
-  PhysicMaterial: {fileID: 0}
-  m_InitialSpeed: 0
-  m_InitialJumpStrength: 0
-  m_CancelAnimator: 0
-  m_Type: 0
-  m_PlayerMovement: {fileID: 0}
-  listCollider: []
-  m_WindForceHorizontal: 20
-  m_WindForceVertical: 20
-  m_TimeBeforeIdle: 5
-  windActive: 0
 --- !u!1001 &6750812620923467282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1775,6 +1756,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
+      propertyPath: m_CurrentGolem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
+        type: 3}
       propertyPath: Rooms.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1797,7 +1783,7 @@ PrefabInstance:
         type: 3}
       propertyPath: golems.Array.data[2]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.size
@@ -1817,7 +1803,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[2]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 2131620627}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[3]
@@ -1827,197 +1813,197 @@ PrefabInstance:
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[4]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[5]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[6]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[7]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[8]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[9]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[10]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[11]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[12]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[13]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[14]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[15]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[16]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[17]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[18]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[19]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[20]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[21]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[22]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[23]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[24]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[25]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[26]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[27]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[28]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[29]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[30]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[31]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[32]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[33]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[34]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[35]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[36]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[37]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[38]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[39]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[40]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[41]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612618, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: Rooms.Array.data[0].Golems.Array.data[42]
       value: 
-      objectReference: {fileID: 2131620626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6750812620780612619, guid: 0f1b420deec058e419d9dc8eb76c0742,
         type: 3}
       propertyPath: m_RangeToActivate
