@@ -6,6 +6,7 @@ public class Mechanism : MonoBehaviour
 {
     public List<Interactibles> m_InteractiblesList = new();
     private List<Interactibles> m_InteractiblesOnList = new();
+    [HideInInspector] public bool isOn;
 
     public void MechanismUpdate()
     {
@@ -13,7 +14,7 @@ public class Mechanism : MonoBehaviour
         {
             if (interactible.IsOn)
             {
-                if(!m_InteractiblesOnList.Contains(interactible))
+                if (!m_InteractiblesOnList.Contains(interactible))
                     m_InteractiblesOnList.Add(interactible);
             }
             else
@@ -22,9 +23,20 @@ public class Mechanism : MonoBehaviour
                     m_InteractiblesOnList.Remove(interactible);
             }
         }
+
         if (m_InteractiblesList.Count == m_InteractiblesOnList.Count)
-            gameObject.SetActive(false);
+        {
+            if(isOn)
+                gameObject.SetActive(false);
+            else if(!isOn)
+                gameObject.SetActive(true);
+        }
         else
-            gameObject.SetActive(true);
+        {
+            if (isOn)
+                gameObject.SetActive(true);
+            else if(!isOn)
+                gameObject.SetActive(false);
+        }
     }
 }

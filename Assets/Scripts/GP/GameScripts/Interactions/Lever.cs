@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class Lever : Interactibles
 {
-    private PlayerMovement m_PlayerMovement;
-
-    private void Start()
-    {
-        m_PlayerMovement = FindObjectOfType<PlayerMovement>();
-    }
-
     public override void FixedUpdate() {;}
 
     public override void OnOff()

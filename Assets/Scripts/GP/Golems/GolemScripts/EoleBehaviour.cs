@@ -15,7 +15,6 @@ public class EoleBehaviour : Golem
     [HideInInspector] public bool windActive;
     private List<CapsuleCollider> m_WindCollider = new();
     private PlayerSwitch m_PlayerSwitch;
-    private PlayerMovement m_PlayerMovement;
     private float m_IdleTimer;
     private bool forward;
 
@@ -46,6 +45,18 @@ public class EoleBehaviour : Golem
         m_InitialSpeed = m_Speed;
     }
 
+    private void FixedUpdate()
+    {
+        BoxCollider c = GetComponent<BoxCollider>();
+        if (m_PlayerMovement.IsGrounded)
+        {
+            c.material = null;
+        }
+        else
+        {
+            c.material = PhysicMaterial;
+        }
+    }
     // Update is called once per frame
     public void EoleUpdate()
     {

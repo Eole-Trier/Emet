@@ -4,7 +4,6 @@ using static ObjectType;
 
 public class EmetBehaviour : Golem
 {
-    private PlayerMovement m_Player;
     [SerializeField] private float m_ThrowForce;
     [SerializeField] private float m_PickUpDist;
     [SerializeField] private float m_ObjectDropDistance;
@@ -20,18 +19,29 @@ public class EmetBehaviour : Golem
     void Start()
     {
         m_Type = GolemType.EMET;
-        m_Player = FindObjectOfType<PlayerMovement>();
         m_CancelAnimator = false;
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
         m_CarriedObject = null;
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
+        m_PlayerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        BoxCollider c = GetComponent<BoxCollider>();
+        if (m_PlayerMovement.IsGrounded)
+        {
+            c.material = null;
+            m_ObjectCollider.material = null;
+        }
+        else
+        {
+            c.material = PhysicMaterial;
+            m_ObjectCollider.material = PhysicMaterial;
+        }
+
         if (m_CarriedObject != null)
         {
             m_CarriedObject.transform.parent = transform;
@@ -42,7 +52,7 @@ public class EmetBehaviour : Golem
     {
         if (m_CarriedObject != null)
             Drop(timePressed);
-        else if (m_Player.IsGrounded)
+        else if (m_PlayerMovement.IsGrounded)
             PickUp();
 
         yield return null;
@@ -50,7 +60,7 @@ public class EmetBehaviour : Golem
 
     private void PickUp()
     {
-        m_Player.canJump = false;
+        m_PlayerMovement.canJump = false;
         Collider[] pickups = Physics.OverlapSphere(transform.position, m_PickUpDist);
 
         float dist = Mathf.Infinity;
@@ -74,8 +84,8 @@ public class EmetBehaviour : Golem
 
         if (m_CarriedObject != null)
         {
-            m_Player.GetAnimator().Play("EmetLift");
-            m_Player.GetAnimator().SetBool("Lifting", true);
+            m_PlayerMovement.GetAnimator().Play("EmetLift");
+            m_PlayerMovement.GetAnimator().SetBool("Lifting", true);
             if (m_CarriedObject.TryGetComponent(out Golem golem))
             {
                 golem.m_CancelAnimator = true;
@@ -108,8 +118,8 @@ public class EmetBehaviour : Golem
     }
     private void Drop(double timePressed)
     {
-        m_Player.canJump = true;
-        m_Player.GetAnimator().SetBool("Lifting", false);
+        m_PlayerMovement.canJump = true;
+        m_PlayerMovement.GetAnimator().SetBool("Lifting", false);
         m_JumpStrength = m_InitialJumpStrength;
         if (m_CarriedObject.TryGetComponent(out Golem golem))
         {
@@ -123,13 +133,13 @@ public class EmetBehaviour : Golem
 
         if (timePressed >= m_TimeKeyPressedToThrow)
         {
-            m_Player.GetAnimator().Play("EmetThrowing");
+            m_PlayerMovement.GetAnimator().Play("EmetThrowing");
             Vector3 test = new Vector3(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
             m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
         }
         else
         {
-            m_Player.GetAnimator().Play("EmetDropping");
+            m_PlayerMovement.GetAnimator().Play("EmetDropping");
             Vector3 position = m_CarriedObject.transform.position;
             Vector3 offset = new(transform.forward.x * m_ObjectDropDistance, 0, transform.forward.z);
             m_CarriedObject.transform.position = position + offset;

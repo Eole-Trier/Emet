@@ -615,7 +615,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716466898817433818}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 0.09, y: -0.029000044, z: -0.14273739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -667,12 +667,12 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716466898817433818}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.2951016, z: 0.5}
-  m_Center: {x: 0, y: 1.0875988, z: 0}
+  m_Size: {x: 1.5924772, y: 2.2951016, z: 0.6736344}
+  m_Center: {x: -0.013718426, y: 1.0875988, z: 0.0016494393}
 --- !u!65 &387601535686919657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -680,7 +680,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716466898817433818}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
@@ -699,11 +699,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 200
-  m_JumpStrength: 250
+  m_JumpStrength: 200
+  PhysicMaterial: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
   m_CancelAnimator: 0
   m_Type: 0
+  m_PlayerMovement: {fileID: 0}
   m_ThrowForce: 7.5
   m_PickUpDist: 1
   m_ObjectDropDistance: 1
