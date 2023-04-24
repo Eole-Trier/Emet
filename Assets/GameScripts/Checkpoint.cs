@@ -18,10 +18,10 @@ public class Checkpoint : MonoBehaviour
         
     }
 
-
-    private void OnTriggerEnter(Collider other)
+   
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.TryGetComponent(out Golem golem))
+        if (collision.gameObject.TryGetComponent(out Golem golem))
         {
             if (m_PlayerSwitch.m_CurrentRoom + 1 < m_PlayerSwitch.Rooms.Count)
             {
@@ -32,7 +32,8 @@ public class Checkpoint : MonoBehaviour
             {
                 //change level
             }
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
+        
     }
 }

@@ -702,7 +702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fa2eaaa1fcb2c4997807288c129248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Interactibles: []
   m_RangeToActivate: 0
   canJump: 0
 --- !u!1 &534640395
@@ -1341,7 +1340,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119316514}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 5.048477, z: 4.692942}
