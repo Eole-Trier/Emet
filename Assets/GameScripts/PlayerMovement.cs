@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     
-    [SerializeField] private List<Interactibles> m_Interactibles = new();
+    private List<Lever> m_Interactibles = new();
     private Vector3 m_MoveDirection;
     private Mechanism m_Mechanism;
     private Animator m_Animator;
@@ -24,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Mechanism = FindObjectOfType<Mechanism>();
+        m_Mechanism = FindObjectOfType<Mechanism>(true);
+        m_Mechanism.isOn = m_Mechanism.gameObject.activeSelf;
+        m_Interactibles = new(FindObjectsOfType<Lever>());
         canJump = true;
     }
 
