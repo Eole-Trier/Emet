@@ -33,5 +33,6 @@ public class Checkpoint : MonoBehaviour
                 //change level
             }
         }
+        gameObject.SetActive(false);
     }
 }

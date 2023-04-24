@@ -53,7 +53,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        m_Mechanism.MechanismUpdate();
+        if (m_Mechanism != null)
+        {
+            m_Mechanism.MechanismUpdate();
+        }
     }
 
     private void CopyTransform(Transform _transform)
@@ -126,9 +129,7 @@ public class PlayerMovement : MonoBehaviour
     public Golem GetGolem() => m_Golem;
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
-    //public void SetJumpStrength(float strength) => m_JumpStrength = strength;
     public Vector3 GetMoveDirection() => m_MoveDirection;
-    //public float GetJumpStrength() => m_JumpStrength;
 
     public Animator GetAnimator() => m_Animator;
 }

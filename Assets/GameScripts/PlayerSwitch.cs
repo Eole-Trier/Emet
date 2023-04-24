@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -8,13 +8,13 @@ using UnityEngine.UIElements;
 
 public class PlayerSwitch : MonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     public class GolemListWrapper
     {
         public List<Golem> Golems;
     }
 
-    public List<GolemListWrapper> Rooms = new List<GolemListWrapper>();
+    public List<GolemListWrapper> Rooms = new();
 
     //[SerializeField] public List<List<Golem>> golems;
     public int m_CurrentRoom;
@@ -22,6 +22,7 @@ public class PlayerSwitch : MonoBehaviour
     private PlayerMovement m_Player;
     private EoleBehaviour m_Eole;
     private Golem m_Golem;
+
     private void Start()
     {
         m_Player = FindObjectOfType<PlayerMovement>();
