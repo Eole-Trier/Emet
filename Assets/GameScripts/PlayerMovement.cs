@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Golem m_Golem;
     [SerializeField] private float m_RangeToActivate;
     [HideInInspector] public bool canJump;
-    public bool IsGrounded { get { return Physics.Raycast(transform.position + Vector3.up * 0.10f, Vector3.down, 0.20f); } }
+
+    public bool IsGrounded { get { return Physics.BoxCast(transform.position + Vector3.up * 0.10f, m_Golem.GetComponent<BoxCollider>().size/5, Vector3.down, transform.rotation, 0.2f); } }
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
@@ -83,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
     }
+
+
 
     public void OnCapacity(InputAction.CallbackContext _context)
     {

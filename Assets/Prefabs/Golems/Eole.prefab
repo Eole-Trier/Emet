@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 4487730656950159589}
   - component: {fileID: 3738814422954296533}
   - component: {fileID: 320340749502540560}
+  - component: {fileID: -1819020322787272684}
   m_Layer: 0
   m_Name: Eole
   m_TagString: Untagged
@@ -862,6 +863,19 @@ MonoBehaviour:
   m_WindForceVertical: 20
   m_TimeBeforeIdle: 1
   windActive: 0
+--- !u!65 &-1819020322787272684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394048441320458073}
+  m_Material: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.52357596, y: 0.1, z: 0.54126835}
+  m_Center: {x: -0.012090345, y: 0, z: 0.06243807}
 --- !u!1 &4626367100857585426
 GameObject:
   m_ObjectHideFlags: 0
