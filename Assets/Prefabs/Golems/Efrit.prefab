@@ -1326,8 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurning: 0
-  m_BurnDistance: 1
-  m_GivedFlame: {fileID: 2561049045407940668}
+  BurnDistance: 0
   m_BurningTime: 1
 --- !u!114 &8293355618251965019
 MonoBehaviour:
@@ -2307,6 +2306,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 974802351775699214}
     m_Modifications:
+    - target: {fileID: 114034309478746790, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 867993543802998547, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1435144986745968362, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2326,6 +2335,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998457044977273548, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998457044977273549, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2998457045399342610, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
         type: 3}
@@ -2424,12 +2443,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee4b3b73e4f8ea479be362a5b43c2c8, type: 3}
---- !u!2083052967 &2561049045407940668 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 2998457044977273548, guid: fee4b3b73e4f8ea479be362a5b43c2c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 726773073189505776}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2561049045519566061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2998457045399342621, guid: fee4b3b73e4f8ea479be362a5b43c2c8,

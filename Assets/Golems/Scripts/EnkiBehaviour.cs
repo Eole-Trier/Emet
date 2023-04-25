@@ -8,7 +8,7 @@ public class EnkiBehaviour : Golem
     [SerializeField] private float m_TimeBeforeIdle;
     private Rigidbody m_RigidBody;
     private float m_IdleTimer;
-    private bool m_Freezed;
+    [HideInInspector] public bool freezed;
     private List<BoxCollider> m_BoxCollider;
   
 
@@ -19,7 +19,7 @@ public class EnkiBehaviour : Golem
         m_Type = GolemType.ENKI;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
         m_RigidBody = GetComponent<Rigidbody>();
-        m_Freezed = false;
+        freezed = false;
         m_CancelAnimator = false;
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
@@ -59,10 +59,10 @@ public class EnkiBehaviour : Golem
     {
         if (!(transform.parent != null && transform.parent.TryGetComponent(out Golem golem)))
         {
-            if (!m_Freezed)
+            if (!freezed)
             {
                 m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
-                m_Freezed = true;
+                freezed = true;
                 m_PlayerMovement.SetMoveDirection(Vector3.zero);
                 m_CancelAnimator = true;
                 m_BoxCollider.ForEach((box) => box.enabled ^= true);
@@ -72,7 +72,7 @@ public class EnkiBehaviour : Golem
             else
             {
                 m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-                m_Freezed = false;
+                freezed = false;
                 m_CancelAnimator = false;
                 m_BoxCollider.ForEach((box) => box.enabled ^= true);
                 m_PlayerMovement.GetAnimator().Play("EnkiGolem");
@@ -81,5 +81,5 @@ public class EnkiBehaviour : Golem
         }
     }
 
-    public bool IsFreezed() => m_Freezed;
+    public bool IsFreezed() => freezed;
 }
