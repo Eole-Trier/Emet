@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182308964300369262}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.184306, y: 10.563333, z: 5.379478}
+  m_LocalPosition: {x: -8.47, y: 10.563333, z: 5.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -615,7 +615,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716466898817433818}
-  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.09, y: -0.029000044, z: -0.14273739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 200
-  m_JumpStrength: 200
+  m_JumpStrength: 250
   PhysicMaterial: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_PickUpDist: 1
   m_ObjectDropDistance: 1
   m_ObjectHeight: 3
-  m_TimeKeyPressedToThrow: 0.3
+  m_TimeKeyPressedToThrow: 0
   m_ObjectCollider: {fileID: 387601535686919657}
 --- !u!114 &3476575728911752632
 MonoBehaviour:

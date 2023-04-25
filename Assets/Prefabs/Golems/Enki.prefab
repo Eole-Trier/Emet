@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 200
-  m_JumpStrength: 200
+  m_JumpStrength: 250
   PhysicMaterial: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_InitialSpeed: 0
   m_InitialJumpStrength: 0
@@ -1245,7 +1245,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.3759869, y: 0.8748312, z: 0.6077199}
+  m_Size: {x: 1.3759869, y: 0.8748312, z: 0.98}
   m_Center: {x: 0.0048460276, y: 0.835099, z: -0.19613992}
 --- !u!114 &-6492686892361750280
 MonoBehaviour:
