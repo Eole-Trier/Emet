@@ -9,23 +9,24 @@ public class BurningObject : MonoBehaviour
     public bool IsBurning;
     public float BurnDistance;
     private List<GameObject> m_GameObjects = new();
-    [SerializeField] private VisualEffect m_GivedFlame;
+    private List<ParticleSystem> m_Flame;
     [SerializeField] private float m_BurningTime;
-    private int m_BurnableLayer;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        m_BurnableLayer = 1 << LayerMask.NameToLayer("Burnable");
+        m_Flame = new(GetComponentsInChildren<ParticleSystem>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_GivedFlame.enabled = IsBurning;
         if (IsBurning)
+        {
             Burn();
+            m_Flame.ForEach((flame) => flame.Play());
+        }
+        else
+            m_Flame.ForEach((flame) => flame.Stop());
     }
 
     private void Burn()
@@ -55,7 +56,7 @@ public class BurningObject : MonoBehaviour
                 IsBurning = false;
         }
     }
-    private IEnumerator OwnDestroy(GameObject go)
+    public IEnumerator OwnDestroy(GameObject go)
     {
         go.GetComponent<VisualEffect>().enabled = true;
         yield return new WaitForSeconds(m_BurningTime);

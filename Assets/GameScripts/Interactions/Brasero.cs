@@ -2,16 +2,17 @@ using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ObjectType;
 
 public class Brasero : Interactibles
 {
     [SerializeField] private float m_BurnDistance;
     [SerializeField] private bool m_IsBurning;
-    private ParticleSystem m_ParticleSystem;
-
+    private List<ParticleSystem> m_ParticleSystem;
+    private BurningObject m_BurningObject;
     private void Start()
     {
-        m_ParticleSystem = GetComponent<ParticleSystem>();
+        m_ParticleSystem = new (GetComponentsInChildren<ParticleSystem>());
     }
 
     public override void OnOff() {;}
@@ -23,24 +24,31 @@ public class Brasero : Interactibles
 
         foreach (Collider c in burn)
         {
-            if (c.TryGetComponent(out BurningObject burningObject) && burningObject.IsBurning)
-                m_IsBurning = true;
+            if (c.TryGetComponent(out BurningObject burningObject))
+            {
+                m_BurningObject = c.GetComponent<BurningObject>();
 
-            else if (c.TryGetComponent(out BurningObject burning) && !burning.IsBurning && m_IsBurning)
-                burningObject.IsBurning = true;
+                if (m_BurningObject.IsBurning)
+                    m_IsBurning = true;
 
-            else if (c.gameObject.tag == "Water")
-                m_IsBurning = false;
+                else if (!m_BurningObject.IsBurning && m_IsBurning)
+                    m_BurningObject.IsBurning = true;
+
+                else if (c.gameObject.tag == "Water")
+                    m_IsBurning = false;
+
+                if (m_ParticleSystem != null)
+                {
+                    if (m_IsBurning)
+                        m_ParticleSystem.ForEach((flame) => flame.Play());
+                    
+                    else
+                        m_ParticleSystem.ForEach((flame) => flame.Stop());
+                }
+            }
+
         }
 
-        if (m_ParticleSystem != null)
-        {
-            if (m_IsBurning)
-                m_ParticleSystem.Play();
-
-            else
-                m_ParticleSystem.Stop();
-        }
     }
 
     private void OnDrawGizmos()

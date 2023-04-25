@@ -29,9 +29,12 @@ public class Checkpoint : MonoBehaviour
         {
             if (m_PlayerSwitch.m_CurrentRoom + 1 < m_PlayerSwitch.Rooms.Count)
             {
-                m_CameraList[m_ActualCamera].enabled = false;
-                m_ActualCamera += 1;
-                m_CameraList[m_ActualCamera].enabled = true;
+                if (m_CameraList.Length != 0 && m_ActualCamera < m_CameraList.Length)
+                {
+                    m_CameraList[m_ActualCamera].enabled = false;
+                    m_ActualCamera += 1;
+                    m_CameraList[m_ActualCamera].enabled = true;
+                }
                 m_PlayerSwitch.m_CurrentRoom += 1;
                 m_PlayerSwitch.m_CurrentGolem = m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems.Count-1;
             }
