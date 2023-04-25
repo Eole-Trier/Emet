@@ -7,7 +7,7 @@ using static ObjectType;
 public class BurningObject : MonoBehaviour
 {
     public bool IsBurning;
-    [SerializeField] private float m_BurnDistance;
+    public float BurnDistance;
     private List<GameObject> m_GameObjects = new();
     [SerializeField] private VisualEffect m_GivedFlame;
     [SerializeField] private float m_BurningTime;
@@ -30,7 +30,7 @@ public class BurningObject : MonoBehaviour
 
     private void Burn()
     {
-        Collider[] burn = Physics.OverlapSphere(transform.position, m_BurnDistance);
+        Collider[] burn = Physics.OverlapSphere(transform.position, BurnDistance);
 
         foreach (Collider c in burn)
         {
@@ -49,7 +49,10 @@ public class BurningObject : MonoBehaviour
                 m_GameObjects.Add(gameObject);
                 StartCoroutine(OwnDestroy(gameObject));
             }
-
+            else if (gameObject.TryGetComponent(out Brasero brasero) && brasero.IsOn)
+                IsBurning = true;
+            else if (gameObject.tag == "Water")
+                IsBurning = false;
         }
     }
     private IEnumerator OwnDestroy(GameObject go)
@@ -63,6 +66,6 @@ public class BurningObject : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, m_BurnDistance);
+        Gizmos.DrawWireSphere(transform.position, BurnDistance);
     }
 }
