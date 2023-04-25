@@ -57,24 +57,28 @@ public class EnkiBehaviour : Golem
 
     public override IEnumerator UseCapacity(double timePressed)
     {
-        if (!m_Freezed)
+        if (!(transform.parent != null && transform.parent.TryGetComponent(out Golem golem)))
         {
-            m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
-            m_Freezed = true;
-            m_PlayerMovement.SetMoveDirection(Vector3.zero);
-            m_CancelAnimator = true;
-            m_BoxCollider.ForEach((box) => box.enabled ^= true);
-            m_PlayerMovement.GetAnimator().Play("EnkiPlateform");
+            if (!m_Freezed)
+            {
+                m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
+                m_Freezed = true;
+                m_PlayerMovement.SetMoveDirection(Vector3.zero);
+                m_CancelAnimator = true;
+                m_BoxCollider.ForEach((box) => box.enabled ^= true);
+                transform.eulerAngles = new Vector3(transform.rotation.x, 180, transform.rotation.z);
+                m_PlayerMovement.GetAnimator().Play("EnkiPlateform");
+            }
+            else
+            {
+                m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+                m_Freezed = false;
+                m_CancelAnimator = false;
+                m_BoxCollider.ForEach((box) => box.enabled ^= true);
+                m_PlayerMovement.GetAnimator().Play("EnkiGolem");
+            }
+            yield return null;
         }
-        else
-        {
-            m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-            m_Freezed = false;
-            m_CancelAnimator = false;
-            m_BoxCollider.ForEach((box) => box.enabled ^= true);
-            m_PlayerMovement.GetAnimator().Play("EnkiGolem");
-        }
-        yield return null;
     }
 
     public bool IsFreezed() => m_Freezed;
