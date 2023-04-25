@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsGrounded = Grounded();
         CopyTransform(m_GolemTransform);
 
         if (m_Golem.m_CancelAnimator != false)
@@ -63,6 +65,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private bool Grounded()
+    {
+        BoxCollider bc = m_Golem.GetComponent<BoxCollider>();
+        var trans = bc.transform;
+        var min = bc.center - bc.size * 0.5f;
+        var max = bc.center + bc.size * 0.5f;
+        var p1 = trans.TransformPoint(new Vector3(min.x, min.y, min.z));
+        var p2 = trans.TransformPoint(new Vector3(min.x, min.y, max.z));
+        var p3 = trans.TransformPoint(new Vector3(max.x, min.y, min.z));
+        var p4 = trans.TransformPoint(new Vector3(max.x, min.y, max.z));
+        if (Physics.Raycast(p1 + Vector3.up * 0.10f, Vector3.down, 0.10f)
+           || Physics.Raycast(p2 + Vector3.up * 0.10f, Vector3.down, 0.20f) 
+           || Physics.Raycast(p3 + Vector3.up * 0.10f, Vector3.down, 0.20f) 
+           || Physics.Raycast(p4 + Vector3.up * 0.10f, Vector3.down, 0.20f))
+            return true;
+        return false;
+      
+    }
     private void CopyTransform(Transform _transform)
     {
         transform.position = _transform.position;
@@ -127,8 +147,6 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         m_Rigidbody.AddForce(transform.up * m_Golem.m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
-        IsGrounded = false;
-        canJump = false;
     }
     private void Movement()
     {
