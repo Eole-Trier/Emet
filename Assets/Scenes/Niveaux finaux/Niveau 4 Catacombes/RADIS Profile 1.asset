@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1732502418853151857}
-  - {fileID: 6987199948237347022}
   - {fileID: 5104201701737858967}
   - {fileID: 7227524512513249995}
 --- !u!114 &1732502418853151857
@@ -35,7 +34,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 0.85
+    m_Value: 0.64
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -78,39 +77,11 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.457
+    m_Value: 0.294
   smoothness:
     m_OverrideState: 1
     m_Value: 0.256
   rounded:
-    m_OverrideState: 0
-    m_Value: 0
---- !u!114 &6987199948237347022
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
-  m_EditorClassIdentifier: 
-  active: 1
-  postExposure:
-    m_OverrideState: 1
-    m_Value: 0
-  contrast:
-    m_OverrideState: 1
-    m_Value: 6
-  colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
-  hueShift:
-    m_OverrideState: 0
-    m_Value: 0
-  saturation:
     m_OverrideState: 0
     m_Value: 0
 --- !u!114 &7227524512513249995
@@ -131,7 +102,7 @@ MonoBehaviour:
     m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 0.183
+    m_Value: 0.11
   response:
     m_OverrideState: 0
     m_Value: 0.8
