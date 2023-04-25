@@ -28,14 +28,14 @@ public class Mechanism : MonoBehaviour
         {
             if(isOn)
                 gameObject.SetActive(false);
-            else if(!isOn)
+            else
                 gameObject.SetActive(true);
         }
         else
         {
             if (isOn)
                 gameObject.SetActive(true);
-            else if(!isOn)
+            else
                 gameObject.SetActive(false);
         }
     }

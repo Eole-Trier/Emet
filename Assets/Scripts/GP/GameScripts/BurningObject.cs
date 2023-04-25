@@ -7,30 +7,31 @@ using static ObjectType;
 public class BurningObject : MonoBehaviour
 {
     public bool IsBurning;
-    [SerializeField] private float m_BurnDistance;
+    public float BurnDistance;
     private List<GameObject> m_GameObjects = new();
-    [SerializeField] private VisualEffect m_GivedFlame;
+    private List<ParticleSystem> m_Flame;
     [SerializeField] private float m_BurningTime;
-    private int m_BurnableLayer;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        m_BurnableLayer = 1 << LayerMask.NameToLayer("Burnable");
+        m_Flame = new(GetComponentsInChildren<ParticleSystem>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_GivedFlame.enabled = IsBurning;
         if (IsBurning)
+        {
             Burn();
+            m_Flame.ForEach((flame) => flame.Play());
+        }
+        else
+            m_Flame.ForEach((flame) => flame.Stop());
     }
 
     private void Burn()
     {
-        Collider[] burn = Physics.OverlapSphere(transform.position, m_BurnDistance);
+        Collider[] burn = Physics.OverlapSphere(transform.position, BurnDistance);
 
         foreach (Collider c in burn)
         {
@@ -49,10 +50,13 @@ public class BurningObject : MonoBehaviour
                 m_GameObjects.Add(gameObject);
                 StartCoroutine(OwnDestroy(gameObject));
             }
-
+            else if (gameObject.TryGetComponent(out Brasero brasero) && brasero.IsOn)
+                IsBurning = true;
+            else if (gameObject.tag == "Water")
+                IsBurning = false;
         }
     }
-    private IEnumerator OwnDestroy(GameObject go)
+    public IEnumerator OwnDestroy(GameObject go)
     {
         go.GetComponent<VisualEffect>().enabled = true;
         yield return new WaitForSeconds(m_BurningTime);
@@ -63,6 +67,6 @@ public class BurningObject : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, m_BurnDistance);
+        Gizmos.DrawWireSphere(transform.position, BurnDistance);
     }
 }

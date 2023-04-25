@@ -10,6 +10,5 @@ public class ObjectType : MonoBehaviour
     {
         Pickup = 1,
         Burnable = 2,
-        Checkpoint = 4,
     }
 }
