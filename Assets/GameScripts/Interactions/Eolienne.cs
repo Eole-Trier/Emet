@@ -11,19 +11,16 @@ public class Eolienne : Interactibles
         m_EoleBehavior = FindObjectOfType<EoleBehaviour>();
     }
 
-    public override IEnumerator OnOff()
+    public override void FixedUpdate() {;}
+
+    public override void OnOff()
     {
         if (m_EoleBehavior.windActive && m_EoleBehavior.listCollider.Contains(GetComponent<Collider>()))
         {
-            yield return new WaitForSeconds(TimeToActive);
             IsOn = true;
         }
-        IsOn = false;
-        yield return null;
-    }
 
-    public override void FixedUpdate()
-    {
-        StartCoroutine(OnOff());
+        else
+            IsOn = false;
     }
 }

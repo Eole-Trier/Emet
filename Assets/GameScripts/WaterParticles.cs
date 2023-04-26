@@ -28,6 +28,5 @@ public class WaterParticles : MonoBehaviour
         }
         else
             timer = m_TimerToShutDown;
-
     }
 }
