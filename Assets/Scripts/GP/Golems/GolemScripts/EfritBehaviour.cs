@@ -12,6 +12,7 @@ public class EfritBehaviour : Golem
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
+        CanJump = true;
     }
 
     // Update is called once per frame

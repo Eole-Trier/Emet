@@ -43,6 +43,7 @@ public class EoleBehaviour : Golem
         }
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
+        CanJump = true;
     }
 
     private void FixedUpdate()

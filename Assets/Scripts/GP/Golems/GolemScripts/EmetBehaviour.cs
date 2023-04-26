@@ -25,6 +25,7 @@ public class EmetBehaviour : Golem
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
+        CanJump = true;
     }
 
     // Update is called once per frame
@@ -75,7 +76,7 @@ public class EmetBehaviour : Golem
             }
             if (go.TryGetComponent(out ObjectType type) && type.ObjType.HasFlag(Type.Pickup))
             {
-                m_PlayerMovement.canJump = false;
+                CanJump = false;
                 float newDist = (transform.position - pickups[i].transform.position).sqrMagnitude;
                 if (newDist < dist)
                 {
@@ -122,7 +123,7 @@ public class EmetBehaviour : Golem
     }
     private void Drop(double timePressed)
     {
-        m_PlayerMovement.canJump = true;
+        CanJump = true;
         m_PlayerMovement.GetAnimator().SetBool("Lifting", false);
         m_JumpStrength = m_InitialJumpStrength;
         if (m_CarriedObject.TryGetComponent(out Golem golem))
