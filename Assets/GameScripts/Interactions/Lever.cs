@@ -7,8 +7,10 @@ public class Lever : Interactibles
 {
     public override void FixedUpdate() {;}
 
-    public override void OnOff()
+    public override IEnumerator OnOff()
     {
+        
+        yield return new WaitForSeconds(TimeToActive);
         IsOn ^= true;
     }
 }

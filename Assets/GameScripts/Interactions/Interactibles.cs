@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class Interactibles : MonoBehaviour
 {
     public bool IsOn { get; protected set; }
+    public float TimeToActive;
 
     public abstract void FixedUpdate();
-    public abstract void OnOff();
+    public abstract IEnumerator OnOff();
 }

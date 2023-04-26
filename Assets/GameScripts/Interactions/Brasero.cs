@@ -15,7 +15,10 @@ public class Brasero : Interactibles
         m_ParticleSystem = new (GetComponentsInChildren<ParticleSystem>());
     }
 
-    public override void OnOff() {;}
+    public override IEnumerator OnOff() 
+    {
+        yield return null;
+    }
 
     public override void FixedUpdate() 
     {
