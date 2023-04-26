@@ -21,7 +21,6 @@ public class PlayerSwitch : MonoBehaviour
     public int m_CurrentGolem;
     private PlayerMovement m_Player;
     private EoleBehaviour m_Eole;
-    private Golem m_Golem;
     private SpriteRenderer m_SpriteRenderer;
 
     private void Start()
@@ -30,7 +29,6 @@ public class PlayerSwitch : MonoBehaviour
         Assert.IsTrue(Rooms[m_CurrentRoom].Golems.Count != 0);
         m_Player.SetGolem(Rooms[m_CurrentRoom].Golems[m_CurrentGolem]);
         m_Eole = FindObjectOfType<EoleBehaviour>();
-        m_Golem = m_Player.GetGolem();
         m_SpriteRenderer = Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>();
         m_SpriteRenderer.enabled = true;
     }
