@@ -23,6 +23,7 @@ public class EnkiBehaviour : Golem
         m_CancelAnimator = false;
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
+        CanJump = true;
     }
 
     // Update is called once per frame
