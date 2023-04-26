@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private Transform m_GolemTransform;
     private Golem m_Golem;
     [SerializeField] private float m_RangeToActivate;
-    [HideInInspector] public bool canJump;
 
     public bool IsGrounded;
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
@@ -30,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         if(m_Mechanism != null)
             m_Mechanism.isOn = m_Mechanism.gameObject.activeSelf;
         m_Interactibles = new(FindObjectsOfType<Lever>());
-        canJump = true;
     }
 
     // Update is called once per frame
@@ -115,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if (IsGrounded && _context.started && canJump)
+        if (IsGrounded && _context.started && m_Golem.CanJump)
         {
             m_Animator.Play("Jump");
             Jump();
