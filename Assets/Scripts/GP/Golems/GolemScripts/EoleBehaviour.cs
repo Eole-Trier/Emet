@@ -14,18 +14,22 @@ public class EoleBehaviour : Golem
     private float m_IdleTimer;
     private bool forward;
     private ParticleSystem m_Particles;
+    private Animator m_Animator;
+    private bool PlayOnce;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_Type = GolemType.EOLE;
         m_Particles = GetComponentInChildren<ParticleSystem>();
         forward = true;
-        m_Type = GolemType.EOLE;
         m_CancelAnimator = false;
         windActive = false;
+        PlayOnce = true;
         m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
         GetComponents(m_WindCollider);
+        m_Animator = GetComponent<Animator>();
         if (m_WindCollider[0].enabled == true && m_WindCollider[1].enabled == true)
         {
             if (m_WindCollider[0].direction == 2)
@@ -42,10 +46,11 @@ public class EoleBehaviour : Golem
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
         CanJump = true;
-        if (forward)
-            m_PlayerMovement.GetAnimator().Play("EoleGetUpHorizontal");
-        else
-            m_PlayerMovement.GetAnimator().Play("EoleGetUpVertical");
+
+         if (forward)
+                m_Animator.Play("EoleHorizontalGetUP");
+            else
+                m_Animator.Play("EoleVerticalGetUP");
     }
 
     private void FixedUpdate()
@@ -59,21 +64,29 @@ public class EoleBehaviour : Golem
         {
             c.material = PhysicMaterial;
         }
-        if(m_Particles != null && m_Particles.isPlaying)
+        if (m_Particles != null && m_Particles.isPlaying)
             m_Particles.Stop();
+
+        if (m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems[m_PlayerSwitch.m_CurrentGolem].m_Type == GolemType.EOLE && PlayOnce)
+        {
+            PlayOnce = false;
+            if (forward)
+                m_Animator.Play("EoleHorizontalGetUP");
+            else
+                m_Animator.Play("EoleVerticalGetUP");
+        }
     }
     // Update is called once per frame
     public void EoleUpdate()
     {
-        if (m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems[m_PlayerSwitch.m_CurrentGolem].m_Type != GolemType.EOLE)
-        {
-            if (m_Particles != null)
-                m_Particles.Play();
-            else if (forward)
-                m_PlayerMovement.GetAnimator().Play("EoleHorizontalKneeled");
-            else if (!forward)
-                m_PlayerMovement.GetAnimator().Play("EoleVerticalKneeled");
-        }
+        PlayOnce = true;
+
+        if (m_Particles != null)
+            m_Particles.Play();
+        else if (forward)
+            m_Animator.Play("EoleHorizontalKneeled");
+        else
+            m_Animator.Play("EoleVerticalKneeled");
 
         foreach (Collider collider in listCollider)
         {
@@ -130,13 +143,13 @@ public class EoleBehaviour : Golem
             forward ^= true;
             if (!forward)
             {
-                m_PlayerMovement.GetAnimator().Play("EoleVertical");
-                m_PlayerMovement.GetAnimator().SetBool("LookingUP", true);
+                m_Animator.Play("EoleVertical");
+                m_Animator.SetBool("LookingUP", true);
             }
             else if (forward)
             {
-                m_PlayerMovement.GetAnimator().Play("EoleHorizontal");
-                m_PlayerMovement.GetAnimator().SetBool("LookingUP", false);
+                m_Animator.Play("EoleHorizontal");
+                m_Animator.SetBool("LookingUP", false);
             }
         }
         windActive ^= true;

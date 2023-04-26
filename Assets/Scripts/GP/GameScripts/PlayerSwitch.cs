@@ -39,7 +39,9 @@ public class PlayerSwitch : MonoBehaviour
     void FixedUpdate()
     {
         if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type != Golem.GolemType.EOLE && Rooms[m_CurrentRoom].Golems.Contains(m_Eole))
+        {
             m_Eole.EoleUpdate();
+        }
     }
 
     public void OnSwitch(InputAction.CallbackContext _context)
