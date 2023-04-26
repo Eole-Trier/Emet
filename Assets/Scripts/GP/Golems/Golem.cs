@@ -23,6 +23,8 @@ public abstract class Golem : MonoBehaviour
     [HideInInspector] public bool m_CancelAnimator;
     [HideInInspector] public GolemType m_Type;
     [HideInInspector] public PlayerMovement m_PlayerMovement;
+    [HideInInspector] public bool CanJump;
+
 
     public abstract IEnumerator UseCapacity(double timePressed);
 

@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.Rendering.Universal.Internal;
 
 public class EoleBehaviour : Golem
 {
@@ -43,6 +39,7 @@ public class EoleBehaviour : Golem
         }
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
+        CanJump = true;
     }
 
     private void FixedUpdate()

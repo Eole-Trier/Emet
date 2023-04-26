@@ -11,11 +11,13 @@ public class BurningObject : MonoBehaviour
     private List<GameObject> m_GameObjects = new();
     private List<ParticleSystem> m_Particles;
     private List<VisualEffect> m_Visual;
+    private List<Light> m_Lights;
 
     [SerializeField] private float m_BurningTime;
 
     private void Start()
     {
+        m_Lights = new(GetComponentsInChildren<Light>());
         m_Particles = new(GetComponentsInChildren<ParticleSystem>());
         m_Visual = new(GetComponentsInChildren<VisualEffect>());
     }
@@ -28,11 +30,13 @@ public class BurningObject : MonoBehaviour
             Burn();
             m_Particles.ForEach((flame) => flame.Play());
             m_Visual.ForEach((visual) => visual.enabled = true);
+            m_Lights.ForEach((lights) => lights.enabled = true);
         }
         else
         {
             m_Particles.ForEach((flame) => flame.Stop());
             m_Visual.ForEach(visual => visual.enabled = false);
+            m_Lights.ForEach((lights) => lights.enabled = false);
         }
     }
 
