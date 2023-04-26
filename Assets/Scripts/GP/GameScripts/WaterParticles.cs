@@ -26,5 +26,7 @@ public class WaterParticles : MonoBehaviour
                 timer -= Time.fixedDeltaTime;
 
         }
+        else
+            timer = m_TimerToShutDown;
     }
 }

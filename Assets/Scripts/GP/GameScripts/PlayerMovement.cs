@@ -71,27 +71,30 @@ public class PlayerMovement : MonoBehaviour
         var trans = bc.transform;
         var min = bc.center - bc.size * 0.5f;
         var max = bc.center + bc.size * 0.5f;
-        
-        for (float i = 0; i < bc.size.x; i += bc.size.x/10)
+
+        var p4 = trans.TransformPoint(new Vector3(max.x, min.y, max.z));
+
+        for (float i = 0; i < bc.size.x; i += bc.size.x/5)
         {
-            for (float j = 0; j < bc.size.z; j += bc.size.z/10)
+            var p2 = trans.TransformPoint(new Vector3(min.x + i, min.y, max.z));
+
+            for (float j = 0; j < bc.size.z; j += bc.size.z/5)
             {
 
 
                 var p1 = trans.TransformPoint(new Vector3(min.x + i, min.y, min.z + j));
-                var p2 = trans.TransformPoint(new Vector3(min.x + i, min.y, max.z));
                 var p3 = trans.TransformPoint(new Vector3(max.x, min.y, min.z + j));
-                var p4 = trans.TransformPoint(new Vector3(max.x, min.y, max.z));
                 Debug.DrawRay(p1 + Vector3.up * 0.10f, Vector3.down, Color.red);
                 Debug.DrawRay(p2 + Vector3.up * 0.10f, Vector3.down, Color.red);
                 Debug.DrawRay(p3 + Vector3.up * 0.10f, Vector3.down, Color.red);
                 Debug.DrawRay(p4 + Vector3.up * 0.10f, Vector3.down, Color.red);
                 if (Physics.Raycast(p1 + Vector3.up * 0.10f, Vector3.down, 0.20f)
-               || Physics.Raycast(p2 + Vector3.up * 0.10f, Vector3.down, 0.20f)
+               || Physics.Raycast(p3 + Vector3.up * 0.10f, Vector3.down, 0.20f)
                || Physics.Raycast(p3 + Vector3.up * 0.10f, Vector3.down, 0.20f)
                || Physics.Raycast(p4 + Vector3.up * 0.10f, Vector3.down, 0.20f))
                     return true;
             }
+
         }
         
         return false;
@@ -164,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
+
         Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
             m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
         m_Rigidbody.velocity = vel;

@@ -6,7 +6,7 @@ public class Mechanism : MonoBehaviour
 {
     public List<Interactibles> m_InteractiblesList = new();
     private List<Interactibles> m_InteractiblesOnList = new();
-    [HideInInspector] public bool isOn;
+     public bool isOn;
 
     public void MechanismUpdate()
     {
