@@ -22,11 +22,6 @@ public class WaterParticles : MonoBehaviour
                 timer = m_TimerToShutDown;
                 burningObject.IsBurning = false;
             }
-            else
-                timer -= Time.fixedDeltaTime;
-
         }
-        else
-            timer = m_TimerToShutDown;
     }
 }
