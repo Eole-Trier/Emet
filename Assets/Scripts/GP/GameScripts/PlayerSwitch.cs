@@ -48,10 +48,10 @@ public class PlayerSwitch : MonoBehaviour
        {
             if (Rooms[m_CurrentRoom].Golems[1] != null)
             {
-                Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>().enabled = false;
-                Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>(true).enabled = true;
+                Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>(true).enabled = false;
                 m_CurrentGolem = (m_CurrentGolem + 1) % Rooms[m_CurrentRoom].Golems.Count;
                 m_Player.SetGolem(Rooms[m_CurrentRoom].Golems[m_CurrentGolem]);
+                Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>(true).enabled = true;
             }
         }
     }

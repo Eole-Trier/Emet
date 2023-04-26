@@ -13,10 +13,12 @@ public class EoleBehaviour : Golem
     private PlayerSwitch m_PlayerSwitch;
     private float m_IdleTimer;
     private bool forward;
+    private ParticleSystem m_Particles;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_Particles = GetComponentInChildren<ParticleSystem>();
         forward = true;
         m_Type = GolemType.EOLE;
         m_CancelAnimator = false;
@@ -40,6 +42,10 @@ public class EoleBehaviour : Golem
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
         CanJump = true;
+        if (forward)
+            m_PlayerMovement.GetAnimator().Play("EoleGetUpHorizontal");
+        else
+            m_PlayerMovement.GetAnimator().Play("EoleGetUpVertical");
     }
 
     private void FixedUpdate()
@@ -53,10 +59,22 @@ public class EoleBehaviour : Golem
         {
             c.material = PhysicMaterial;
         }
+        if(m_Particles != null && m_Particles.isPlaying)
+            m_Particles.Stop();
     }
     // Update is called once per frame
     public void EoleUpdate()
     {
+        if (m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems[m_PlayerSwitch.m_CurrentGolem].m_Type != GolemType.EOLE)
+        {
+            if (m_Particles != null)
+                m_Particles.Play();
+            else if (forward)
+                m_PlayerMovement.GetAnimator().Play("EoleHorizontalKneeled");
+            else if (!forward)
+                m_PlayerMovement.GetAnimator().Play("EoleVerticalKneeled");
+        }
+
         foreach (Collider collider in listCollider)
         {
             //if there is no rigidbody on collider we leave
