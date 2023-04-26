@@ -60,7 +60,6 @@ public class EmetBehaviour : Golem
 
     private void PickUp()
     {
-        m_PlayerMovement.canJump = false;
         Collider[] pickups = Physics.OverlapSphere(transform.position, m_PickUpDist);
 
         float dist = Mathf.Infinity;
@@ -69,9 +68,14 @@ public class EmetBehaviour : Golem
             GameObject go = pickups[i].gameObject;
             if (go == gameObject)
                 continue;
-
+            if (go.TryGetComponent(out EnkiBehaviour enki))
+            {
+                if (enki.freezed)
+                    continue;
+            }
             if (go.TryGetComponent(out ObjectType type) && type.ObjType.HasFlag(Type.Pickup))
             {
+                m_PlayerMovement.canJump = false;
                 float newDist = (transform.position - pickups[i].transform.position).sqrMagnitude;
                 if (newDist < dist)
                 {

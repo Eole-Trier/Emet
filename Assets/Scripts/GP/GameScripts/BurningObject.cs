@@ -9,12 +9,15 @@ public class BurningObject : MonoBehaviour
     public bool IsBurning;
     public float BurnDistance;
     private List<GameObject> m_GameObjects = new();
-    private List<ParticleSystem> m_Flame;
+    private List<ParticleSystem> m_Particles;
+    private List<VisualEffect> m_Visual;
+
     [SerializeField] private float m_BurningTime;
 
     private void Start()
     {
-        m_Flame = new(GetComponentsInChildren<ParticleSystem>());
+        m_Particles = new(GetComponentsInChildren<ParticleSystem>());
+        m_Visual = new(GetComponentsInChildren<VisualEffect>());
     }
 
     // Update is called once per frame
@@ -23,10 +26,14 @@ public class BurningObject : MonoBehaviour
         if (IsBurning)
         {
             Burn();
-            m_Flame.ForEach((flame) => flame.Play());
+            m_Particles.ForEach((flame) => flame.Play());
+            m_Visual.ForEach((visual) => visual.enabled = true);
         }
         else
-            m_Flame.ForEach((flame) => flame.Stop());
+        {
+            m_Particles.ForEach((flame) => flame.Stop());
+            m_Visual.ForEach(visual => visual.enabled = false);
+        }
     }
 
     private void Burn()
@@ -58,10 +65,13 @@ public class BurningObject : MonoBehaviour
     }
     public IEnumerator OwnDestroy(GameObject go)
     {
-        go.GetComponent<VisualEffect>().enabled = true;
-        yield return new WaitForSeconds(m_BurningTime);
-        m_GameObjects.Remove(go);
-        Destroy(go);
+        if (go.TryGetComponent(out VisualEffect visualEffect))
+        {
+            go.GetComponent<VisualEffect>().enabled = true;
+            yield return new WaitForSeconds(m_BurningTime);
+            m_GameObjects.Remove(go);
+            Destroy(go);
+        }
     }
 
     private void OnDrawGizmos()
