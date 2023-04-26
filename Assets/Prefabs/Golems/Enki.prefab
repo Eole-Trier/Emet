@@ -1234,6 +1234,7 @@ MonoBehaviour:
   m_Type: 0
   m_PlayerMovement: {fileID: 0}
   m_TimeBeforeIdle: 5
+  freezed: 0
 --- !u!65 &9061253652771893126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1259,7 +1260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991e06c15e2fd7645bdb1788a4801dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjType: 1
+  ObjType: 5
+  InitialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5782026568901757671
 GameObject:
   m_ObjectHideFlags: 0
