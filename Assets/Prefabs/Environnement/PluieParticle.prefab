@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5681292399835581460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 31.58, y: 59.96, z: -5.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.89219}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -669,7 +669,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 3.5, y: 0, z: 3.5}
+    m_Scale: {x: 2, y: 0, z: 2}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -986,19 +986,19 @@ ParticleSystem:
           time: 0
           value: 1
           inSlope: -0.07904235
-          outSlope: -0.07904235
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.18742855
+          outWeight: 0
         - serializedVersion: 3
           time: 1
-          value: 0.42963555
-          inSlope: -1.215241
-          outSlope: -1.215241
+          value: 0.37777856
+          inSlope: -0.7544543
+          outSlope: -0.7544543
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.16457152
+          inWeight: 0.21600008
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1543,8 +1543,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -5
-      minScalar: -15
+      scalar: -15
+      minScalar: -20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3220,7 +3220,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   SizeBySpeedModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -3730,7 +3730,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3789,7 +3789,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
