@@ -334,6 +334,64 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7782466337147193665, guid: cb0ee702f6fdec74a98da0e7efaab315, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb0ee702f6fdec74a98da0e7efaab315, type: 3}
+--- !u!1 &392956652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 392956655}
+  - component: {fileID: 392956654}
+  - component: {fileID: 392956653}
+  m_Layer: 0
+  m_Name: Checkpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &392956653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392956652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d855f2d03a40f41ab4ee7e0486087e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &392956654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392956652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &392956655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392956652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.15, y: 0.27187228, z: 0.097675145}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RangeToActivate: 2
-  canJump: 0
   IsGrounded: 0
 --- !u!1 &534640395
 GameObject:
@@ -1385,7 +1442,7 @@ GameObject:
   - component: {fileID: 1137647072}
   - component: {fileID: 1137647074}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Respawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1451,7 +1508,7 @@ PrefabInstance:
     - target: {fileID: 7782466337147193666, guid: cb0ee702f6fdec74a98da0e7efaab315,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.89
+      value: -32.87
       objectReference: {fileID: 0}
     - target: {fileID: 7782466337147193666, guid: cb0ee702f6fdec74a98da0e7efaab315,
         type: 3}
@@ -1929,7 +1986,7 @@ PrefabInstance:
     - target: {fileID: 7782466337147193666, guid: cb0ee702f6fdec74a98da0e7efaab315,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.69
+      value: -30.84
       objectReference: {fileID: 0}
     - target: {fileID: 7782466337147193666, guid: cb0ee702f6fdec74a98da0e7efaab315,
         type: 3}
