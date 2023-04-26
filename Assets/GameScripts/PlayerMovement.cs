@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
+
         Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
             m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
         m_Rigidbody.velocity = vel;
