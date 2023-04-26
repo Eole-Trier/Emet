@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
-using UnityEditor;
 using Unity.Mathematics;
 
 public class CameraMovement : MonoBehaviour
