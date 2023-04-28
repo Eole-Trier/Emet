@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2105170736098785764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105170736098785766}
+  - component: {fileID: 2105170736098785765}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105170736098785766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105170736098785764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.888911, y: 2.1821303, z: -0.94982386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2105170736098785765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105170736098785764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa00d314db6388349a55943617b355f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: efrit_incarnate
+    clip: {fileID: 8300000, guid: 56ae36527286dbf4c9d1036d6e4a513b, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: efrit_on
+    clip: {fileID: 8300000, guid: fb936063c46f5874cac8f8cff4ec6ec6, type: 3}
+    volume: 0.5
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: efrit_off
+    clip: {fileID: 8300000, guid: c7963d064f2e1ea4da61898ed10aa3c5, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_incarnate
+    clip: {fileID: 8300000, guid: 780b3166b53f2a6498da29c79d369d0c, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_take
+    clip: {fileID: 8300000, guid: a3699074da62bf144aa47cf1f3890383, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_throw_0
+    clip: {fileID: 8300000, guid: 6f3318defb45249499581040b6f61e55, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_throw_1
+    clip: {fileID: 8300000, guid: 80680a1a6ed697f429c59057ea2b59d3, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}

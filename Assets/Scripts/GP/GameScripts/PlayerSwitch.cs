@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerSwitch : MonoBehaviour
 {
@@ -22,6 +20,7 @@ public class PlayerSwitch : MonoBehaviour
     private PlayerMovement m_Player;
     private EoleBehaviour m_Eole;
     private SpriteRenderer m_SpriteRenderer;
+    private bool m_SoundPlayed;
 
     private void Start()
     {
@@ -31,6 +30,7 @@ public class PlayerSwitch : MonoBehaviour
         m_Eole = FindObjectOfType<EoleBehaviour>();
         m_SpriteRenderer = Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>();
         m_SpriteRenderer.enabled = true;
+        m_SoundPlayed = false;
     }
 
     // Update is called once per frame
@@ -39,6 +39,26 @@ public class PlayerSwitch : MonoBehaviour
         if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type != Golem.GolemType.EOLE && Rooms[m_CurrentRoom].Golems.Contains(m_Eole))
         {
             m_Eole.EoleUpdate();
+        }
+        if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EFRIT && !m_SoundPlayed)
+        {
+            m_SoundPlayed = true;
+            FindObjectOfType<AudioManager>().Play("efrit_incarnate");
+        }
+        else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.ENKI && !m_SoundPlayed)
+        {
+            m_SoundPlayed = true;
+            FindObjectOfType<AudioManager>().Play("enki_incarnate");
+        }
+        else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EMET && !m_SoundPlayed)
+        {
+            m_SoundPlayed = true;
+            FindObjectOfType<AudioManager>().Play("emet_incarnate");
+        }
+        else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EOLE && !m_SoundPlayed)
+        {
+            m_SoundPlayed = true;
+            FindObjectOfType<AudioManager>().Play("eole_incarnate");
         }
     }
 
@@ -51,6 +71,7 @@ public class PlayerSwitch : MonoBehaviour
             return;
 
         GolemSwitch();
+        m_SoundPlayed = false;
     }
       
     public void GolemSwitch()
