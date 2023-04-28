@@ -235,7 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
-  TimeToActivate: 0
   MechanismList: []
 --- !u!136 &226629125
 CapsuleCollider:
@@ -446,7 +445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
-  TimeToActivate: 5
   MechanismList: []
 --- !u!65 &315648866
 BoxCollider:
@@ -1045,7 +1043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
-  TimeToActivate: 0
   MechanismList:
   - {fileID: 723691962}
   m_BurnDistance: 2
@@ -1238,8 +1235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 4
+  playOnce: 1
   myTimer: 0
   IsActive: 0
+  m_InteractibleList:
+  - {fileID: 690148810}
+  - {fileID: 1489225634}
 --- !u!114 &908656531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 392713719, guid: da22c17e8c72b674ebc7358a4fb34df7,
@@ -1294,15 +1295,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: On
-    clip: {fileID: 0}
-    volume: 0
+  - name: efrit_incarnate
+    clip: {fileID: 8300000, guid: 56ae36527286dbf4c9d1036d6e4a513b, type: 3}
+    volume: 1
     loop: 0
+    played: 0
     source: {fileID: 0}
-  - name: Off
-    clip: {fileID: 0}
-    volume: 0
+  - name: efrit_on
+    clip: {fileID: 8300000, guid: fb936063c46f5874cac8f8cff4ec6ec6, type: 3}
+    volume: 1
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: efrit_off
+    clip: {fileID: 8300000, guid: c7963d064f2e1ea4da61898ed10aa3c5, type: 3}
+    volume: 1
     loop: 0
+    played: 0
     source: {fileID: 0}
 --- !u!4 &1180960874
 Transform:
@@ -1467,8 +1476,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  playOnce: 0
   myTimer: 0
   IsActive: 0
+  m_InteractibleList:
+  - {fileID: 1489225634}
 --- !u!1 &1440045470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,8 +1691,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  playOnce: 0
   myTimer: 0
   IsActive: 0
+  m_InteractibleList: []
 --- !u!1 &1489225628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,11 +1806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
-  TimeToActivate: 0
   MechanismList:
   - {fileID: 2025032628}
-  - {fileID: 723691962}
-  - {fileID: 1421946393}
 --- !u!1001 &1673168992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2103,8 +2114,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  playOnce: 0
   myTimer: 0
   IsActive: 0
+  m_InteractibleList:
+  - {fileID: 1489225634}
 --- !u!1001 &2131620624
 PrefabInstance:
   m_ObjectHideFlags: 0

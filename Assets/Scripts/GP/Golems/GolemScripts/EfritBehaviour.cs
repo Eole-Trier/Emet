@@ -9,6 +9,7 @@ public class EfritBehaviour : Golem
     void Start()
     {
         m_Type = GolemType.EFRIT;
+        FindObjectOfType<AudioManager>().Play("efrit_incarnate");
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
