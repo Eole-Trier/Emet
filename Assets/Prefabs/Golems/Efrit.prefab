@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 8293355618251965019}
   m_Layer: 0
   m_Name: Efrit
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f9a22bee1ea4942a957fb28ee2bd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 200
+  m_Speed: 180
   m_JumpStrength: 250
   PhysicMaterial: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
   m_InitialSpeed: 0
@@ -1314,6 +1314,7 @@ MonoBehaviour:
   m_CancelAnimator: 0
   m_Type: 0
   m_PlayerMovement: {fileID: 0}
+  CanJump: 0
 --- !u!114 &5244036765528173892
 MonoBehaviour:
   m_ObjectHideFlags: 0
