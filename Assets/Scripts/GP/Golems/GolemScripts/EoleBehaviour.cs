@@ -11,19 +11,22 @@ public class EoleBehaviour : Golem
     [HideInInspector] public bool windActive;
     private List<CapsuleCollider> m_WindCollider = new();
     private PlayerSwitch m_PlayerSwitch;
-    private float m_IdleTimer;
+    private ParticleSystem m_Particles;
+    private Animator m_Animator;
     private bool forward;
 
     // Start is called before the first frame update
     void Start()
     {
-        forward = true;
         m_Type = GolemType.EOLE;
+        m_Particles = GetComponentInChildren<ParticleSystem>();
+        forward = true;
         m_CancelAnimator = false;
         windActive = false;
         m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
         GetComponents(m_WindCollider);
+        m_Animator = GetComponent<Animator>();
         if (m_WindCollider[0].enabled == true && m_WindCollider[1].enabled == true)
         {
             if (m_WindCollider[0].direction == 2)
@@ -46,17 +49,20 @@ public class EoleBehaviour : Golem
     {
         BoxCollider c = GetComponent<BoxCollider>();
         if (m_PlayerMovement.IsGrounded)
-        {
             c.material = null;
-        }
         else
-        {
             c.material = PhysicMaterial;
-        }
+
+        if (m_Particles != null && m_Particles.isPlaying)
+            m_Particles.Stop();
     }
+
     // Update is called once per frame
     public void EoleUpdate()
     {
+        if (m_Particles != null)
+            m_Particles.Play();
+
         foreach (Collider collider in listCollider)
         {
             //if there is no rigidbody on collider we leave
@@ -70,26 +76,18 @@ public class EoleBehaviour : Golem
                 if (forward)
                 {
                     if (m_PlayerMovement.GetMoveDirection() == Vector3.zero)
-                    {
                         rb.AddForce((transform.forward * m_WindForceHorizontal) * 12);
-                    }
                     else
-                    {
                         rb.AddForce((transform.forward * m_WindForceHorizontal) * 4);
-                    }
                 }
 
                 //if wind is above eole
                 else
                 {
                     if (m_PlayerMovement.GetMoveDirection() == Vector3.zero)
-                    {
                         rb.AddForce((transform.up * m_WindForceVertical) * 8);
-                    }
                     else
-                    {
                         rb.AddForce((transform.up * m_WindForceVertical) * 4);
-                    }
                 }
             }
             else
@@ -105,20 +103,20 @@ public class EoleBehaviour : Golem
     public override IEnumerator UseCapacity(double timePressed)
     {
         listCollider.Clear();
-        m_WindCollider[0].enabled ^= true;
-        m_WindCollider[1].enabled ^= true;
+        m_WindCollider.ForEach(collider => collider.enabled ^= true);
+
         if (m_PlayerMovement.IsGrounded && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
         {
             forward ^= true;
             if (!forward)
             {
-                m_PlayerMovement.GetAnimator().Play("EoleVertical");
-                m_PlayerMovement.GetAnimator().SetBool("LookingUP", true);
+                m_Animator.Play("EoleVertical");
+                m_Animator.SetBool("LookingUP", true);
             }
             else if (forward)
             {
-                m_PlayerMovement.GetAnimator().Play("EoleHorizontal");
-                m_PlayerMovement.GetAnimator().SetBool("LookingUP", false);
+                m_Animator.Play("EoleHorizontal");
+                m_Animator.SetBool("LookingUP", false);
             }
         }
         windActive ^= true;
@@ -128,15 +126,11 @@ public class EoleBehaviour : Golem
     private void OnTriggerEnter(Collider other)
     {
         if (!listCollider.Contains(other))
-        {
             listCollider.Add(other);
-        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (listCollider.Contains(other))
-        {
             listCollider.Remove(other);
-        }
     }
 }

@@ -1,7 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,17 +14,21 @@ public class PlayerMovement : MonoBehaviour
     private Transform m_GolemTransform;
     private Golem m_Golem;
     [SerializeField] private float m_RangeToActivate;
-
-    public bool IsGrounded;
+    [HideInInspector] public bool CanPlay;
+    [SerializeField] private float TimeBeforePlay;
+    [HideInInspector] public bool IsGrounded;
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
+        CanPlay = false;
         m_Mechanism = FindObjectOfType<Mechanism>(true);
         if(m_Mechanism != null)
             m_Mechanism.isOn = m_Mechanism.gameObject.activeSelf;
         m_Interactibles = new(FindObjectsOfType<Lever>());
+        yield return new WaitForSeconds(TimeBeforePlay);
+        CanPlay = true;
     }
 
     // Update is called once per frame
@@ -103,45 +107,57 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext _context)
     {
-        var input = _context.ReadValue<Vector2>();
-        m_MoveDirection = new Vector3(input.x, 0, input.y);
+        if (CanPlay)
+        {
+            var input = _context.ReadValue<Vector2>();
+            m_MoveDirection = new Vector3(input.x, 0, input.y);
+        }
+        
     }
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if (IsGrounded && _context.started && m_Golem.CanJump)
+        if (CanPlay)
         {
-            m_Animator.Play("Jump");
-            Jump();
+            if (IsGrounded && _context.started && m_Golem.CanJump)
+            {
+                m_Animator.Play("Jump");
+                Jump();
+            }
         }
+       
     }
 
 
 
     public void OnCapacity(InputAction.CallbackContext _context)
     {
-        if (m_Golem.m_Type == Golem.GolemType.EMET)
+        if (CanPlay)
         {
-            if (_context.canceled)
+            if (m_Golem.m_Type == Golem.GolemType.EMET)
             {
-                double time = _context.duration;
-                StartCoroutine(m_Golem.UseCapacity(time));
-            }
-        }
-        else
-        {
-            if (_context.started)
-            {
-                double time = _context.time;
-                Interactibles interactible = m_Interactibles.Find((interactible) => Vector3.Distance(transform.position, interactible.transform.position) <= m_RangeToActivate);
-                if (interactible != null)
+                if (_context.canceled)
                 {
-                     interactible.OnOff();
-                }
-                else
+                    double time = _context.duration;
                     StartCoroutine(m_Golem.UseCapacity(time));
+                }
+            }
+            else
+            {
+                if (_context.started)
+                {
+                    double time = _context.time;
+                    Interactibles interactible = m_Interactibles.Find((interactible) => Vector3.Distance(transform.position, interactible.transform.position) <= m_RangeToActivate);
+                    if (interactible != null)
+                    {
+                        interactible.OnOff();
+                    }
+                    else
+                        StartCoroutine(m_Golem.UseCapacity(time));
+                }
             }
         }
+        
     }
 
    
