@@ -44,20 +44,25 @@ public class PlayerSwitch : MonoBehaviour
 
     public void OnSwitch(InputAction.CallbackContext _context)
     {
-        if (m_Player.CanPlay)
-        {
-            if (_context.started)
-            {
-                if (Rooms[m_CurrentRoom].Golems[1] != null)
-                {
-                    Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>(true).enabled = false;
-                    m_CurrentGolem = (m_CurrentGolem + 1) % Rooms[m_CurrentRoom].Golems.Count;
-                    m_Player.SetGolem(Rooms[m_CurrentRoom].Golems[m_CurrentGolem]);
-                    Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>(true).enabled = true;
-                }
-            }
-        }
+        if (!m_Player.CanPlay)
+            return;
+
+        if (!_context.started)
+            return;
+
+        GolemSwitch();
     }
-       
+      
+    public void GolemSwitch()
+    {
+        Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>(true).enabled = false;
+        if (Rooms[m_CurrentRoom].Golems.Count > 1)
+        {
+            
+            m_CurrentGolem = (m_CurrentGolem + 1) % Rooms[m_CurrentRoom].Golems.Count;
+        }
+        m_Player.SetGolem(Rooms[m_CurrentRoom].Golems[m_CurrentGolem]);
+        Rooms[m_CurrentRoom].Golems[m_CurrentGolem].GetComponentInChildren<SpriteRenderer>(true).enabled = true;
+    }
     
 }
