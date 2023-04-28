@@ -12,6 +12,7 @@ public class Brasero : Interactibles
     private BurningObject m_BurningObject;
     private void Start()
     {
+        IsOn = m_IsBurning;
         m_ParticleSystem = new (GetComponentsInChildren<ParticleSystem>());
     }
 
@@ -20,7 +21,13 @@ public class Brasero : Interactibles
     public override void FixedUpdate() 
     {
         IsOn = m_IsBurning;
+        if (IsOn)
+            Active();
+        else
+            Desactive();
+
         Collider[] burn = Physics.OverlapSphere(transform.position, m_BurnDistance);
+
 
         foreach (Collider c in burn)
         {
@@ -41,12 +48,11 @@ public class Brasero : Interactibles
                 {
                     if (m_IsBurning)
                         m_ParticleSystem.ForEach((flame) => flame.Play());
-                    
+
                     else
                         m_ParticleSystem.ForEach((flame) => flame.Stop());
                 }
             }
-
         }
 
     }

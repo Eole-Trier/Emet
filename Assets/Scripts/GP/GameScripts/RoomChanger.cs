@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoomChanger : MonoBehaviour
 {
     private PlayerSwitch m_PlayerSwitch;
+    private PlayerMovement m_PlayerMovement;
     [SerializeField] private CinemachineVirtualCamera[] m_CameraList = new CinemachineVirtualCamera[2];
     private int m_ActualCamera;
 
@@ -29,7 +30,7 @@ public class RoomChanger : MonoBehaviour
         {
             if (m_PlayerSwitch.m_CurrentRoom + 1 < m_PlayerSwitch.Rooms.Count)
             {
-                if (m_CameraList.Length != 0 && m_ActualCamera < m_CameraList.Length)
+                if (m_CameraList.Length != 0 && m_ActualCamera + 1 < m_CameraList.Length)
                 {
                     m_CameraList[m_ActualCamera].enabled = false;
                     m_ActualCamera += 1;
@@ -37,6 +38,7 @@ public class RoomChanger : MonoBehaviour
                 }
                 m_PlayerSwitch.m_CurrentRoom += 1;
                 m_PlayerSwitch.m_CurrentGolem = m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems.Count-1;
+                m_PlayerSwitch.GolemSwitch();
             }
             else
             {

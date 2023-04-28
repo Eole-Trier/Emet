@@ -11,7 +11,13 @@ public class Eolienne : Interactibles
         m_EoleBehavior = FindObjectOfType<EoleBehaviour>();
     }
 
-    public override void FixedUpdate() {;}
+    public override void FixedUpdate()
+    {
+        if(IsOn)
+            Active();
+        else
+            Desactive();
+    }
 
     public override void OnOff()
     {

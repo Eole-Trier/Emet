@@ -12,28 +12,36 @@ public class BurningObject : MonoBehaviour
     private List<ParticleSystem> m_Particles;
     private List<VisualEffect> m_Visual;
     private List<Light> m_Lights;
+    private bool m_PlaySound;
 
     [SerializeField] private float m_BurningTime;
 
     private void Start()
     {
+        m_PlaySound = IsBurning;
         m_Lights = new(GetComponentsInChildren<Light>());
         m_Particles = new(GetComponentsInChildren<ParticleSystem>());
         m_Visual = new(GetComponentsInChildren<VisualEffect>());
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (IsBurning)
         {
             Burn();
+            if (m_PlaySound)
+                FindObjectOfType<AudioManager>().Play("On");
             m_Particles.ForEach((flame) => flame.Play());
             m_Visual.ForEach((visual) => visual.enabled = true);
             m_Lights.ForEach((lights) => lights.enabled = true);
+            m_PlaySound = false;
         }
         else
         {
+            if (!m_PlaySound)
+                FindObjectOfType<AudioManager>().Play("Off");
+            m_PlaySound = true;
             m_Particles.ForEach((flame) => flame.Stop());
             m_Visual.ForEach(visual => visual.enabled = false);
             m_Lights.ForEach((lights) => lights.enabled = false);

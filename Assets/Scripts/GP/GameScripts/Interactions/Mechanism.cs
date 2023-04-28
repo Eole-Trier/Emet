@@ -1,42 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Mechanism : MonoBehaviour
 {
-    public List<Interactibles> m_InteractiblesList = new();
-    private List<Interactibles> m_InteractiblesOnList = new();
-     public bool isOn;
+    public float timer;
+    [HideInInspector] public float myTimer;
+    [HideInInspector] public bool IsActive;
+    [HideInInspector] public List<Interactibles> m_InteractibleList;
 
-    public void MechanismUpdate()
+    private void Start()
     {
-        foreach (Interactibles interactible in m_InteractiblesList)
-        {
-            if (interactible.IsOn)
-            {
-                if (!m_InteractiblesOnList.Contains(interactible))
-                    m_InteractiblesOnList.Add(interactible);
-            }
-            else
-            {
-                if (m_InteractiblesOnList.Contains(interactible))
-                    m_InteractiblesOnList.Remove(interactible);
-            }
-        }
-
-        if (m_InteractiblesList.Count == m_InteractiblesOnList.Count)
-        {
-            if(isOn)
-                gameObject.SetActive(false);
-            else
-                gameObject.SetActive(true);
-        }
-        else
-        {
-            if (isOn)
-                gameObject.SetActive(true);
-            else
-                gameObject.SetActive(false);
-        }
+        IsActive = gameObject.activeSelf;
     }
 }

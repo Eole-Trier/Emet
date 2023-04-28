@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     
     private List<Lever> m_Interactibles = new();
-    private Vector3 m_MoveDirection;
+    public Vector3 m_MoveDirection;
     private Mechanism m_Mechanism;
-    private Animator m_Animator;
+    public Animator m_Animator;
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;
@@ -24,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
     {
         CanPlay = false;
         m_Mechanism = FindObjectOfType<Mechanism>(true);
-        if(m_Mechanism != null)
-            m_Mechanism.isOn = m_Mechanism.gameObject.activeSelf;
         m_Interactibles = new(FindObjectsOfType<Lever>());
         yield return new WaitForSeconds(TimeBeforePlay);
         CanPlay = true;
@@ -57,10 +55,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        if (m_Mechanism != null)
-        {
-            m_Mechanism.MechanismUpdate();
-        }
     }
 
     private bool Grounded()
