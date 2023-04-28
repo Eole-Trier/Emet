@@ -6,18 +6,10 @@ public class Mechanism : MonoBehaviour
     public float timer;
     [HideInInspector] public float myTimer;
     [HideInInspector] public bool IsActive;
+    [HideInInspector] public List<Interactibles> m_InteractibleList;
 
     private void Start()
     {
         IsActive = gameObject.activeSelf;
     }
-
-    public bool TimerStatus(Mechanism mechanism)
-    {
-        if (mechanism.timer <= 0)
-            return true;
-        else
-            return false;
-    }
-
 }
