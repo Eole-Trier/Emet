@@ -70,33 +70,10 @@ public class EoleBehaviour : Golem
                 continue;
 
             Rigidbody rb = collider.attachedRigidbody;
-            if (collider.TryGetComponent(out Golem golem) && collider.name == m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems[m_PlayerSwitch.m_CurrentGolem].name)
-            {
-                //if wind is in front of eole
-                if (forward)
-                {
-                    if (m_PlayerMovement.GetMoveDirection() == Vector3.zero)
-                        rb.AddForce((transform.forward * m_WindForceHorizontal) * 12);
-                    else
-                        rb.AddForce((transform.forward * m_WindForceHorizontal) * 4);
-                }
-
-                //if wind is above eole
-                else
-                {
-                    if (m_PlayerMovement.GetMoveDirection() == Vector3.zero)
-                        rb.AddForce((transform.up * m_WindForceVertical) * 8);
-                    else
-                        rb.AddForce((transform.up * m_WindForceVertical) * 4);
-                }
-            }
-            else
-            {
                 if (forward)
                     rb.AddForce(transform.forward * m_WindForceHorizontal);
                 else
                     rb.AddForce(transform.up * m_WindForceVertical);
-            }
         }
     }
 
