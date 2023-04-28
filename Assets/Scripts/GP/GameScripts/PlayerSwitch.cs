@@ -22,9 +22,11 @@ public class PlayerSwitch : MonoBehaviour
     private EoleBehaviour m_Eole;
     private SpriteRenderer m_SpriteRenderer;
     private bool m_SoundPlayed;
+    private AudioManager m_AudioManager;
 
     private void Start()
     {
+        m_AudioManager = FindObjectOfType<AudioManager>();
         m_Player = FindObjectOfType<PlayerMovement>();
         Assert.IsTrue(Rooms[m_CurrentRoom].Golems.Count != 0);
         m_Player.SetGolem(Rooms[m_CurrentRoom].Golems[m_CurrentGolem]);
@@ -44,26 +46,28 @@ public class PlayerSwitch : MonoBehaviour
         if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EFRIT && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            FindObjectOfType<AudioManager>().Play("efrit_incarnate");
+            m_AudioManager.Play("efrit_incarnate");
         }
         else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.ENKI && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            FindObjectOfType<AudioManager>().Play("enki_incarnate");
+            m_AudioManager.Play("enki_incarnate");
         }
         else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EMET && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            FindObjectOfType<AudioManager>().Play("emet_incarnate");
+            m_AudioManager.Play("emet_incarnate");
         }
         else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EOLE && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            FindObjectOfType<AudioManager>().Play("eole_incarnate");
+            m_AudioManager.Play("eole_incarnate");
             if (m_Eole.particles != null && m_Eole.particles.isPlaying)
             {
                 m_Eole.particles.Clear();
                 m_Eole.particles.Stop();
+                m_AudioManager.Stop("eole_on");
+                m_AudioManager.Play("eole_off");
             }
         }
     }

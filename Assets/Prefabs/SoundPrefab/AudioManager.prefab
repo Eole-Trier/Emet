@@ -141,6 +141,18 @@ MonoBehaviour:
     loop: 0
     played: 0
     source: {fileID: 0}
+  - name: fire_burning
+    clip: {fileID: 8300000, guid: e6b92a3fcc4c5be4ca80c7933889d5a7, type: 3}
+    volume: 0.2
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: golem_die
+    clip: {fileID: 8300000, guid: 2e84cb3e1c1214a438e28244a1607913, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
   - name: golem_footsteps_0
     clip: {fileID: 8300000, guid: a542c9a4197c7d34dbe1658ec11de5e3, type: 3}
     volume: 0.2
@@ -175,5 +187,53 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: df72eaf7237abc844a44cf365c7c82b9, type: 3}
     volume: 1
     loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_land
+    clip: {fileID: 8300000, guid: b4cad04548692704888fdcd8b7280db4, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: lever_activate
+    clip: {fileID: 8300000, guid: da2dc4da7edcfd54a984d926c5b454e1, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: moving_platform
+    clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: lever_activate
+    clip: {fileID: 8300000, guid: da2dc4da7edcfd54a984d926c5b454e1, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: pressurePlate_on
+    clip: {fileID: 8300000, guid: c3b4d9a376b701d4cb87294ac3378c43, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: pressurePlate_off
+    clip: {fileID: 8300000, guid: d23c2a31e6e6cd043b5ce267393a0800, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: water_screen
+    clip: {fileID: 8300000, guid: 1dbe34ef35206c24cbd4d076273ae029, type: 3}
+    volume: 1
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: moving_platform
+    clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
+    volume: 1
+    loop: 1
     played: 0
     source: {fileID: 0}

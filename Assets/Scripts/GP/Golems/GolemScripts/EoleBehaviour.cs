@@ -17,6 +17,7 @@ public class EoleBehaviour : Golem
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("eole_on");
         m_Type = GolemType.EOLE;
         particles = GetComponentInChildren<ParticleSystem>();
         forward = true;
@@ -57,7 +58,10 @@ public class EoleBehaviour : Golem
     public void EoleUpdate()
     {
         if (particles != null && !particles.isPlaying)
+        {
             particles.Play();
+            FindObjectOfType<AudioManager>().Play("eole_on");
+        }
 
         foreach (Collider collider in listCollider)
         {

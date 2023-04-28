@@ -62,6 +62,7 @@ public class EnkiBehaviour : Golem
         {
             if (!freezed)
             {
+                FindObjectOfType<AudioManager>().Play("enki_on");
                 CanJump = false;
                 m_BoxCollider.ForEach((box) => box.enabled ^= true);
                 freezed = true;
@@ -75,6 +76,7 @@ public class EnkiBehaviour : Golem
             }
             else
             {
+                FindObjectOfType<AudioManager>().Play("enki_off");
                 m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
                 freezed = false;
                 m_CancelAnimator = false;

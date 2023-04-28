@@ -7,6 +7,13 @@ public abstract class Interactibles : MonoBehaviour
     [HideInInspector] public bool IsOn;
     protected float m_Timer;
     public List<Mechanism> MechanismList = new();
+    protected AudioManager m_AudioManager;
+    private bool m_PlayOnce;
+
+    private void Start()
+    {
+        m_AudioManager = FindObjectOfType<AudioManager>();
+    }
 
     public abstract void FixedUpdate();
     public abstract void OnOff();
@@ -32,13 +39,19 @@ public abstract class Interactibles : MonoBehaviour
     {
         foreach (Mechanism m in MechanismList)
         {
-            //If it's a moving platerform we don't do anything
+            if (m.TryGetComponent(out MovingPlateform ma) && !m_PlayOnce)
+            {
+                m_AudioManager.Play("moving_platform");
+                m_PlayOnce = true;
+            }
+
+            //If it's a moving platerform we make it move
             if (m.TryGetComponent(out MovingPlateform mp))
             {
                 mp.speed = mp.movingPlateformSpeed;
                 continue;
             }
-
+            
             // If every interactibles the object is on then activate/desactivate it
             if (m.timer == 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == m.m_InteractibleList.Count)
                 m.gameObject.SetActive(!m.IsActive);
@@ -62,7 +75,11 @@ public abstract class Interactibles : MonoBehaviour
                 continue;
 
             if (m.TryGetComponent(out MovingPlateform mp))
+            {
                 mp.transform.position = mp.plateformPath[0].transform.position;
+                m_AudioManager.Stop("moving_platform");
+                m_PlayOnce = false;
+            }
 
             m.myTimer = m.timer;
             if (m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == 0)

@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Sound" +  s.source.name + "not Found");
     }
 
-public bool IsPlaying(string name)
+    public bool IsPlaying(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s.source == null)
@@ -46,11 +46,8 @@ public bool IsPlaying(string name)
             Debug.Log("Sound" + name + "Not Found");
             return false;
         }
-
-        else if (s.source.isPlaying)
-            return true;
         else
-            return false;
+            return s.source.isPlaying;
     }
 
     public void PlayOnce(string name)

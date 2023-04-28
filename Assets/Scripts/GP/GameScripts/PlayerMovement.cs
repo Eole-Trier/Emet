@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,28 +6,28 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
-    private List<Lever> m_Interactibles = new();
-    public Vector3 m_MoveDirection;
-    private Mechanism m_Mechanism;
     public Animator m_Animator;
+    [SerializeField] private float m_RangeToActivate;
+    [SerializeField] private float TimeBeforePlay;
+    [SerializeField] private float m_WalkingSoundTimer;
+    [HideInInspector] public bool IsGrounded;
+    [HideInInspector] public bool CanPlay;
+    private List<Lever> m_Interactibles = new();
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;
-    [SerializeField] private float m_RangeToActivate;
-    [HideInInspector] public bool CanPlay;
-    [SerializeField] private float TimeBeforePlay;
-    [HideInInspector] public bool IsGrounded;
     private AudioManager m_AudioManager;
+    public Vector3 m_MoveDirection;
+    private float m_Timer;
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        m_Timer = m_WalkingSoundTimer;
         m_AudioManager = FindObjectOfType<AudioManager>();
-        CanPlay = false;
-        m_Mechanism = FindObjectOfType<Mechanism>(true);
         m_Interactibles = new(FindObjectsOfType<Lever>());
+        CanPlay = false;
         yield return new WaitForSeconds(TimeBeforePlay);
         CanPlay = true;
     }
@@ -47,10 +48,21 @@ public class PlayerMovement : MonoBehaviour
         m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
         m_Animator.SetBool("Moving", m_IsMoving);
 
+        if (m_IsMoving && IsGrounded)
+        {
+            if (m_Timer <= 0)
+            {
+                m_AudioManager.Play("golem_footsteps_" + Random.Range(0, 5));
+                m_Timer = m_WalkingSoundTimer;
+            }
+            else
+                m_Timer -= Time.fixedDeltaTime;
+        }
         if (m_MoveDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(m_MoveDirection, Vector3.up);
             m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, toRotation, 720 * Time.deltaTime);
+            
         }
     }
 
@@ -108,21 +120,19 @@ public class PlayerMovement : MonoBehaviour
             var input = _context.ReadValue<Vector2>();
             m_MoveDirection = new Vector3(input.x, 0, input.y);
         }
-        
     }
 
     public void OnJump(InputAction.CallbackContext _context)
     {
         if (CanPlay)
         {
-            m_AudioManager.Play("golem_jump");
             if (IsGrounded && _context.started && m_Golem.CanJump)
             {
+                m_AudioManager.Play("golem_jump");
                 m_Animator.Play("Jump");
                 Jump();
             }
         }
-       
     }
 
 
@@ -174,7 +184,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
-        m_AudioManager.Play("golem_footsteps_" + Random.Range(0, 5));
         Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
             m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
         m_Rigidbody.velocity = vel;

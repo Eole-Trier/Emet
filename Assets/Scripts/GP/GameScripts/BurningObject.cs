@@ -74,8 +74,6 @@ public class BurningObject : MonoBehaviour
                 m_GameObjects.Add(gameObject);
                 StartCoroutine(OwnDestroy(gameObject));
             }
-            else if (gameObject.TryGetComponent(out Brasero brasero) && brasero.IsOn)
-                IsBurning = true;
             else if (gameObject.tag == "Water")
                 IsBurning = false;
         }

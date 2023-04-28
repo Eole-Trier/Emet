@@ -14,7 +14,7 @@ public class RespawnSystem : MonoBehaviour
             {
                 if (obj.TryGetComponent(out Golem golem))
                 {
-                    Die();
+                    StartCoroutine(Die());
                 }
                 obj.transform.position = obj.InitialPosition;
             }
@@ -23,7 +23,7 @@ public class RespawnSystem : MonoBehaviour
 
     private IEnumerator Die()
     {
-        // add sound
+        FindObjectOfType<AudioManager>().Play("golem_die");
         yield return new WaitForSeconds(m_RespawnTime);
     }
 }
