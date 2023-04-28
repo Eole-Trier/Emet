@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerSwitch : MonoBehaviour
 {
@@ -59,6 +60,11 @@ public class PlayerSwitch : MonoBehaviour
         {
             m_SoundPlayed = true;
             FindObjectOfType<AudioManager>().Play("eole_incarnate");
+            if (m_Eole.particles != null && m_Eole.particles.isPlaying)
+            {
+                m_Eole.particles.Clear();
+                m_Eole.particles.Stop();
+            }
         }
     }
 

@@ -9,9 +9,8 @@ public class EoleBehaviour : Golem
     [SerializeField] private float m_WindForceVertical;
     [SerializeField] private float m_TimeBeforeIdle;
     [HideInInspector] public bool windActive;
+    [HideInInspector] public ParticleSystem particles;
     private List<CapsuleCollider> m_WindCollider = new();
-    private PlayerSwitch m_PlayerSwitch;
-    private ParticleSystem m_Particles;
     private Animator m_Animator;
     private bool forward;
 
@@ -19,11 +18,10 @@ public class EoleBehaviour : Golem
     void Start()
     {
         m_Type = GolemType.EOLE;
-        m_Particles = GetComponentInChildren<ParticleSystem>();
+        particles = GetComponentInChildren<ParticleSystem>();
         forward = true;
         m_CancelAnimator = false;
         windActive = false;
-        m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
         GetComponents(m_WindCollider);
         m_Animator = GetComponent<Animator>();
@@ -43,6 +41,7 @@ public class EoleBehaviour : Golem
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
         CanJump = true;
+        
     }
 
     private void FixedUpdate()
@@ -52,16 +51,13 @@ public class EoleBehaviour : Golem
             c.material = null;
         else
             c.material = PhysicMaterial;
-
-        if (m_Particles != null && m_Particles.isPlaying)
-            m_Particles.Stop();
     }
 
     // Update is called once per frame
     public void EoleUpdate()
     {
-        if (m_Particles != null)
-            m_Particles.Play();
+        if (particles != null && !particles.isPlaying)
+            particles.Play();
 
         foreach (Collider collider in listCollider)
         {
@@ -85,6 +81,8 @@ public class EoleBehaviour : Golem
         if (m_PlayerMovement.IsGrounded && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
         {
             forward ^= true;
+            FindObjectOfType<AudioManager>().Play("eole_change");
+
             if (!forward)
             {
                 m_Animator.Play("EoleVertical");
