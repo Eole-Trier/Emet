@@ -32,6 +32,13 @@ public abstract class Interactibles : MonoBehaviour
     {
         foreach (Mechanism m in MechanismList)
         {
+            //If it's a moving platerform we don't do anything
+            if (m.TryGetComponent(out MovingPlateform mp))
+            {
+                mp.speed = mp.movingPlateformSpeed;
+                continue;
+            }
+
             // If every interactibles the object is on then activate/desactivate it
             if (m.timer == 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == m.m_InteractibleList.Count)
                 m.gameObject.SetActive(!m.IsActive);
@@ -53,6 +60,9 @@ public abstract class Interactibles : MonoBehaviour
         {
             if (m == null)
                 continue;
+
+            if (m.TryGetComponent(out MovingPlateform mp))
+                mp.transform.position = mp.plateformPath[0].transform.position;
 
             m.myTimer = m.timer;
             if (m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == 0)
