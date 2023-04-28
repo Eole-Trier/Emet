@@ -7,6 +7,7 @@ public abstract class Interactibles : MonoBehaviour
     public bool IsOn { get; protected set; }
     public float TimeToActivate;
     protected float m_Timer;
+    public List<Mechanism> MechanismList = new();
 
     public abstract void FixedUpdate();
     public abstract void OnOff();
