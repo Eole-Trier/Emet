@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     
     private List<Lever> m_Interactibles = new();
-    private Vector3 m_MoveDirection;
+    public Vector3 m_MoveDirection;
     private Mechanism m_Mechanism;
-    private Animator m_Animator;
+    public Animator m_Animator;
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;

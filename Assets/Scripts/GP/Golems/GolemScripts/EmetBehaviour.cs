@@ -103,7 +103,7 @@ public class EmetBehaviour : Golem
                     }
                 }
             }
-            m_CarriedObject.transform.rotation = Quaternion.identity;
+            m_CarriedObject.transform.rotation = transform.rotation;
             m_CarriedObject.transform.localPosition = Vector3.zero;
 
             m_CarriedObject.GetComponent<Rigidbody>().isKinematic = true;

@@ -29,16 +29,16 @@ public class EnkiBehaviour : Golem
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_PlayerMovement.IsGrounded)
+        if (m_PlayerMovement.IsGrounded && !freezed)
         {
-            foreach(var collider in m_BoxCollider)
+            foreach(BoxCollider collider in m_BoxCollider)
             {
                 collider.material = null;
             }
         }
         else
         {
-            foreach (var collider in m_BoxCollider)
+            foreach (BoxCollider collider in m_BoxCollider)
             {
                 collider.material = PhysicMaterial;
             }
@@ -62,13 +62,16 @@ public class EnkiBehaviour : Golem
         {
             if (!freezed)
             {
-                m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
+                CanJump = false;
+                m_BoxCollider.ForEach((box) => box.enabled ^= true);
                 freezed = true;
                 m_PlayerMovement.SetMoveDirection(Vector3.zero);
                 m_CancelAnimator = true;
-                m_BoxCollider.ForEach((box) => box.enabled ^= true);
                 transform.eulerAngles = new Vector3(transform.rotation.x, 180, transform.rotation.z);
                 m_PlayerMovement.GetAnimator().Play("EnkiPlateform");
+                yield return new WaitForSeconds(0.1f);
+                m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
             }
             else
             {
@@ -77,6 +80,7 @@ public class EnkiBehaviour : Golem
                 m_CancelAnimator = false;
                 m_BoxCollider.ForEach((box) => box.enabled ^= true);
                 m_PlayerMovement.GetAnimator().Play("EnkiGolem");
+                CanJump = true;
             }
             yield return null;
         }
