@@ -4,11 +4,45 @@ using UnityEngine;
 
 public abstract class Interactibles : MonoBehaviour
 {
-    public bool IsOn { get; protected set; }
-    public float TimeToActivate;
+    [HideInInspector] public bool IsOn;
     protected float m_Timer;
     public List<Mechanism> MechanismList = new();
 
     public abstract void FixedUpdate();
     public abstract void OnOff();
+
+    private void OnValidate()
+    {
+        foreach (Mechanism m in MechanismList)
+        {
+            if(!m.m_InteractibleList.Contains(this)) 
+            {
+                m.m_InteractibleList.Add(this);
+            }
+        }
+    }
+
+    public void Active()
+    {
+        foreach (Mechanism m in MechanismList)
+        {
+            if (m.timer == 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == m.m_InteractibleList.Count)
+                m.gameObject.SetActive(!m.IsActive);
+            if (m.myTimer <= 0 && m.timer > 0 && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == m.m_InteractibleList.Count)
+            {
+                m.gameObject.SetActive(!m.gameObject.activeInHierarchy);
+                m.myTimer = m.timer;
+            }
+            m.myTimer -= Time.fixedDeltaTime;
+        }
+    }
+    public void Desactive()
+    {
+        foreach (Mechanism m in MechanismList)
+        {
+            m.myTimer = m.timer;
+            if (m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == 0)
+                m.gameObject.SetActive(m.IsActive);
+        }
+    }
 }
