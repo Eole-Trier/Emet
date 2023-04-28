@@ -53,7 +53,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: efrit_on
     clip: {fileID: 8300000, guid: fb936063c46f5874cac8f8cff4ec6ec6, type: 3}
-    volume: 0.5
+    volume: 0.2
     loop: 1
     played: 0
     source: {fileID: 0}
@@ -125,6 +125,54 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: eole_off
     clip: {fileID: 8300000, guid: fa1ff39e4e82ba440a21378c0aed0cf7, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: fire_on
+    clip: {fileID: 8300000, guid: e345e6688723e9148a42d03e22c57f8f, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: fire_off
+    clip: {fileID: 8300000, guid: 07237463b010a8b4a804398dba27ca98, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_0
+    clip: {fileID: 8300000, guid: a542c9a4197c7d34dbe1658ec11de5e3, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_1
+    clip: {fileID: 8300000, guid: d2d6154efd720e74f99a34fa0fdf0818, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_2
+    clip: {fileID: 8300000, guid: 5992b4b8631347e4b9ad4fffc8283a2f, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_3
+    clip: {fileID: 8300000, guid: 7b5df9e43e448f145a8760983e481756, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_4
+    clip: {fileID: 8300000, guid: eab2474f36e3c3e42a29c795349840ec, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_jump
+    clip: {fileID: 8300000, guid: df72eaf7237abc844a44cf365c7c82b9, type: 3}
     volume: 1
     loop: 0
     played: 0

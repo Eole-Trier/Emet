@@ -17,11 +17,13 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool CanPlay;
     [SerializeField] private float TimeBeforePlay;
     [HideInInspector] public bool IsGrounded;
+    private AudioManager m_AudioManager;
     private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        m_AudioManager = FindObjectOfType<AudioManager>();
         CanPlay = false;
         m_Mechanism = FindObjectOfType<Mechanism>(true);
         m_Interactibles = new(FindObjectsOfType<Lever>());
@@ -113,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (CanPlay)
         {
+            m_AudioManager.Play("golem_jump");
             if (IsGrounded && _context.started && m_Golem.CanJump)
             {
                 m_Animator.Play("Jump");
@@ -171,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
-
+        m_AudioManager.Play("golem_footsteps_" + Random.Range(0, 5));
         Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
             m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
         m_Rigidbody.velocity = vel;

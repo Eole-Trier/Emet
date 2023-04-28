@@ -10,6 +10,8 @@ public class Brasero : Interactibles
     [SerializeField] private bool m_IsBurning;
     private List<ParticleSystem> m_ParticleSystem;
     private BurningObject m_BurningObject;
+    private bool m_PlayOnce;
+
     private void Start()
     {
         IsOn = m_IsBurning;
@@ -20,6 +22,26 @@ public class Brasero : Interactibles
 
     public override void FixedUpdate() 
     {
+        if (m_IsBurning)
+        {
+            if (m_PlayOnce)
+            {
+                FindObjectOfType<AudioManager>().Play("fire_on");
+                FindObjectOfType<AudioManager>().Play("fire_burning");
+                m_PlayOnce = false;
+            }
+        }
+
+        else
+        {
+            if(!m_PlayOnce) 
+            {
+                FindObjectOfType<AudioManager>().Stop("fire_burning");
+                FindObjectOfType<AudioManager>().Play("fire_off");
+                m_PlayOnce = true;
+            }
+        }
+
         IsOn = m_IsBurning;
         if (IsOn)
             Active();
