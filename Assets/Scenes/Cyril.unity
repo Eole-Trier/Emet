@@ -445,7 +445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
-  MechanismList: []
+  MechanismList:
+  - {fileID: 1448667725}
 --- !u!65 &315648866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1583,7 +1584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1448667720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1596,10 +1597,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac6650c30c4a2c4b8686bbc3b35b5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlateformPath:
+  plateformPath:
   - {fileID: 417584746}
   - {fileID: 568474484}
-  m_Speed: 5
+  movingPlateformSpeed: 0
+  speed: 2
 --- !u!65 &1448667721
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1694,7 +1696,9 @@ MonoBehaviour:
   playOnce: 0
   myTimer: 0
   IsActive: 0
-  m_InteractibleList: []
+  m_InteractibleList:
+  - {fileID: 1489225634}
+  - {fileID: 315648865}
 --- !u!1 &1489225628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,8 +1810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
-  MechanismList:
-  - {fileID: 2025032628}
+  MechanismList: []
 --- !u!1001 &1673168992
 PrefabInstance:
   m_ObjectHideFlags: 0

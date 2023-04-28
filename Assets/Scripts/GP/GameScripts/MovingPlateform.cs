@@ -1,13 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Assertions;
 
 public class MovingPlateform : MonoBehaviour
 {
-    [SerializeField] private List<Transform> m_PlateformPath;
-    [SerializeField] private float m_Speed;
+    public List<Transform> plateformPath;
+    [HideInInspector] public float movingPlateformSpeed;
+    public float speed;
 
     private int m_CurrentWaypoint;
     private Vector3 m_MovementOfCurrentFrame;
@@ -15,7 +15,8 @@ public class MovingPlateform : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        Assert.IsTrue(m_PlateformPath.Count != 0);
+        movingPlateformSpeed = speed;
+        Assert.IsTrue(plateformPath.Count != 0);
         m_CurrentWaypoint = 0;
     }
 
@@ -28,17 +29,17 @@ public class MovingPlateform : MonoBehaviour
     private void HandleMovement()
     {
         Vector3 prevPos = transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, m_PlateformPath[m_CurrentWaypoint].transform.position,
-            (m_Speed * Time.deltaTime));
+        transform.position = Vector3.MoveTowards(transform.position, plateformPath[m_CurrentWaypoint].transform.position,
+            (speed * Time.deltaTime));
 
         m_MovementOfCurrentFrame = transform.position - prevPos;
-        if (Vector3.Distance(m_PlateformPath[m_CurrentWaypoint].transform.position, transform.position) <= 0)
+        if (Vector3.Distance(plateformPath[m_CurrentWaypoint].transform.position, transform.position) <= 0)
             m_CurrentWaypoint++;
         
-        if (m_CurrentWaypoint != m_PlateformPath.Count)
+        if (m_CurrentWaypoint != plateformPath.Count)
             return;
         
-        m_PlateformPath.Reverse();
+        plateformPath.Reverse();
         m_CurrentWaypoint = 0;
     }
 
