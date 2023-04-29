@@ -57,7 +57,6 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.Log(s.source.isPlaying);
             return s.source.isPlaying;
         }
     }
