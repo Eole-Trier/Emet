@@ -17,14 +17,34 @@ public class Brasero : Interactibles
 
     public override void OnOff() {;}
 
-    public void FixedUpdate() 
+    public void FixedUpdate()
     {
         WillBeBurning();
         IsOn = m_IsBurning;
         if (IsOn)
+        {
             Active();
+            m_ParticleSystem.ForEach((flame) => flame.Play());
+        }
         else
+        {
             Desactive();
+            m_ParticleSystem.ForEach((flame) => flame.Stop());
+        }
+
+        if (m_IsBurning && m_Play)
+        {
+            m_AudioManager.Play("fire_on");
+            m_AudioManager.Play("fire_burning");
+            m_Play = false;
+        }
+
+        else if (!m_IsBurning && !m_Play)
+        {
+            m_AudioManager.Stop("fire_burning");
+            m_AudioManager.Play("fire_off");
+            m_Play = true;
+        }
     }
 
     private void OnDrawGizmos()
@@ -50,25 +70,6 @@ public class Brasero : Interactibles
 
                 else if (c.gameObject.tag == "Water")
                     m_IsBurning = false;
-
-                if (m_ParticleSystem != null)
-                {
-                    if (m_IsBurning && m_Play)
-                    {
-                        m_ParticleSystem.ForEach((flame) => flame.Play());
-                        m_AudioManager.Play("fire_on");
-                        m_AudioManager.Play("fire_burning");
-                        m_Play = false;
-                    }
-
-                    else if (!m_IsBurning && !m_Play)
-                    {
-                        m_ParticleSystem.ForEach((flame) => flame.Stop());
-                        m_AudioManager.Stop("fire_burning");
-                        m_AudioManager.Play("fire_off");
-                        m_Play = true;
-                    }
-                }
             }
         }
     }
