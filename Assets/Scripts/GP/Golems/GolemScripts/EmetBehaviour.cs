@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using static ObjectType;
 
@@ -11,6 +12,7 @@ public class EmetBehaviour : Golem
     [SerializeField] private float m_TimeKeyPressedToThrow;
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
+    private BoxCollider c;
     private int m_PickupLayer;
     private Golem m_Golem;
     
@@ -18,6 +20,7 @@ public class EmetBehaviour : Golem
     // Start is called before the first frame update
     void Start()
     {
+        c = GetComponent<BoxCollider>();
         m_Type = GolemType.EMET;
         m_CancelAnimator = false;
         m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
@@ -31,7 +34,6 @@ public class EmetBehaviour : Golem
     // Update is called once per frame
     private void FixedUpdate()
     {
-        BoxCollider c = GetComponent<BoxCollider>();
         if (m_PlayerMovement.IsGrounded)
         {
             c.material = null;
@@ -91,6 +93,7 @@ public class EmetBehaviour : Golem
         {
             m_PlayerMovement.GetAnimator().Play("EmetLift");
             m_PlayerMovement.GetAnimator().SetBool("Lifting", true);
+            FindObjectOfType<AudioManager>().Play("emet_take");
             if (m_CarriedObject.TryGetComponent(out Golem golem))
             {
                 golem.m_CancelAnimator = true;
@@ -136,18 +139,19 @@ public class EmetBehaviour : Golem
         objectCollider.enabled = true;
         m_ObjectCollider.enabled = false;
 
-        if (timePressed >= m_TimeKeyPressedToThrow)
-        {
-            m_PlayerMovement.GetAnimator().Play("EmetThrowing");
-            Vector3 test = new Vector3(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
-            m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
-        }
-        else
+        if (timePressed <= m_TimeKeyPressedToThrow)
         {
             m_PlayerMovement.GetAnimator().Play("EmetDropping");
             Vector3 position = m_CarriedObject.transform.position;
             Vector3 offset = new(transform.forward.x * m_ObjectDropDistance, 0, transform.forward.z);
             m_CarriedObject.transform.position = position + offset;
+        }
+        else
+        {
+            m_PlayerMovement.GetAnimator().Play("EmetThrowing");
+            Vector3 test = new Vector3(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
+            m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
+            FindObjectOfType<AudioManager>().Play("emet_throw_" + UnityEngine.Random.Range(0, 2));
         }
         m_CarriedObject.transform.parent = null;
 

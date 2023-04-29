@@ -33,12 +33,23 @@ public class BurningObject : MonoBehaviour
             m_Particles.ForEach((flame) => flame.Play());
             m_Visual.ForEach((visual) => visual.enabled = true);
             m_Lights.ForEach((lights) => lights.enabled = true);
+            if (m_PlaySound)
+            { 
+                FindObjectOfType<AudioManager>().Play("efrit_on");
+                m_PlaySound = false;
+            }
         }
         else
         {
             m_Particles.ForEach((flame) => flame.Stop());
             m_Visual.ForEach(visual => visual.enabled = false);
             m_Lights.ForEach((lights) => lights.enabled = false);
+            if (!m_PlaySound)
+            {
+                FindObjectOfType<AudioManager>().Stop("efrit_on");
+                FindObjectOfType<AudioManager>().Play("efrit_off");
+                m_PlaySound = true;
+            }
         }
     }
 
@@ -63,8 +74,6 @@ public class BurningObject : MonoBehaviour
                 m_GameObjects.Add(gameObject);
                 StartCoroutine(OwnDestroy(gameObject));
             }
-            else if (gameObject.TryGetComponent(out Brasero brasero) && brasero.IsOn)
-                IsBurning = true;
             else if (gameObject.tag == "Water")
                 IsBurning = false;
         }

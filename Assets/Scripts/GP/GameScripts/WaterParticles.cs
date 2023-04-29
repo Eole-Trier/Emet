@@ -10,6 +10,7 @@ public class WaterParticles : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<AudioManager>().Play("water_screen");
         timer = m_TimerToShutDown;
     }
 
