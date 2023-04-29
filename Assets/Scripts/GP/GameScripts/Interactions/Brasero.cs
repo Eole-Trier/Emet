@@ -12,12 +12,13 @@ public class Brasero : Interactibles
     private void Start()
     {
         IsOn = m_IsBurning;
+        m_AudioManager = FindObjectOfType<AudioManager>();
         m_ParticleSystem = new (GetComponentsInChildren<ParticleSystem>());
     }
 
     public override void OnOff() {;}
 
-    public void FixedUpdate()
+    public void FixedUpdate() 
     {
         WillBeBurning();
         IsOn = m_IsBurning;
@@ -45,6 +46,7 @@ public class Brasero : Interactibles
             m_AudioManager.Play("fire_off");
             m_Play = true;
         }
+
     }
 
     private void OnDrawGizmos()
