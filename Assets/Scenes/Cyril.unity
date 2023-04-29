@@ -213,8 +213,8 @@ GameObject:
   - component: {fileID: 226629128}
   - component: {fileID: 226629127}
   - component: {fileID: 226629126}
-  - component: {fileID: 226629125}
   - component: {fileID: 226629124}
+  - component: {fileID: 226629129}
   m_Layer: 0
   m_Name: Eolienne
   m_TagString: Untagged
@@ -235,21 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
-  MechanismList: []
---- !u!136 &226629125
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226629122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  MechanismList:
+  - {fileID: 723691962}
 --- !u!23 &226629126
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -315,6 +302,19 @@ Transform:
   m_Father: {fileID: 1350454403}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &226629129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226629122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &248854453
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +713,6 @@ GameObject:
   - component: {fileID: 494467627}
   - component: {fileID: 494467629}
   - component: {fileID: 494467630}
-  - component: {fileID: 494467631}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -829,14 +828,6 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
---- !u!81 &494467631
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494467625}
-  m_Enabled: 1
 --- !u!1 &525926110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1233,7 @@ MonoBehaviour:
   m_InteractibleList:
   - {fileID: 690148810}
   - {fileID: 1489225634}
+  - {fileID: 226629124}
 --- !u!114 &908656531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 392713719, guid: da22c17e8c72b674ebc7358a4fb34df7,
@@ -1260,7 +1252,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1673168992}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2116575024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55f9a22bee1ea4942a957fb28ee2bd09, type: 3}
@@ -1422,6 +1414,7 @@ MonoBehaviour:
   IsActive: 0
   m_InteractibleList:
   - {fileID: 1489225634}
+  - {fileID: 226629124}
 --- !u!1 &1440045470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1632,7 @@ MonoBehaviour:
   m_InteractibleList:
   - {fileID: 1489225634}
   - {fileID: 315648865}
+  - {fileID: 226629124}
 --- !u!1 &1489225628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bada338243cb4b49ab0713aed7373be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RespawnTime: 0
+  m_RespawnTime: 1
 --- !u!65 &2077780553
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2134,6 +2128,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2116575024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4853690516235921773, guid: b317235ada6dfc94ebc14e5e54f82d56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1673168992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &2116575031
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116575024}
+  m_Enabled: 1
 --- !u!1001 &2131620624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2230,46 +2238,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e6b92a3fcc4c5be4ca80c7933889d5a7, type: 3}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].name
-      value: fire_burning
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[16].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 07237463b010a8b4a804398dba27ca98, type: 3}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[16].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[16].name
-      value: fire_off
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].volume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
-        type: 3}
-      propertyPath: sounds.Array.data[16].volume
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2105170736098785766, guid: 6216e541790f9b7418a56295536dbea3,
         type: 3}

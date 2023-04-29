@@ -8,7 +8,7 @@ public class PressurePlate : Interactibles
     private bool m_Played;
     public override void OnOff() {; }
 
-    public override void FixedUpdate()
+    public void FixedUpdate()
     {
         IsOn = Pressed();
         if (IsOn)

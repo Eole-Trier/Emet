@@ -135,16 +135,16 @@ MonoBehaviour:
     loop: 0
     played: 0
     source: {fileID: 0}
-  - name: fire_off
-    clip: {fileID: 8300000, guid: 07237463b010a8b4a804398dba27ca98, type: 3}
-    volume: 1
-    loop: 0
-    played: 0
-    source: {fileID: 0}
   - name: fire_burning
     clip: {fileID: 8300000, guid: e6b92a3fcc4c5be4ca80c7933889d5a7, type: 3}
     volume: 0.2
     loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: fire_off
+    clip: {fileID: 8300000, guid: 07237463b010a8b4a804398dba27ca98, type: 3}
+    volume: 1
+    loop: 0
     played: 0
     source: {fileID: 0}
   - name: golem_die
@@ -204,7 +204,7 @@ MonoBehaviour:
   - name: moving_platform
     clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
     volume: 1
-    loop: 0
+    loop: 1
     played: 0
     source: {fileID: 0}
   - name: lever_activate
@@ -233,6 +233,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: moving_platform
     clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
+    volume: 1
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: propeller_rotate
+    clip: {fileID: 8300000, guid: 63085f53d4f91534eb695dd975941be2, type: 3}
     volume: 1
     loop: 1
     played: 0
