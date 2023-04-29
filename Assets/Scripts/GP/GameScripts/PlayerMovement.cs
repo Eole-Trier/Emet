@@ -186,7 +186,17 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 vel = new(m_MoveDirection.x * m_Golem.m_Speed * Time.fixedDeltaTime,
             m_Rigidbody.velocity.y, m_MoveDirection.z * m_Golem.m_Speed * Time.fixedDeltaTime);
-        m_Rigidbody.velocity = vel;
+        Vector2 velo = new(vel.x, vel.z);
+        Vector2 rbvelo = new(m_Rigidbody.velocity.x, m_Rigidbody.velocity.z);
+
+        if (velo.sqrMagnitude + 0.1 < rbvelo.sqrMagnitude)
+        {
+        }
+       
+        else
+        {
+            m_Rigidbody.velocity = vel; 
+        }
     }
     public Golem GetGolem() => m_Golem;
 
