@@ -1,0 +1,239 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2105170736098785764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105170736098785766}
+  - component: {fileID: 2105170736098785765}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105170736098785766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105170736098785764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.888911, y: 2.1821303, z: -0.94982386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2105170736098785765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105170736098785764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa00d314db6388349a55943617b355f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: efrit_incarnate
+    clip: {fileID: 8300000, guid: 56ae36527286dbf4c9d1036d6e4a513b, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: efrit_on
+    clip: {fileID: 8300000, guid: fb936063c46f5874cac8f8cff4ec6ec6, type: 3}
+    volume: 0.2
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: efrit_off
+    clip: {fileID: 8300000, guid: c7963d064f2e1ea4da61898ed10aa3c5, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_incarnate
+    clip: {fileID: 8300000, guid: 780b3166b53f2a6498da29c79d369d0c, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_take
+    clip: {fileID: 8300000, guid: a3699074da62bf144aa47cf1f3890383, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_throw_0
+    clip: {fileID: 8300000, guid: 6f3318defb45249499581040b6f61e55, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: emet_throw_1
+    clip: {fileID: 8300000, guid: 80680a1a6ed697f429c59057ea2b59d3, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: enki_incarnate
+    clip: {fileID: 8300000, guid: 9364fae3685d458488262e4873e269e5, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: enki_off
+    clip: {fileID: 8300000, guid: a4451173f67e81942ae829a8bf17031a, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: enki_on
+    clip: {fileID: 8300000, guid: 5b76661b880240c459b1033292d6d0a0, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: eole_incarnate
+    clip: {fileID: 8300000, guid: b015c10ac3fb8e144bfd8d9be09cebc5, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: eole_change
+    clip: {fileID: 8300000, guid: 8286f1cb3635d3a48867c8bb14ea46f9, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: eole_on
+    clip: {fileID: 8300000, guid: 87344942fb15e484f822fa1917a4ad57, type: 3}
+    volume: 0.4
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: eole_off
+    clip: {fileID: 8300000, guid: fa1ff39e4e82ba440a21378c0aed0cf7, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: fire_on
+    clip: {fileID: 8300000, guid: e345e6688723e9148a42d03e22c57f8f, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: fire_off
+    clip: {fileID: 8300000, guid: 07237463b010a8b4a804398dba27ca98, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: fire_burning
+    clip: {fileID: 8300000, guid: e6b92a3fcc4c5be4ca80c7933889d5a7, type: 3}
+    volume: 0.2
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: golem_die
+    clip: {fileID: 8300000, guid: 2e84cb3e1c1214a438e28244a1607913, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_0
+    clip: {fileID: 8300000, guid: a542c9a4197c7d34dbe1658ec11de5e3, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_1
+    clip: {fileID: 8300000, guid: d2d6154efd720e74f99a34fa0fdf0818, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_2
+    clip: {fileID: 8300000, guid: 5992b4b8631347e4b9ad4fffc8283a2f, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_3
+    clip: {fileID: 8300000, guid: 7b5df9e43e448f145a8760983e481756, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_footsteps_4
+    clip: {fileID: 8300000, guid: eab2474f36e3c3e42a29c795349840ec, type: 3}
+    volume: 0.2
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_jump
+    clip: {fileID: 8300000, guid: df72eaf7237abc844a44cf365c7c82b9, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: golem_land
+    clip: {fileID: 8300000, guid: b4cad04548692704888fdcd8b7280db4, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: lever_activate
+    clip: {fileID: 8300000, guid: da2dc4da7edcfd54a984d926c5b454e1, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: moving_platform
+    clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: lever_activate
+    clip: {fileID: 8300000, guid: da2dc4da7edcfd54a984d926c5b454e1, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: pressurePlate_on
+    clip: {fileID: 8300000, guid: c3b4d9a376b701d4cb87294ac3378c43, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: pressurePlate_off
+    clip: {fileID: 8300000, guid: d23c2a31e6e6cd043b5ce267393a0800, type: 3}
+    volume: 1
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: water_screen
+    clip: {fileID: 8300000, guid: 1dbe34ef35206c24cbd4d076273ae029, type: 3}
+    volume: 1
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: moving_platform
+    clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
+    volume: 1
+    loop: 1
+    played: 0
+    source: {fileID: 0}
