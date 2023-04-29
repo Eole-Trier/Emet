@@ -189,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velo = new(vel.x, vel.z);
         Vector2 rbvelo = new(m_Rigidbody.velocity.x, m_Rigidbody.velocity.z);
 
-        if (velo.sqrMagnitude + 0.1 < rbvelo.sqrMagnitude)
+        if (velo.sqrMagnitude + 0.1 < rbvelo.sqrMagnitude && velo.sqrMagnitude != 0)
         {
         }
        
