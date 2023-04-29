@@ -823,7 +823,8 @@ MonoBehaviour:
   m_CancelAnimator: 0
   m_Type: 0
   m_PlayerMovement: {fileID: 0}
-  m_ThrowForce: 7.5
+  CanJump: 0
+  m_ThrowForce: 5
   m_PickUpDist: 1
   m_ObjectDropDistance: 1
   m_ObjectHeight: 3
