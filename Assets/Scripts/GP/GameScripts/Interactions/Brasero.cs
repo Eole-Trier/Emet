@@ -17,7 +17,7 @@ public class Brasero : Interactibles
 
     public override void OnOff() {;}
 
-    public override void FixedUpdate() 
+    public void FixedUpdate() 
     {
         WillBeBurning();
         IsOn = m_IsBurning;

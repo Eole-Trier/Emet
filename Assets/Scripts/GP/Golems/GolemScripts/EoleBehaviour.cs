@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class EoleBehaviour : Golem
 {
-    [HideInInspector] public List<Collider> listCollider = new();
+    public List<Collider> listCollider = new();
     [SerializeField] private float m_WindForceHorizontal;
     [SerializeField] private float m_WindForceVertical;
     [SerializeField] private float m_TimeBeforeIdle;
-    [HideInInspector] public bool windActive;
     [HideInInspector] public ParticleSystem particles;
     private List<CapsuleCollider> m_WindCollider = new();
     private Animator m_Animator;
@@ -22,7 +21,6 @@ public class EoleBehaviour : Golem
         particles = GetComponentInChildren<ParticleSystem>();
         forward = true;
         m_CancelAnimator = false;
-        windActive = false;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
         GetComponents(m_WindCollider);
         m_Animator = GetComponent<Animator>();
@@ -98,7 +96,6 @@ public class EoleBehaviour : Golem
                 m_Animator.SetBool("LookingUP", false);
             }
         }
-        windActive ^= true;
         yield return null;
     }
 

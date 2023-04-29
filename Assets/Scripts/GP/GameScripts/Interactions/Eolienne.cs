@@ -1,34 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Eolienne : Interactibles
 {
+    private Collider m_Collider;
     private EoleBehaviour m_EoleBehavior;
+    private bool m_Play;
 
     private void Start()
     {
+        m_AudioManager = FindObjectOfType<AudioManager>();
+        m_Collider = GetComponent<BoxCollider>();
         m_EoleBehavior = FindObjectOfType<EoleBehaviour>();
     }
 
-    public override void FixedUpdate()
+    public void FixedUpdate()
     {
-        if(IsOn)
-            Active();
-        else
-            Desactive();
-    }
-
-    public override void OnOff()
-    {
-        if (m_EoleBehavior.windActive && m_EoleBehavior.listCollider.Contains(GetComponent<Collider>()))
+        if (m_EoleBehavior.listCollider.Contains(m_Collider))
         {
-            m_AudioManager.Play("eole_on");
             IsOn = true;
-        }
+            Active();
 
+            if (!m_AudioManager.IsPlaying("eole_on") && m_AudioManager.IsPlaying("propeller_rotate"))
+                m_AudioManager.Stop("propeller_rotate");
+
+            else if (m_AudioManager.IsPlaying("eole_on") && !m_AudioManager.IsPlaying("propeller_rotate"))
+                m_AudioManager.Play("propeller_rotate");
+        }
         else
+        {
             IsOn = false;
-            m_AudioManager.Stop("eole_on");
+            Desactive();
+            if (m_AudioManager.IsPlaying("propeller_rotate"))
+                m_AudioManager.Stop("propeller_rotate");
+        }
     }
+
+    public override void OnOff() {}
 }
