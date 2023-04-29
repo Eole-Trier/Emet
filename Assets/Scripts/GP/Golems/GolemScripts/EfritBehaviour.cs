@@ -5,10 +5,12 @@ using UnityEngine.VFX;
 
 public class EfritBehaviour : Golem
 {
+    private BoxCollider c;
     // Start is called before the first frame update
     void Start()
     {
         m_Type = GolemType.EFRIT;
+        c = GetComponent<BoxCollider>(); 
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
@@ -18,16 +20,16 @@ public class EfritBehaviour : Golem
     // Update is called once per frame
     private void FixedUpdate()
     {
-        BoxCollider c = GetComponent<BoxCollider>();
         if (m_PlayerMovement.IsGrounded)
         {
-            c.material = null ;
+            c.material = null;
         }
         else
         {
             c.material = PhysicMaterial;
         }
     }
+
 
     public override IEnumerator UseCapacity(double timePressed)
     {

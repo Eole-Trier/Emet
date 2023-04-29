@@ -23,10 +23,12 @@ public class Eolienne : Interactibles
     {
         if (m_EoleBehavior.windActive && m_EoleBehavior.listCollider.Contains(GetComponent<Collider>()))
         {
+            m_AudioManager.Play("eole_on");
             IsOn = true;
         }
 
         else
             IsOn = false;
+            m_AudioManager.Stop("eole_on");
     }
 }
