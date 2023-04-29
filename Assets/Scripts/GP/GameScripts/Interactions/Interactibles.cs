@@ -15,7 +15,6 @@ public abstract class Interactibles : MonoBehaviour
         m_AudioManager = FindObjectOfType<AudioManager>();
     }
 
-    public abstract void FixedUpdate();
     public abstract void OnOff();
 
     private void OnValidate()

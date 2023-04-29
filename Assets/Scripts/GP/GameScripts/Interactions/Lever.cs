@@ -1,8 +1,7 @@
-using UnityEngine;
 
 public class Lever : Interactibles
 {
-    public override void FixedUpdate()
+    public void FixedUpdate()
     {
         if (IsOn)
             Active();
@@ -12,8 +11,8 @@ public class Lever : Interactibles
 
     public override void OnOff()
     {
+        IsOn ^= true;
         if (IsOn)
             m_AudioManager.Play("lever_activate");
-        IsOn ^= true;
     }
 }
