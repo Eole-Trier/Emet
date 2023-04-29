@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private AudioListener m_AudioListener;
     public Animator m_Animator;
     [SerializeField] private float m_RangeToActivate;
     [SerializeField] private float TimeBeforePlay;
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Start()
     {
         m_Timer = m_WalkingSoundTimer;
+        m_AudioListener = GetComponent<AudioListener>();
         m_AudioManager = FindObjectOfType<AudioManager>();
         m_Interactibles = new(FindObjectsOfType<Lever>());
         CanPlay = false;
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        m_AudioListener.transform.position = transform.position;
+        m_AudioListener.transform.Rotate(new Vector3(0, 180, 0));
         IsGrounded = Grounded();
         CopyTransform(m_GolemTransform);
 

@@ -14,6 +14,8 @@ public abstract class Interactibles : MonoBehaviour
     private void Start()
     {
         m_AudioManager = FindObjectOfType<AudioManager>();
+        foreach (Mechanism m in MechanismList)
+            m.m_InteractibleList.Clear();
     }
 
     public abstract void OnOff();

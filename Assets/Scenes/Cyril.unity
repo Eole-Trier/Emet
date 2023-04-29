@@ -1255,12 +1255,26 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1673168992}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116575024}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55f9a22bee1ea4942a957fb28ee2bd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1108377839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6750812620780612609, guid: 0f1b420deec058e419d9dc8eb76c0742,
+    type: 3}
+  m_PrefabInstance: {fileID: 6750812620923467282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &1108377844
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108377839}
+  m_Enabled: 1
 --- !u!1 &1350454402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,20 +2146,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2116575024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4853690516235921773, guid: b317235ada6dfc94ebc14e5e54f82d56,
-    type: 3}
-  m_PrefabInstance: {fileID: 1673168992}
-  m_PrefabAsset: {fileID: 0}
---- !u!81 &2116575031
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116575024}
-  m_Enabled: 1
 --- !u!1001 &2131620624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2247,6 +2247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[12].volume
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105170736098785765, guid: 6216e541790f9b7418a56295536dbea3,
+        type: 3}
+      propertyPath: sounds.Array.data[1].maxDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2105170736098785766, guid: 6216e541790f9b7418a56295536dbea3,
         type: 3}
