@@ -270,6 +270,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4761002559446680830}
+  - component: {fileID: 5363036224349564997}
+  - component: {fileID: -5325724216825794501}
   m_Layer: 0
   m_Name: Ronces
   m_TagString: Untagged
@@ -294,3 +296,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5363036224349564997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761002559446680831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991e06c15e2fd7645bdb1788a4801dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjType: 2
+  InitialPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &-5325724216825794501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761002559446680831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d165d9e0e59de4cb1450f9767c253e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsBurning: 0
+  BurnDistance: 2
+  m_BurningTime: 1

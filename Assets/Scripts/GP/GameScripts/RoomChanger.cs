@@ -18,7 +18,7 @@ public class RoomChanger : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Golem _))
+        if (collision.gameObject.TryGetComponent(out Golem g))
         {
             if (m_PlayerSwitch.m_CurrentRoom + 1 < m_PlayerSwitch.Rooms.Count)
             {
@@ -28,6 +28,8 @@ public class RoomChanger : MonoBehaviour
                     m_ActualCamera += 1;
                     m_CameraList[m_ActualCamera].enabled = true;
                 }
+                if (g.gameObject.TryGetComponent(out ObjectType o))
+                    g.transform.position = o.InitialPosition;
                 m_PlayerSwitch.m_CurrentRoom += 1;
                 m_PlayerSwitch.m_CurrentGolem = m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems.Count-1;
                 m_PlayerSwitch.GolemSwitch();

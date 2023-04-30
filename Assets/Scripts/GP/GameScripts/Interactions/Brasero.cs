@@ -4,15 +4,17 @@ using static ObjectType;
 
 public class Brasero : Interactibles
 {
-    [SerializeField] private float m_BurnDistance;
-    [SerializeField] private bool m_IsBurning;
+    private BurningObject m_Brasero;
     private List<ParticleSystem> m_ParticleSystem;
     private bool m_Play;
 
     private void Start()
     {
-        IsOn = m_IsBurning;
         m_AudioManager = FindObjectOfType<AudioManager>();
+        m_Brasero = FindObjectOfType<BurningObject>();
+        IsOn = m_Brasero.IsBurning;
+
+
         m_ParticleSystem = new (GetComponentsInChildren<ParticleSystem>());
     }
 
@@ -20,8 +22,7 @@ public class Brasero : Interactibles
 
     public void FixedUpdate() 
     {
-        WillBeBurning();
-        IsOn = m_IsBurning;
+        IsOn = m_Brasero.IsBurning;
         if (IsOn)
         {
             Active();
@@ -33,14 +34,14 @@ public class Brasero : Interactibles
             m_ParticleSystem.ForEach((flame) => flame.Stop());
         }
 
-        if (m_IsBurning && m_Play)
+        if (m_Brasero.IsBurning && m_Play)
         {
             m_AudioManager.Play("fire_on");
             m_AudioManager.Play("fire_burning");
             m_Play = false;
         }
 
-        else if (!m_IsBurning && !m_Play)
+        else if (!m_Brasero.IsBurning && !m_Play)
         {
             m_AudioManager.Stop("fire_burning");
             m_AudioManager.Play("fire_off");
@@ -49,30 +50,4 @@ public class Brasero : Interactibles
 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, m_BurnDistance);
-    }
-
-    private void WillBeBurning()
-    {
-        Collider[] burn = Physics.OverlapSphere(transform.position, m_BurnDistance);
-
-
-        foreach (Collider c in burn)
-        {
-            if (c.TryGetComponent(out BurningObject burningObject))
-            {
-                if (burningObject.IsBurning)
-                    m_IsBurning = true;
-
-                else if (!burningObject.IsBurning && m_IsBurning)
-                    burningObject.IsBurning = true;
-
-                else if (c.gameObject.CompareTag("Water"))
-                    m_IsBurning = false;
-            }
-        }
-    }
 }
