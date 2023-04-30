@@ -21,7 +21,7 @@ public class Brasero : Interactibles
     public void FixedUpdate() 
     {
         WillBeBurning();
-        IsOn = m_IsBurning;
+       
         if (IsOn)
         {
             Active();
@@ -65,13 +65,18 @@ public class Brasero : Interactibles
             if (c.TryGetComponent(out BurningObject burningObject))
             {
                 if (burningObject.IsBurning)
+                {
                     m_IsBurning = true;
-
+                    IsOn = true;
+                }
                 else if (!burningObject.IsBurning && m_IsBurning)
                     burningObject.IsBurning = true;
 
                 else if (c.gameObject.CompareTag("Water"))
+                {
                     m_IsBurning = false;
+                    IsOn = false;
+                }
             }
         }
     }
