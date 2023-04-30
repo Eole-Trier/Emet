@@ -70,7 +70,7 @@ public class Brasero : Interactibles
                 else if (!burningObject.IsBurning && m_IsBurning)
                     burningObject.IsBurning = true;
 
-                else if (c.gameObject.tag == "Water")
+                else if (c.gameObject.CompareTag("Water"))
                     m_IsBurning = false;
             }
         }

@@ -101,8 +101,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void CopyTransform(Transform _transform)
     {
-        transform.position = _transform.position;
-        transform.rotation = _transform.rotation;
+        transform.SetPositionAndRotation(_transform.position, _transform.rotation);
         transform.localScale = _transform.localScale;
     }
 
@@ -173,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        m_Rigidbody.AddForce(transform.up * m_Golem.m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+        m_Rigidbody.AddForce((transform.up * m_Golem.m_JumpStrength) * Time.fixedDeltaTime, ForceMode.Impulse);
     }
     private void Movement()
     {
