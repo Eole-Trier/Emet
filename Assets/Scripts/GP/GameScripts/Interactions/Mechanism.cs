@@ -11,6 +11,6 @@ public class Mechanism : MonoBehaviour
 
     private void Start()
     {
-        IsActive = gameObject.activeSelf;
+        IsActive = Time.time <= 0;
     }
 }
