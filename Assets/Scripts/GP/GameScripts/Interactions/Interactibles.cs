@@ -74,7 +74,7 @@ public abstract class Interactibles : MonoBehaviour
             }
 
             m.myTimer = m.timer;
-            if (m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count == 0)
+            if (m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count != m.m_InteractibleList.Count)
                 m.gameObject.SetActive(m.IsActive);
         }
     }
