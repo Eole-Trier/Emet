@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Animator m_Animator;
     [SerializeField] private float m_RangeToActivate;
     [SerializeField] private float TimeBeforePlay;
     [SerializeField] private float m_WalkingSoundTimer;
@@ -16,15 +15,18 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;
+    private Animator m_Animator;
     private AudioManager m_AudioManager;
+    private AudioListener m_AudioListener;
     public Vector3 m_MoveDirection;
     private float m_Timer;
-    private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
+    public bool IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
         m_Timer = m_WalkingSoundTimer;
+        m_AudioListener = GetComponent<AudioListener>();
         m_AudioManager = FindObjectOfType<AudioManager>();
         m_Interactibles = new(FindObjectsOfType<Lever>());
         CanPlay = false;
@@ -33,22 +35,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        Movement();
+        m_AudioListener.transform.position = transform.position;
+        m_AudioListener.transform.Rotate(new Vector3(0, 180, 0));
         IsGrounded = Grounded();
         CopyTransform(m_GolemTransform);
 
         if (m_Golem.m_CancelAnimator != false)
             return;
 
-        m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
-        m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
-        if(IsGrounded)
-            m_Animator.SetFloat("SpeedY", 0);
-        m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
-        m_Animator.SetBool("Moving", m_IsMoving);
-
-        if (m_IsMoving && IsGrounded)
+        if (IsMoving && IsGrounded)
         {
             if (m_Timer <= 0)
             {
@@ -62,13 +60,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(m_MoveDirection, Vector3.up);
             m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, toRotation, 720 * Time.deltaTime);
-            
-        }
-    }
 
-    private void FixedUpdate()
-    {
-        Movement();
+        }
     }
 
     private bool Grounded()
@@ -80,11 +73,11 @@ public class PlayerMovement : MonoBehaviour
 
         var p4 = trans.TransformPoint(new Vector3(max.x, min.y, max.z));
 
-        for (float i = 0; i < bc.size.x; i += bc.size.x/5)
+        for (float i = 0; i < bc.size.x; i += bc.size.x / 5)
         {
             var p2 = trans.TransformPoint(new Vector3(min.x + i, min.y, max.z));
 
-            for (float j = 0; j < bc.size.z; j += bc.size.z/5)
+            for (float j = 0; j < bc.size.z; j += bc.size.z / 5)
             {
 
 
@@ -102,14 +95,13 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        
+
         return false;
-      
+
     }
     private void CopyTransform(Transform _transform)
     {
-        transform.position = _transform.position;
-        transform.rotation = _transform.rotation;
+        transform.SetPositionAndRotation(_transform.position, _transform.rotation);
         transform.localScale = _transform.localScale;
     }
 
@@ -164,10 +156,10 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
-   
+
 
     public void SetGolem(Golem golem)
     {
@@ -180,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        m_Rigidbody.AddForce(transform.up * m_Golem.m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+        m_Rigidbody.AddForce((transform.up * m_Golem.m_JumpStrength) * Time.fixedDeltaTime, ForceMode.Impulse);
     }
     private void Movement()
     {
@@ -192,16 +184,18 @@ public class PlayerMovement : MonoBehaviour
         if (velo.sqrMagnitude + 0.1 < rbvelo.sqrMagnitude && velo.sqrMagnitude != 0)
         {
         }
-       
+
         else
         {
-            m_Rigidbody.velocity = vel; 
+            m_Rigidbody.velocity = vel;
         }
     }
     public Golem GetGolem() => m_Golem;
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
     public Vector3 GetMoveDirection() => m_MoveDirection;
+
+    public Rigidbody GetRigidbody() => m_Rigidbody;
 
     public Animator GetAnimator() => m_Animator;
 }
