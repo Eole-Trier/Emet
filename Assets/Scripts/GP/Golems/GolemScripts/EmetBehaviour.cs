@@ -13,7 +13,7 @@ public class EmetBehaviour : Golem
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
     private BoxCollider c;
-
+    
 
     // Start is called before the first frame update
     void Start()

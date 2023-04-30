@@ -5,6 +5,8 @@ using UnityEngine;
 public class Sound
 {
     public string name;
+    public float minDistance;
+    public float maxDistance;
 
     public AudioClip clip;
 

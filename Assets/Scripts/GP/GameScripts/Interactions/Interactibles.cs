@@ -45,17 +45,16 @@ public abstract class Interactibles : MonoBehaviour
             }
 
             // If every interactibles are on then activate/desactivate the object
-            if (m.myTimer < 0 && m.gameObject.activeSelf == m.IsActive && m.m_InteractibleList.FindAll(interactibles => interactibles.IsOn).Count !< MechanismList.Count)
-                m.gameObject.SetActive(!m.IsActive);
+            if (m.myTimer <= 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.FindAll(interactibles => interactibles.IsOn).Count >= MechanismList.Count - 1)
+                m.gameObject.SetActive(!m.gameObject.activeInHierarchy);
 
             //If playOnce is true then loop the activate/desactivate state if timer > 0
-            if (!m.playOnce && m.myTimer < 0)
+            if (!m.playOnce && m.myTimer < 0 && m.timer > 0)
             {
                 m.gameObject.SetActive(!m.gameObject.activeInHierarchy);
                 m.myTimer = m.timer;
             }
-
-            if (m.myTimer >= 0)
+            if(m.myTimer >= 0)
                 m.myTimer -= Time.deltaTime;
         }
     }

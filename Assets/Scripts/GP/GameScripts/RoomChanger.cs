@@ -6,7 +6,6 @@ using UnityEngine;
 public class RoomChanger : MonoBehaviour
 {
     private PlayerSwitch m_PlayerSwitch;
-    private PlayerMovement m_PlayerMovement;
     [SerializeField] private CinemachineVirtualCamera[] m_CameraList = new CinemachineVirtualCamera[2];
     private int m_ActualCamera;
 
@@ -17,16 +16,9 @@ public class RoomChanger : MonoBehaviour
         m_ActualCamera = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-   
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Golem golem))
+        if (collision.gameObject.TryGetComponent(out Golem _))
         {
             if (m_PlayerSwitch.m_CurrentRoom + 1 < m_PlayerSwitch.Rooms.Count)
             {

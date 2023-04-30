@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(m_MoveDirection, Vector3.up);
             m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, toRotation, 720 * Time.deltaTime);
-
+            
         }
     }
 
@@ -73,11 +73,11 @@ public class PlayerMovement : MonoBehaviour
 
         var p4 = trans.TransformPoint(new Vector3(max.x, min.y, max.z));
 
-        for (float i = 0; i < bc.size.x; i += bc.size.x / 5)
+        for (float i = 0; i < bc.size.x; i += bc.size.x/5)
         {
             var p2 = trans.TransformPoint(new Vector3(min.x + i, min.y, max.z));
 
-            for (float j = 0; j < bc.size.z; j += bc.size.z / 5)
+            for (float j = 0; j < bc.size.z; j += bc.size.z/5)
             {
 
 
@@ -95,9 +95,9 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-
+        
         return false;
-
+      
     }
     private void CopyTransform(Transform _transform)
     {
@@ -156,10 +156,10 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-
+        
     }
 
-
+   
 
     public void SetGolem(Golem golem)
     {
@@ -184,10 +184,10 @@ public class PlayerMovement : MonoBehaviour
         if (velo.sqrMagnitude + 0.1 < rbvelo.sqrMagnitude && velo.sqrMagnitude != 0)
         {
         }
-
+       
         else
         {
-            m_Rigidbody.velocity = vel;
+            m_Rigidbody.velocity = vel; 
         }
     }
     public Golem GetGolem() => m_Golem;
