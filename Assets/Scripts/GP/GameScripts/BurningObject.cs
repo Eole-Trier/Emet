@@ -79,11 +79,6 @@ public class BurningObject : MonoBehaviour
     }
     public IEnumerator OwnDestroy(GameObject go)
     {
-        if (go.TryGetComponent(out VisualEffect visualEffect))
-        {
-            go.GetComponent<VisualEffect>().enabled = true;
-         
-        }
         go.GetComponent<BurningObject>().IsBurning = true;
         yield return new WaitForSeconds(m_BurningTime);
         m_GameObjects.Remove(go);
