@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -45,8 +46,8 @@ public abstract class Interactibles : MonoBehaviour
             }
 
             // If every interactibles are on then activate/desactivate the object
-            if (m.myTimer <= 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.FindAll(interactibles => interactibles.IsOn).Count >= MechanismList.Count - 1)
-                m.gameObject.SetActive(!m.gameObject.activeInHierarchy);
+            if (m.myTimer <= 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.TrueForAll(interactibles => interactibles.IsOn))
+                m.gameObject.SetActive(!m.IsActive);
 
             //If playOnce is true then loop the activate/desactivate state if timer > 0
             if (!m.playOnce && m.myTimer < 0 && m.timer > 0)
