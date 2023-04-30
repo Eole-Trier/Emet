@@ -101,12 +101,12 @@ public class EoleBehaviour : Golem
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!listCollider.Contains(other))
+        if (!listCollider.Contains(other) && other is BoxCollider)
             listCollider.Add(other);
     }
     private void OnTriggerExit(Collider other)
     {
-        if (listCollider.Contains(other))
+        if (listCollider.Contains(other) && other is BoxCollider)
             listCollider.Remove(other);
     }
 }
