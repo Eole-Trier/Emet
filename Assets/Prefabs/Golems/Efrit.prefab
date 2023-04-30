@@ -1276,8 +1276,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.9, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.2, y: 1.9624599, z: 1}
+  m_Center: {x: 0, y: 0.9687701, z: 0}
 --- !u!54 &6161449321441231071
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1314,6 +1314,7 @@ MonoBehaviour:
   m_CancelAnimator: 0
   m_Type: 0
   m_PlayerMovement: {fileID: 0}
+  CanJump: 0
 --- !u!114 &5244036765528173892
 MonoBehaviour:
   m_ObjectHideFlags: 0
