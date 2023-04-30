@@ -15,13 +15,13 @@ public class Dissolve : MonoBehaviour
     void Start()
     {
         Material = Mesh.material;
-        
+        b = GetComponentInParent<BurningObject>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        b = GetComponentInParent<BurningObject>();
         if (b.IsBurning)
         {
             StartCoroutine(DissolveCo());
