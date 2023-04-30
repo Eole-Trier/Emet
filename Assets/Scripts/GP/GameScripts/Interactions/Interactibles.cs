@@ -7,7 +7,6 @@ using UnityEngine;
 public abstract class Interactibles : MonoBehaviour
 {
     [HideInInspector] public bool IsOn;
-    protected float m_Timer;
     public List<Mechanism> MechanismList = new();
     protected AudioManager m_AudioManager;
     private bool m_PlayOnce;
@@ -15,6 +14,9 @@ public abstract class Interactibles : MonoBehaviour
     private void Start()
     {
         m_AudioManager = FindObjectOfType<AudioManager>();
+
+        foreach (Mechanism m in MechanismList)
+            m.myTimer = m.timer;
     }
 
     public abstract void OnOff();
@@ -37,7 +39,6 @@ public abstract class Interactibles : MonoBehaviour
                 m_AudioManager.Play("moving_platform");
                 m_PlayOnce = true;
             }
-
             //If it's a moving platerform we make it move
             if (m.TryGetComponent(out MovingPlateform mp))
             {
