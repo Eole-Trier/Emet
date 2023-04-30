@@ -51,6 +51,7 @@ public class PlayerSwitch : MonoBehaviour
                     }
                     else
                     {
+                        eole.particles.Clear();
                         eole.particles.Stop();
                     }
                 }

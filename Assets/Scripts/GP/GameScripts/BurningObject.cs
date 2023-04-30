@@ -70,7 +70,6 @@ public class BurningObject : MonoBehaviour
                     gameObject.GetComponent<BurningObject>().IsBurning = true;
                     continue;
                 }
-
                 m_GameObjects.Add(gameObject);
                 StartCoroutine(OwnDestroy(gameObject));
             }

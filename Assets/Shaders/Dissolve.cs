@@ -8,18 +8,21 @@ public class Dissolve : MonoBehaviour
     public MeshRenderer Mesh;
     private Material Material;
     public VisualEffect VFXGraph;
-    public float dissolveRate = 0.0125f;
+    public float dissolveRate = 0.1f;
     public float refreshRate = 0.0250f;
+    private BurningObject b;
 
     void Start()
     {
         Material = Mesh.material;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        b = GetComponentInParent<BurningObject>();
+        if (b.IsBurning)
         {
             StartCoroutine(DissolveCo());
         }

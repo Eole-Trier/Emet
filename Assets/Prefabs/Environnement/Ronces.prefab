@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mesh: {fileID: 1188629646449246771}
   VFXGraph: {fileID: 4761002558427685394}
-  dissolveRate: 0.0125
+  dissolveRate: 0.1
   refreshRate: 0.025
 --- !u!1 &4761002558427685395
 GameObject:
@@ -323,5 +323,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurning: 0
-  BurnDistance: 2
+  BurnDistance: 4
   m_BurningTime: 1
