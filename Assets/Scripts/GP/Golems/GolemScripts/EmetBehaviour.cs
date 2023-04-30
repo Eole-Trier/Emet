@@ -13,8 +13,6 @@ public class EmetBehaviour : Golem
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
     private BoxCollider c;
-    private int m_PickupLayer;
-    private Golem m_Golem;
     
 
     // Start is called before the first frame update
@@ -23,7 +21,6 @@ public class EmetBehaviour : Golem
         c = GetComponent<BoxCollider>();
         m_Type = GolemType.EMET;
         m_CancelAnimator = false;
-        m_PickupLayer = 1 << LayerMask.NameToLayer("Pickup");
         m_CarriedObject = null;
         m_InitialJumpStrength = m_JumpStrength;
         m_InitialSpeed = m_Speed;
@@ -149,7 +146,7 @@ public class EmetBehaviour : Golem
         else
         {
             m_PlayerMovement.GetAnimator().Play("EmetThrowing");
-            Vector3 test = new Vector3(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
+            Vector3 test = new(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
             m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
             FindObjectOfType<AudioManager>().Play("emet_throw_" + UnityEngine.Random.Range(0, 2));
         }
