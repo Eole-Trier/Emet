@@ -23,6 +23,10 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
 
+            s.source.spatialBlend = 1.0f;
+            s.source.rolloffMode = AudioRolloffMode.Logarithmic;
+            s.source.minDistance = s.minDistance;
+            s.source.maxDistance = s.maxDistance;
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.loop = s.loop;
