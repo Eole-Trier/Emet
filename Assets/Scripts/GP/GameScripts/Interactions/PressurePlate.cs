@@ -19,12 +19,14 @@ public class PressurePlate : Interactibles
 
         if (IsOn && !m_Played)
         {
-            m_AudioManager.Play("pressurePlate_on");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_on").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_on").transform.position = transform.position;
             m_Played = true;
         }
         else if (!IsOn && m_Played)
         {
-            m_AudioManager.Play("pressurePlate_off");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_off").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_off").transform.position = transform.position;
             m_Played = false;
         }
     }

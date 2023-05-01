@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     private Golem m_Golem;
     private Animator m_Animator;
     private AudioManager m_AudioManager;
-    private AudioListener m_AudioListener;
     public Vector3 m_MoveDirection;
     private float m_Timer;
     public bool IsMoving { get { return m_MoveDirection != Vector3.zero; } }
@@ -26,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Start()
     {
         m_Timer = m_WalkingSoundTimer;
-        m_AudioListener = GetComponent<AudioListener>();
         m_AudioManager = FindObjectOfType<AudioManager>();
         m_Interactibles = new(FindObjectsOfType<Lever>());
         CanPlay = false;
@@ -38,8 +35,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
-        m_AudioListener.transform.position = transform.position;
-        m_AudioListener.transform.Rotate(new Vector3(0, 180, 0));
         IsGrounded = Grounded();
         CopyTransform(m_GolemTransform);
 
@@ -50,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (m_Timer <= 0)
             {
-                m_AudioManager.Play("golem_footsteps_" + Random.Range(0, 5));
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_footsteps_" + UnityEngine.Random.Range(0, 5)).Play();
                 m_Timer = m_WalkingSoundTimer;
             }
             else
@@ -93,11 +88,8 @@ public class PlayerMovement : MonoBehaviour
                || Physics.Raycast(p4 + Vector3.up * 0.10f, Vector3.down, 0.20f))
                     return true;
             }
-
         }
-        
         return false;
-      
     }
     private void CopyTransform(Transform _transform)
     {
@@ -120,15 +112,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded && _context.started && m_Golem.CanJump)
             {
-                m_AudioManager.Play("golem_jump");
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_jump").Play();
                 m_Animator.Play("Jump");
                 Jump();
             }
         }
     }
-
-
-
     public void OnCapacity(InputAction.CallbackContext _context)
     {
         if (CanPlay)
@@ -158,9 +147,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-
-   
-
     public void SetGolem(Golem golem)
     {
         m_Golem = golem;

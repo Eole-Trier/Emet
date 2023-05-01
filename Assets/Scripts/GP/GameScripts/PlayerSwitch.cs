@@ -59,29 +59,29 @@ public class PlayerSwitch : MonoBehaviour
         if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EFRIT && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            m_AudioManager.Play("efrit_incarnate");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_incarnate").transform.position = transform.position;
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_incarnate").Play();
+
         }
         else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.ENKI && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            m_AudioManager.Play("enki_incarnate");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "enki_incarnate").transform.position = transform.position;
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "enki_incarnate").Play();
+
         }
         else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EMET && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            m_AudioManager.Play("emet_incarnate");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_incarnate").transform.position = transform.position;
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_incarnate").Play();
+
         }
         else if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EOLE && !m_SoundPlayed)
         {
             m_SoundPlayed = true;
-            m_AudioManager.Play("eole_incarnate");
-            if (m_Eole.particles != null && m_Eole.particles.isPlaying)
-            {
-                m_Eole.particles.Clear();
-                m_Eole.particles.Stop();
-                m_AudioManager.Stop("eole_on");
-                m_AudioManager.Play("eole_off");
-            }
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "eole_incarnate").transform.position = transform.position;
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "eole_incarnate").Play();
         }
 
         if (Rooms[m_CurrentRoom].Golems.Count > 0)
@@ -93,6 +93,11 @@ public class PlayerSwitch : MonoBehaviour
                 m_GolemAnimator.SetFloat("SpeedY", golem.GetComponent<Rigidbody>().velocity.y);
                 m_GolemAnimator.SetFloat("SpeedZ", golem.GetComponent<Rigidbody>().velocity.z);
                 m_GolemAnimator.SetBool("Moving", golem.GetComponent<Rigidbody>().velocity != Vector3.zero);
+                if (m_Player.IsGrounded && golem.GetComponent<Rigidbody>().velocity.y < 0 && !m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_land").isPlaying)
+                {
+                    m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_land").transform.position = transform.position;
+                    m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_land").Play();
+                }
             }
         }
     }

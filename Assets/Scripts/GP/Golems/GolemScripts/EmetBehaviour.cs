@@ -12,12 +12,14 @@ public class EmetBehaviour : Golem
     [SerializeField] private float m_TimeKeyPressedToThrow;
     [SerializeField] BoxCollider m_ObjectCollider;
     private GameObject m_CarriedObject;
+    private AudioManager m_AudioManager;
     private BoxCollider c;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        m_AudioManager = FindObjectOfType<AudioManager>();
         c = GetComponent<BoxCollider>();
         m_Type = GolemType.EMET;
         m_CancelAnimator = false;
@@ -90,7 +92,8 @@ public class EmetBehaviour : Golem
         {
             m_PlayerMovement.GetAnimator().Play("EmetLift");
             m_PlayerMovement.GetAnimator().SetBool("Lifting", true);
-            FindObjectOfType<AudioManager>().Play("emet_take");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_take").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_take").transform.position = transform.position;
             if (m_CarriedObject.TryGetComponent(out Golem golem))
             {
                 golem.m_CancelAnimator = true;
@@ -148,7 +151,7 @@ public class EmetBehaviour : Golem
             m_PlayerMovement.GetAnimator().Play("EmetThrowing");
             Vector3 test = new(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
             m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
-            FindObjectOfType<AudioManager>().Play("emet_throw_" + UnityEngine.Random.Range(0, 2));
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_throw_" + UnityEngine.Random.Range(0, 2)).Play();
         }
         m_CarriedObject.transform.parent = null;
 

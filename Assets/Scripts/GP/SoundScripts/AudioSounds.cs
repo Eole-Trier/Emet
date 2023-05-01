@@ -13,6 +13,9 @@ public class Sound
     [Range(0f, 1f)] 
     public float volume;
 
+    [Range(0f, 1f)]
+    public float spatialBlend;
+
     public bool loop;
     [HideInInspector] public bool played;
     [HideInInspector]

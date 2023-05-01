@@ -13,11 +13,13 @@ public class BurningObject : MonoBehaviour
     private List<VisualEffect> m_Visual;
     private List<Light> m_Lights;
     private bool m_PlaySound;
+    private AudioManager m_AudioManager;
 
     [SerializeField] private float m_BurningTime;
 
     private void Start()
     {
+        m_AudioManager = FindObjectOfType<AudioManager>();
         m_PlaySound = IsBurning;
         m_Lights = new(GetComponentsInChildren<Light>());
         m_Particles = new(GetComponentsInChildren<ParticleSystem>());
@@ -27,6 +29,9 @@ public class BurningObject : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_on").isPlaying)
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_on").transform.position = transform.position;
+
         if (IsBurning)
         {
             Burn();
@@ -35,7 +40,7 @@ public class BurningObject : MonoBehaviour
             m_Lights.ForEach((lights) => lights.enabled = true);
             if (m_PlaySound)
             { 
-                FindObjectOfType<AudioManager>().Play("efrit_on");
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_on").Play();
                 m_PlaySound = false;
             }
         }
@@ -46,8 +51,9 @@ public class BurningObject : MonoBehaviour
             m_Lights.ForEach((lights) => lights.enabled = false);
             if (!m_PlaySound)
             {
-                FindObjectOfType<AudioManager>().Stop("efrit_on");
-                FindObjectOfType<AudioManager>().Play("efrit_off");
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_on").Stop();
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_off").Play();
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "efrit_off").transform.position = transform.position;
                 m_PlaySound = true;
             }
         }
@@ -65,7 +71,7 @@ public class BurningObject : MonoBehaviour
 
             if (gameObject.TryGetComponent(out ObjectType type) && type.ObjType.HasFlag(Type.Burnable))
             {
-                if (gameObject.TryGetComponent(out EfritBehaviour efrit) || gameObject.TryGetComponent(out Brasero brasero))
+                if (gameObject.TryGetComponent(out EfritBehaviour _) || gameObject.TryGetComponent(out Brasero _))
                 {
                     gameObject.GetComponent<BurningObject>().IsBurning = true;
                     continue;

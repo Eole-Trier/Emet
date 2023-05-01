@@ -23,6 +23,7 @@ public class Brasero : Interactibles
     public void FixedUpdate() 
     {
         IsOn = m_Brasero.IsBurning;
+
         if (IsOn)
         {
             Active();
@@ -36,16 +37,20 @@ public class Brasero : Interactibles
 
         if (m_Brasero.IsBurning && m_Play)
         {
-            m_AudioManager.Play("fire_on");
-            m_AudioManager.Play("fire_burning");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_on").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_on").transform.position = m_Brasero.transform.position;
+
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_burning").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_burning").transform.position = m_Brasero.transform.position;
             m_Play = false;
         }
 
         else if (!m_Brasero.IsBurning && !m_Play)
         {
-            m_AudioManager.Stop("fire_burning");
-            m_AudioManager.Play("fire_off");
-            m_Play = true;
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_burning").Stop();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_off").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_off").transform.position = m_Brasero.transform.position;
+            m_Play = true; 
         }
 
     }
