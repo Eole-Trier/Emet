@@ -634,6 +634,7 @@ GameObject:
   - component: {fileID: 6161449321441231071}
   - component: {fileID: 7125358720269319110}
   - component: {fileID: -4246639583797476829}
+  - component: {fileID: -7129164115456071230}
   m_Layer: 0
   m_Name: Brasero 1
   m_TagString: Untagged
@@ -699,8 +700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb740a12e8d2fa4892c8860003605d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsOn: 0
+  MechanismList: []
   m_BurnDistance: 0.8
-  m_IsBurning: 1
+  m_IsBurning: 0
 --- !u!114 &-4246639583797476829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +717,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjType: 2
+  InitialPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &-7129164115456071230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853690516235921773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d165d9e0e59de4cb1450f9767c253e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsBurning: 0
+  BurnDistance: 1
+  m_BurningTime: 1
 --- !u!1 &6579925572385292281
 GameObject:
   m_ObjectHideFlags: 0

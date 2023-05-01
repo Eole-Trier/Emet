@@ -48,7 +48,7 @@ MonoBehaviour:
   - name: efrit_incarnate
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 56ae36527286dbf4c9d1036d6e4a513b, type: 3}
+    clip: {fileID: 8300000, guid: 2a23065f1979e1b4cafca2c984c91c24, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
   - name: efrit_on
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: fb936063c46f5874cac8f8cff4ec6ec6, type: 3}
+    clip: {fileID: 8300000, guid: ae6c7eb8fac7a024fa5e6ecacfb3dc8a, type: 3}
     volume: 0.2
     spatialBlend: 1
     loop: 1
@@ -66,7 +66,7 @@ MonoBehaviour:
   - name: efrit_off
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: c7963d064f2e1ea4da61898ed10aa3c5, type: 3}
+    clip: {fileID: 8300000, guid: b7df8a84efc89884f8c4ecd49734be55, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
   - name: emet_incarnate
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 780b3166b53f2a6498da29c79d369d0c, type: 3}
+    clip: {fileID: 8300000, guid: bc7eee4057ff0414481b4439ddc558dc, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -84,25 +84,16 @@ MonoBehaviour:
   - name: emet_take
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: a3699074da62bf144aa47cf1f3890383, type: 3}
+    clip: {fileID: 8300000, guid: e3819aecc6d9ff2419404b771821afdd, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
     played: 0
     source: {fileID: 0}
-  - name: emet_throw_0
+  - name: emet_throw
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 6f3318defb45249499581040b6f61e55, type: 3}
-    volume: 1
-    spatialBlend: 0
-    loop: 0
-    played: 0
-    source: {fileID: 0}
-  - name: emet_throw_1
-    minDistance: 1
-    maxDistance: 10
-    clip: {fileID: 8300000, guid: 80680a1a6ed697f429c59057ea2b59d3, type: 3}
+    clip: {fileID: 8300000, guid: 88a8ab13ee105a74f802cad6c0fa36e2, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -111,7 +102,7 @@ MonoBehaviour:
   - name: enki_incarnate
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 9364fae3685d458488262e4873e269e5, type: 3}
+    clip: {fileID: 8300000, guid: 8c2ccc912f0c2c34cb8ac34ff7b2b970, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -120,7 +111,7 @@ MonoBehaviour:
   - name: enki_off
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: a4451173f67e81942ae829a8bf17031a, type: 3}
+    clip: {fileID: 8300000, guid: 7b3ade4778bf4a0469d65dbb2b4a57b8, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -129,7 +120,7 @@ MonoBehaviour:
   - name: enki_on
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 5b76661b880240c459b1033292d6d0a0, type: 3}
+    clip: {fileID: 8300000, guid: 930efdce954059145b62d7249e8eaafa, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -138,7 +129,7 @@ MonoBehaviour:
   - name: eole_incarnate
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: b015c10ac3fb8e144bfd8d9be09cebc5, type: 3}
+    clip: {fileID: 8300000, guid: 16a110bc178341e40a320e3fe37d8348, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -147,7 +138,7 @@ MonoBehaviour:
   - name: eole_change
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 8286f1cb3635d3a48867c8bb14ea46f9, type: 3}
+    clip: {fileID: 8300000, guid: bfc2afeaa80f6024aa321227546795e0, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -156,7 +147,7 @@ MonoBehaviour:
   - name: eole_on
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 87344942fb15e484f822fa1917a4ad57, type: 3}
+    clip: {fileID: 8300000, guid: 3cdbea01fa37d3f42af173a627757adf, type: 3}
     volume: 0.2
     spatialBlend: 1
     loop: 1
@@ -165,7 +156,7 @@ MonoBehaviour:
   - name: eole_off
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: fa1ff39e4e82ba440a21378c0aed0cf7, type: 3}
+    clip: {fileID: 8300000, guid: d182ce92502158e40962b365990f74de, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -174,7 +165,7 @@ MonoBehaviour:
   - name: fire_on
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: e345e6688723e9148a42d03e22c57f8f, type: 3}
+    clip: {fileID: 8300000, guid: 255d8702a0fbebe49bd4f8f90ea3316d, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -183,7 +174,7 @@ MonoBehaviour:
   - name: fire_burning
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: e6b92a3fcc4c5be4ca80c7933889d5a7, type: 3}
+    clip: {fileID: 8300000, guid: f6afb83197beb4842a9a1331f89e5870, type: 3}
     volume: 0.5
     spatialBlend: 1
     loop: 1
@@ -192,7 +183,7 @@ MonoBehaviour:
   - name: fire_off
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 07237463b010a8b4a804398dba27ca98, type: 3}
+    clip: {fileID: 8300000, guid: 115423cc5b67c994c82b2853ac44603f, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -201,7 +192,7 @@ MonoBehaviour:
   - name: golem_die
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 2e84cb3e1c1214a438e28244a1607913, type: 3}
+    clip: {fileID: 8300000, guid: 0ba8bf9ac566f5447844bbf7c71e14c4, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 0
@@ -210,7 +201,7 @@ MonoBehaviour:
   - name: golem_footsteps_0
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: a542c9a4197c7d34dbe1658ec11de5e3, type: 3}
+    clip: {fileID: 8300000, guid: f26c5c9fdb1e9f049bfe11638767646b, type: 3}
     volume: 0.2
     spatialBlend: 0
     loop: 0
@@ -219,7 +210,7 @@ MonoBehaviour:
   - name: golem_footsteps_1
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: d2d6154efd720e74f99a34fa0fdf0818, type: 3}
+    clip: {fileID: 8300000, guid: 422fa9c81d72a9747857237ad7ecc041, type: 3}
     volume: 0.2
     spatialBlend: 0
     loop: 0
@@ -228,7 +219,7 @@ MonoBehaviour:
   - name: golem_footsteps_2
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 5992b4b8631347e4b9ad4fffc8283a2f, type: 3}
+    clip: {fileID: 8300000, guid: 198f7c5df7e8516438788a446afaaaa6, type: 3}
     volume: 0.2
     spatialBlend: 0
     loop: 0
@@ -237,7 +228,7 @@ MonoBehaviour:
   - name: golem_footsteps_3
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 7b5df9e43e448f145a8760983e481756, type: 3}
+    clip: {fileID: 8300000, guid: b98ef4da11a4ff442ac68d753d86860b, type: 3}
     volume: 0.2
     spatialBlend: 0
     loop: 0
@@ -246,7 +237,7 @@ MonoBehaviour:
   - name: golem_footsteps_4
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: eab2474f36e3c3e42a29c795349840ec, type: 3}
+    clip: {fileID: 8300000, guid: 851d19c57cafd2b4e84fbd1d4019b7ca, type: 3}
     volume: 0.2
     spatialBlend: 0
     loop: 0
@@ -255,7 +246,7 @@ MonoBehaviour:
   - name: golem_jump
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: df72eaf7237abc844a44cf365c7c82b9, type: 3}
+    clip: {fileID: 8300000, guid: beb2b3a5b2742a6488a297ff229496c2, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -264,7 +255,7 @@ MonoBehaviour:
   - name: golem_land
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: b4cad04548692704888fdcd8b7280db4, type: 3}
+    clip: {fileID: 8300000, guid: 4cb9c48e65ec74948bf284519eedb35b, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 0
@@ -273,7 +264,7 @@ MonoBehaviour:
   - name: moving_platform
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
+    clip: {fileID: 8300000, guid: c095c2b5bd61cc74e9e7e2d453f51bae, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 1
@@ -282,7 +273,7 @@ MonoBehaviour:
   - name: lever_activate
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: da2dc4da7edcfd54a984d926c5b454e1, type: 3}
+    clip: {fileID: 8300000, guid: 45e5ef555dcbec64b946362625245236, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -291,7 +282,7 @@ MonoBehaviour:
   - name: pressurePlate_on
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: c3b4d9a376b701d4cb87294ac3378c43, type: 3}
+    clip: {fileID: 8300000, guid: 5656104be9a973746ae86dd919ebe9df, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -300,7 +291,7 @@ MonoBehaviour:
   - name: pressurePlate_off
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: d23c2a31e6e6cd043b5ce267393a0800, type: 3}
+    clip: {fileID: 8300000, guid: adbcdd85025bf8d4485063000176b4a8, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -309,7 +300,7 @@ MonoBehaviour:
   - name: water_screen
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 1dbe34ef35206c24cbd4d076273ae029, type: 3}
+    clip: {fileID: 8300000, guid: 7e58cabe8c05fb445b113fc3d1c73cd3, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 1
@@ -318,7 +309,7 @@ MonoBehaviour:
   - name: propeller_rotate
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 63085f53d4f91534eb695dd975941be2, type: 3}
+    clip: {fileID: 8300000, guid: 0732dcfd57c4b2a448f67a4c8aae2453, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 1
@@ -327,7 +318,7 @@ MonoBehaviour:
   - name: door_on
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 249e767d1c3ad8f46b39169f63ba6e07, type: 3}
+    clip: {fileID: 8300000, guid: 4c9c0b5fced05924dbb0b4a3e1537b17, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -336,7 +327,7 @@ MonoBehaviour:
   - name: door_off
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: 6e8fc8c88fe6c3f4886f4d2d73e61dfa, type: 3}
+    clip: {fileID: 8300000, guid: 61e99ac23d927a34a9e684412e1582b4, type: 3}
     volume: 1
     spatialBlend: 0
     loop: 0
@@ -345,7 +336,7 @@ MonoBehaviour:
   - name: button_pressed
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: fc960f363b14fb340a5bd200a1c713e0, type: 3}
+    clip: {fileID: 8300000, guid: 06dd21fb8f3a97b4cb311560c6c55d4f, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 1
@@ -354,7 +345,7 @@ MonoBehaviour:
   - name: burning_vines
     minDistance: 1
     maxDistance: 10
-    clip: {fileID: 8300000, guid: c758f107d58972545aef677a496dc5fc, type: 3}
+    clip: {fileID: 8300000, guid: 152006e6b0161f04cb6b797f99e98219, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 1

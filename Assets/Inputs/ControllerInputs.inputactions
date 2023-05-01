@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "a5b51c3d-8bbc-404a-8b3b-d2764e7c8745",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -29,7 +29,7 @@
                     "id": "0e681dd2-db12-4d66-bcf4-59e9a06ec160",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
