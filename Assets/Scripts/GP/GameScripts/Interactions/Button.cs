@@ -12,6 +12,7 @@ public class Button : Interactibles
 
     public override void OnOff()
     {
+        m_AudioManager.m_AudioSourceList.Find(s => s.name == "button_pressed").transform.position = transform.position;
         IsOn = true;
         foreach (Mechanism m in MechanismList)
         {

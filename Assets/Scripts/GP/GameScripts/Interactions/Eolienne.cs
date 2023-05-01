@@ -15,23 +15,24 @@ public class Eolienne : Interactibles
 
     public void FixedUpdate()
     {
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").transform.position = transform.position;
         if (m_EoleBehavior.listCollider.Contains(m_Collider))
         {
             IsOn = true;
             Active();
 
-            if (!m_AudioManager.IsPlaying("eole_on") && m_AudioManager.IsPlaying("propeller_rotate"))
-                m_AudioManager.Stop("propeller_rotate");
+            if (!m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").isPlaying && m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").isPlaying)
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").Stop();
 
-            else if (m_AudioManager.IsPlaying("eole_on") && !m_AudioManager.IsPlaying("propeller_rotate"))
-                m_AudioManager.Play("propeller_rotate");
+            else if (m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").isPlaying && !m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").isPlaying)
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").Play();
         }
         else
         {
             IsOn = false;
             Desactive();
-            if (m_AudioManager.IsPlaying("propeller_rotate"))
-                m_AudioManager.Stop("propeller_rotate");
+            if (m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").isPlaying)
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").Stop();
         }
     }
 
