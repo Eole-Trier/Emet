@@ -11,8 +11,7 @@ public class Brasero : Interactibles
     private void Start()
     {
         m_AudioManager = FindObjectOfType<AudioManager>();
-        m_Brasero = FindObjectOfType<BurningObject>();
-        IsOn = m_Brasero.IsBurning;
+        m_Brasero = GetComponent<BurningObject>();
 
 
         m_ParticleSystem = new (GetComponentsInChildren<ParticleSystem>());
