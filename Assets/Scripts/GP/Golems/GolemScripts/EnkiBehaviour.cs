@@ -10,11 +10,12 @@ public class EnkiBehaviour : Golem
     private float m_IdleTimer;
     [HideInInspector] public bool freezed;
     private List<BoxCollider> m_BoxCollider;
-  
+    private AudioManager m_AudioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_AudioManager = FindObjectOfType<AudioManager>();
         m_BoxCollider = new(GetComponents<BoxCollider>());
         m_Type = GolemType.ENKI;
         m_PlayerMovement = FindObjectOfType<PlayerMovement>();
