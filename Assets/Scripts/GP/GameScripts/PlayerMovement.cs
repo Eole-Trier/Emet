@@ -43,9 +43,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsMoving && IsGrounded)
         {
+            int i = Random.Range(0, 5);
             if (m_Timer <= 0)
             {
-                m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_footsteps_" + UnityEngine.Random.Range(0, 5)).Play();
+                if (m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_footsteps_" + i) != null)
+                    m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_footsteps_" + i).Play();
                 m_Timer = m_WalkingSoundTimer;
             }
             else

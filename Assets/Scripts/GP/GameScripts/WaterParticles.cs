@@ -10,7 +10,7 @@ public class WaterParticles : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<AudioManager>().Play("water_screen");
+        FindObjectOfType<AudioManager>().m_AudioSourceList.Find(s => s.name == "water_screen").Play();
         timer = m_TimerToShutDown;
     }
 
@@ -23,6 +23,9 @@ public class WaterParticles : MonoBehaviour
                 timer = m_TimerToShutDown;
                 burningObject.IsBurning = false;
             }
+            timer -= Time.fixedDeltaTime;
         }
+        else
+            timer = m_TimerToShutDown;
     }
 }
