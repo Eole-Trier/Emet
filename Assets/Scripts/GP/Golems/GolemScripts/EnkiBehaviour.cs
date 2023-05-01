@@ -43,17 +43,6 @@ public class EnkiBehaviour : Golem
                 collider.material = PhysicMaterial;
             }
         }
-        /*if (m_PlayerMovement.GetMoveDirection() == Vector3.zero && !m_Freezed)
-        {
-            m_IdleTimer -= Time.fixedDeltaTime;
-            if (m_IdleTimer <= 0)
-            {
-                m_PlayerMovement.GetAnimator().Play("Idle");
-                m_IdleTimer = m_TimeBeforeIdle;
-            }
-        }
-        else
-            m_IdleTimer = m_TimeBeforeIdle;*/
     }
 
     public override IEnumerator UseCapacity(double timePressed)
@@ -62,7 +51,7 @@ public class EnkiBehaviour : Golem
         {
             if (!freezed)
             {
-                FindObjectOfType<AudioManager>().Play("enki_on");
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "enki_on").Play();
                 CanJump = false;
                 m_BoxCollider.ForEach((box) => box.enabled ^= true);
                 freezed = true;
@@ -76,7 +65,7 @@ public class EnkiBehaviour : Golem
             }
             else
             {
-                FindObjectOfType<AudioManager>().Play("enki_off");
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "enki_off").Play();
                 m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
                 freezed = false;
                 m_CancelAnimator = false;
