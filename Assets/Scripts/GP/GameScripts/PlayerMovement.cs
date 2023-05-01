@@ -93,11 +93,8 @@ public class PlayerMovement : MonoBehaviour
                || Physics.Raycast(p4 + Vector3.up * 0.10f, Vector3.down, 0.20f))
                     return true;
             }
-
         }
-        
         return false;
-      
     }
     private void CopyTransform(Transform _transform)
     {
@@ -126,9 +123,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
-
-
     public void OnCapacity(InputAction.CallbackContext _context)
     {
         if (CanPlay)
@@ -158,9 +152,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-
-   
-
     public void SetGolem(Golem golem)
     {
         m_Golem = golem;

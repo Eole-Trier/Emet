@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomChanger : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class RoomChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
         m_ActualCamera = 0;
     }
@@ -36,7 +38,9 @@ public class RoomChanger : MonoBehaviour
             }
             else
             {
-                //change level
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                
+
             }
             gameObject.SetActive(false);
         }
