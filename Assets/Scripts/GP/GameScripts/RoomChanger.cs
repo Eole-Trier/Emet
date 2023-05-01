@@ -30,8 +30,6 @@ public class RoomChanger : MonoBehaviour
                     m_ActualCamera += 1;
                     m_CameraList[m_ActualCamera].enabled = true;
                 }
-                if (g.gameObject.TryGetComponent(out ObjectType o))
-                    g.transform.position = o.InitialPosition;
                 m_PlayerSwitch.m_CurrentRoom += 1;
                 m_PlayerSwitch.m_CurrentGolem = m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems.Count-1;
                 m_PlayerSwitch.GolemSwitch();
