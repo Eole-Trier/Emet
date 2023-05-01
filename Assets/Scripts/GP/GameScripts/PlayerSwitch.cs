@@ -40,7 +40,6 @@ public class PlayerSwitch : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       
             foreach(Golem g in Rooms[m_CurrentRoom].Golems)
             {
                 if (g.TryGetComponent(out EoleBehaviour eole))

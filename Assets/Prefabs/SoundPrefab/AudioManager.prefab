@@ -254,56 +254,56 @@ MonoBehaviour:
     played: 0
     source: {fileID: 0}
   - name: moving_platform
-    minDistance: 0
-    maxDistance: 0
+    minDistance: 1
+    maxDistance: 10
     clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
     volume: 1
     loop: 1
     played: 0
     source: {fileID: 0}
   - name: lever_activate
-    minDistance: 0
-    maxDistance: 0
+    minDistance: 1
+    maxDistance: 10
     clip: {fileID: 8300000, guid: da2dc4da7edcfd54a984d926c5b454e1, type: 3}
     volume: 1
     loop: 0
     played: 0
     source: {fileID: 0}
   - name: pressurePlate_on
-    minDistance: 0
-    maxDistance: 0
+    minDistance: 1
+    maxDistance: 10
     clip: {fileID: 8300000, guid: c3b4d9a376b701d4cb87294ac3378c43, type: 3}
     volume: 1
     loop: 0
     played: 0
     source: {fileID: 0}
   - name: pressurePlate_off
-    minDistance: 0
-    maxDistance: 0
+    minDistance: 1
+    maxDistance: 10
     clip: {fileID: 8300000, guid: d23c2a31e6e6cd043b5ce267393a0800, type: 3}
     volume: 1
     loop: 0
     played: 0
     source: {fileID: 0}
   - name: water_screen
-    minDistance: 0
-    maxDistance: 0
+    minDistance: 1
+    maxDistance: 10
     clip: {fileID: 8300000, guid: 1dbe34ef35206c24cbd4d076273ae029, type: 3}
     volume: 1
     loop: 1
     played: 0
     source: {fileID: 0}
   - name: moving_platform
-    minDistance: 0
-    maxDistance: 0
+    minDistance: 1
+    maxDistance: 10
     clip: {fileID: 8300000, guid: cd8623f5b26266549bd1b0cb0bb7a1f7, type: 3}
     volume: 1
     loop: 1
     played: 0
     source: {fileID: 0}
   - name: propeller_rotate
-    minDistance: 0
-    maxDistance: 0
+    minDistance: 1
+    maxDistance: 10
     clip: {fileID: 8300000, guid: 63085f53d4f91534eb695dd975941be2, type: 3}
     volume: 1
     loop: 1
