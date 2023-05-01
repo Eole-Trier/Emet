@@ -36,7 +36,11 @@ public class RoomChanger : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                int sceneNumber = 5;
+                if (SceneManager.GetActiveScene().buildIndex + 1 > sceneNumber)
+                    SceneManager.LoadScene(0);
+                else
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 
 
             }
