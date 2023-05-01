@@ -148,10 +148,12 @@ public class EmetBehaviour : Golem
         }
         else
         {
+            int i = UnityEngine.Random.Range(0, 2);
             m_PlayerMovement.GetAnimator().Play("EmetThrowing");
             Vector3 test = new(transform.forward.x * m_ThrowForce, m_ThrowForce, transform.forward.z * m_ThrowForce);
             m_CarriedObject.GetComponent<Rigidbody>().AddForce(test, ForceMode.Impulse);
-            m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_throw_" + UnityEngine.Random.Range(0, 2)).Play();
+            if(m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_throw_" + i) != null)
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "emet_throw_" + i).Play();
         }
         m_CarriedObject.transform.parent = null;
 
