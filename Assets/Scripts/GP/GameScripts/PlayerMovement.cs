@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Golem m_Golem;
     private Animator m_Animator;
     private AudioManager m_AudioManager;
-    public Vector3 m_MoveDirection;
+    private Vector3 m_MoveDirection;
     private float m_Timer;
     public bool IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
