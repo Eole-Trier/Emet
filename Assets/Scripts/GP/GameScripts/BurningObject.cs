@@ -65,12 +65,11 @@ public class BurningObject : MonoBehaviour
 
             if (gameObject.TryGetComponent(out ObjectType type) && type.ObjType.HasFlag(Type.Burnable))
             {
-                if (gameObject.TryGetComponent(out EfritBehaviour burningObject))
+                if (gameObject.TryGetComponent(out EfritBehaviour efrit) || gameObject.TryGetComponent(out Brasero brasero))
                 {
                     gameObject.GetComponent<BurningObject>().IsBurning = true;
                     continue;
                 }
-
                 m_GameObjects.Add(gameObject);
                 StartCoroutine(OwnDestroy(gameObject));
             }
@@ -80,13 +79,10 @@ public class BurningObject : MonoBehaviour
     }
     public IEnumerator OwnDestroy(GameObject go)
     {
-        if (go.TryGetComponent(out VisualEffect visualEffect))
-        {
-            go.GetComponent<VisualEffect>().enabled = true;
-            yield return new WaitForSeconds(m_BurningTime);
-            m_GameObjects.Remove(go);
-            Destroy(go);
-        }
+        go.GetComponent<BurningObject>().IsBurning = true;
+        yield return new WaitForSeconds(m_BurningTime);
+        m_GameObjects.Remove(go);
+        Destroy(go);
     }
 
     private void OnDrawGizmos()

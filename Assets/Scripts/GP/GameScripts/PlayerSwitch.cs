@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -39,10 +40,22 @@ public class PlayerSwitch : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type != Golem.GolemType.EOLE && Rooms[m_CurrentRoom].Golems.Contains(m_Eole))
-        {
-            m_Eole.EoleUpdate();
-        }
+            foreach(Golem g in Rooms[m_CurrentRoom].Golems)
+            {
+                if (g.TryGetComponent(out EoleBehaviour eole))
+                {
+                    if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem] != g)
+                    {
+                        eole.EoleUpdate();
+                    }
+                    else
+                    {
+                        eole.particles.Clear();
+                        eole.particles.Stop();
+                    }
+                }
+            }
+
         if (Rooms[m_CurrentRoom].Golems[m_CurrentGolem].m_Type == Golem.GolemType.EFRIT && !m_SoundPlayed)
         {
             m_SoundPlayed = true;

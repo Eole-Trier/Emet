@@ -1,6 +1,6 @@
+using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float m_WalkingSoundTimer;
     [HideInInspector] public bool IsGrounded;
     [HideInInspector] public bool CanPlay;
-    private List<Lever> m_Levers = new();
-    private List<Button> m_Buttons = new();
-    private List<Interactibles> m_Interactibles = new();
+    private List<Lever> m_Interactibles = new();
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;
@@ -30,16 +28,10 @@ public class PlayerMovement : MonoBehaviour
         m_Timer = m_WalkingSoundTimer;
         m_AudioListener = GetComponent<AudioListener>();
         m_AudioManager = FindObjectOfType<AudioManager>();
-        m_Levers = new(FindObjectsOfType<Lever>());
-        m_Buttons = new(FindObjectsOfType<Button>());
+        m_Interactibles = new(FindObjectsOfType<Lever>());
         CanPlay = false;
         yield return new WaitForSeconds(TimeBeforePlay);
         CanPlay = true;
-
-        foreach (Button b in m_Buttons)
-            m_Interactibles.Add(b);
-        foreach (Lever l in m_Levers)
-            m_Interactibles.Add(l);
     }
 
     // Update is called once per frame
