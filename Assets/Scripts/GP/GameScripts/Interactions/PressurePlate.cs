@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,7 +11,6 @@ public class PressurePlate : Interactibles
 
     public void FixedUpdate()
     {
-        IsOn = Pressed();
         if (IsOn)
             Active();
 
@@ -19,36 +19,26 @@ public class PressurePlate : Interactibles
 
         if (IsOn && !m_Played)
         {
-            m_AudioManager.Play("pressurePlate_on");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_on").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_on").transform.position = transform.position;
             m_Played = true;
         }
         else if (!IsOn && m_Played)
         {
-            m_AudioManager.Play("pressurePlate_off");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_off").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_off").transform.position = transform.position;
             m_Played = false;
         }
     }
-    public bool Pressed()
+
+    private void OnCollisionStay(Collision collision)
     {
-        Vector3 P1 = new(transform.position.x + transform.localScale.x / 2, transform.position.y, transform.position.z + transform.localScale.z / 2);
-        Vector3 P2 = new(transform.position.x + transform.localScale.x / 2, transform.position.y, transform.position.z - transform.localScale.z / 2);
-        Vector3 P3 = new(transform.position.x - transform.localScale.x / 2, transform.position.y, transform.position.z + transform.localScale.z / 2);
-        Vector3 P4 = new(transform.position.x - transform.localScale.x / 2, transform.position.y, transform.position.z - transform.localScale.z / 2);
-        Vector3 P5 = transform.position;
-        Debug.DrawRay(P1 + Vector3.down * 0.05f, Vector3.up, Color.red);
-        Debug.DrawRay(P2 + Vector3.down * 0.05f, Vector3.up, Color.red);
-        Debug.DrawRay(P3 + Vector3.down * 0.05f, Vector3.up, Color.red);
-        Debug.DrawRay(P4 + Vector3.down * 0.05f, Vector3.up, Color.red);
-        Debug.DrawRay(P5 + Vector3.down * 0.05f, Vector3.up, Color.red);
+        if (collision.transform.position.y >= transform.position.y)
+            IsOn = true;
+    }
 
-
-        if (   Physics.Raycast(P5 + Vector3.down * 0.05f, Vector3.up, 0.25f)
-            || Physics.Raycast(P1 + Vector3.down * 0.05f, Vector3.up, 0.25f)
-            || Physics.Raycast(P2 + Vector3.down * 0.05f, Vector3.up, 0.25f)
-            || Physics.Raycast(P3 + Vector3.down * 0.05f, Vector3.up, 0.25f)
-            || Physics.Raycast(P4 + Vector3.down * 0.05f, Vector3.up, 0.25f))
-            return true;
-
-        return false;
+    private void OnCollisionExit(Collision collision)
+    {
+        IsOn = false;
     }
 }

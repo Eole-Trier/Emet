@@ -1,75 +1,82 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-    public static AudioManager instance;
-
+    public List<AudioSource> m_AudioSourceList = new();
     // Start is called before the first frame update
     void Awake()
     {
 
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         foreach(Sound s in sounds)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
+            GameObject go = new();
+            go.transform.parent = gameObject.transform;
+            go.name = s.name;
+            go.AddComponent<AudioSource>();
+            go.GetComponent<AudioSource>().spatialBlend = s.spatialBlend;
+            go.GetComponent<AudioSource>().rolloffMode = AudioRolloffMode.Logarithmic;
+            go.GetComponent<AudioSource>().minDistance = s.minDistance;
+            go.GetComponent<AudioSource>().maxDistance = s.maxDistance;
+            go.GetComponent<AudioSource>().clip = s.clip;
+            go.GetComponent<AudioSource>().volume = s.volume;
+            go.GetComponent<AudioSource>().loop = s.loop;
+            m_AudioSourceList.Add(go.GetComponent<AudioSource>());
 
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.loop = s.loop;
         }
     }
-
+    
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, s => s.name == name);
         if (s.source != null)
-            s.source.Play();
+        {
+            m_AudioSourceList.Add(s.source);
+            m_AudioSourceList.Find(asl => asl.name == s.source.name).Play();
+        }
         else
-            Debug.LogWarning("Sound" + s.source.name + "not Found");
+            Debug.LogWarning("Sound " + s.name + " not Found");
     }
 
     public void Stop(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s.source != null)
-            s.source.Stop();
+        AudioSource s = m_AudioSourceList.Find(s => s.name == name);
+        if (s != null)
+            s.Stop();
         else
-            Debug.LogWarning("Sound" +  s.source.name + "not Found");
+            Debug.LogWarning("Sound " +  s.name + " not Found");
     }
 
     public bool IsPlaying(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s.source == null)
+        AudioSource s = m_AudioSourceList.Find(s => s.name == name);
+        if (s == null)
         {
-            Debug.LogWarning("Sound" + name + "Not Found");
+            Debug.LogWarning("Sound " + name + " not Found");
             return false;
         }
         else
         {
-            return s.source.isPlaying;
+            return s.isPlaying;
         }
     }
 
-    public void PlayOnce(string name)
+    public void AddSound(Sound s)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s.source == null)
-            Debug.LogWarning("Sound" + name + "Not Found");
-        else if (!s.played)
-        {
-            s.source.Play();
-            s.played = true;
-        }
+        GameObject go = new();
+        go.transform.parent = gameObject.transform;
+        go.name = s.name;
+        go.AddComponent<AudioSource>();
+        go.GetComponent<AudioSource>().spatialBlend = s.spatialBlend;
+        go.GetComponent<AudioSource>().rolloffMode = AudioRolloffMode.Logarithmic;
+        go.GetComponent<AudioSource>().minDistance = s.minDistance;
+        go.GetComponent<AudioSource>().maxDistance = s.maxDistance;
+        go.GetComponent<AudioSource>().clip = s.clip;
+        go.GetComponent<AudioSource>().volume = s.volume;
+        go.GetComponent<AudioSource>().loop = s.loop;
+        m_AudioSourceList.Add(go.GetComponent<AudioSource>());
     }
 }

@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position = new Vector3(FreezeAxis.x ? m_PositionFromPlayer.x : m_Player.GetGolem().transform.position.x + m_PositionFromPlayer.x,
             FreezeAxis.y ? m_PositionFromPlayer.y : m_PositionFromPlayer.y + m_Player.GetGolem().transform.position.y,

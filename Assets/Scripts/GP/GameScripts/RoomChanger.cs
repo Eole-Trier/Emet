@@ -2,31 +2,25 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomChanger : MonoBehaviour
 {
     private PlayerSwitch m_PlayerSwitch;
-    private PlayerMovement m_PlayerMovement;
     [SerializeField] private CinemachineVirtualCamera[] m_CameraList = new CinemachineVirtualCamera[2];
     private int m_ActualCamera;
 
     // Start is called before the first frame update
     void Start()
     {
+
         m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
         m_ActualCamera = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-   
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Golem golem))
+        if (collision.gameObject.TryGetComponent(out Golem g))
         {
             if (m_PlayerSwitch.m_CurrentRoom + 1 < m_PlayerSwitch.Rooms.Count)
             {
@@ -36,13 +30,17 @@ public class RoomChanger : MonoBehaviour
                     m_ActualCamera += 1;
                     m_CameraList[m_ActualCamera].enabled = true;
                 }
+                if (g.gameObject.TryGetComponent(out ObjectType o))
+                    g.transform.position = o.InitialPosition;
                 m_PlayerSwitch.m_CurrentRoom += 1;
                 m_PlayerSwitch.m_CurrentGolem = m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems.Count-1;
                 m_PlayerSwitch.GolemSwitch();
             }
             else
             {
-                //change level
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                
+
             }
             gameObject.SetActive(false);
         }

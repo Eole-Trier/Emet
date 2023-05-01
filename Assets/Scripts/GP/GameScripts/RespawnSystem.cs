@@ -14,6 +14,7 @@ public class RespawnSystem : MonoBehaviour
             {
                 if (obj.TryGetComponent(out Golem golem))
                 {
+                    FindObjectOfType<AudioManager>().m_AudioSourceList.Find(s => s.name == "golem_die").transform.position = obj.transform.position;
                     StartCoroutine(Die());
                 }
                 obj.transform.position = obj.InitialPosition;
@@ -23,7 +24,7 @@ public class RespawnSystem : MonoBehaviour
 
     private IEnumerator Die()
     {
-        FindObjectOfType<AudioManager>().Play("golem_die");
+        FindObjectOfType<AudioManager>().m_AudioSourceList.Find(s => s.name == "golem_die").Play();
         yield return new WaitForSeconds(m_RespawnTime);
     }
 }

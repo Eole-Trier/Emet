@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Animator m_Animator;
     [SerializeField] private float m_RangeToActivate;
     [SerializeField] private float TimeBeforePlay;
     [SerializeField] private float m_WalkingSoundTimer;
@@ -16,10 +14,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;
+    private Animator m_Animator;
     private AudioManager m_AudioManager;
     public Vector3 m_MoveDirection;
     private float m_Timer;
-    private bool m_IsMoving { get { return m_MoveDirection != Vector3.zero; } }
+    public bool IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -33,26 +32,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        Movement();
         IsGrounded = Grounded();
         CopyTransform(m_GolemTransform);
 
         if (m_Golem.m_CancelAnimator != false)
             return;
 
-        m_Animator.SetFloat("SpeedX", m_MoveDirection.x);
-        m_Animator.SetFloat("SpeedY", m_Rigidbody.velocity.y);
-        if(IsGrounded)
-            m_Animator.SetFloat("SpeedY", 0);
-        m_Animator.SetFloat("SpeedZ", m_MoveDirection.z);
-        m_Animator.SetBool("Moving", m_IsMoving);
-
-        if (m_IsMoving && IsGrounded)
+        if (IsMoving && IsGrounded)
         {
             if (m_Timer <= 0)
             {
-                m_AudioManager.Play("golem_footsteps_" + Random.Range(0, 5));
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_footsteps_" + UnityEngine.Random.Range(0, 5)).Play();
                 m_Timer = m_WalkingSoundTimer;
             }
             else
@@ -64,11 +57,6 @@ public class PlayerMovement : MonoBehaviour
             m_GolemTransform.rotation = Quaternion.RotateTowards(m_GolemTransform.rotation, toRotation, 720 * Time.deltaTime);
             
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Movement();
     }
 
     private bool Grounded()
@@ -100,16 +88,12 @@ public class PlayerMovement : MonoBehaviour
                || Physics.Raycast(p4 + Vector3.up * 0.10f, Vector3.down, 0.20f))
                     return true;
             }
-
         }
-        
         return false;
-      
     }
     private void CopyTransform(Transform _transform)
     {
-        transform.position = _transform.position;
-        transform.rotation = _transform.rotation;
+        transform.SetPositionAndRotation(_transform.position, _transform.rotation);
         transform.localScale = _transform.localScale;
     }
 
@@ -128,15 +112,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded && _context.started && m_Golem.CanJump)
             {
-                m_AudioManager.Play("golem_jump");
+                m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_jump").Play();
                 m_Animator.Play("Jump");
                 Jump();
             }
         }
     }
-
-
-
     public void OnCapacity(InputAction.CallbackContext _context)
     {
         if (CanPlay)
@@ -166,9 +147,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-
-   
-
     public void SetGolem(Golem golem)
     {
         m_Golem = golem;
@@ -180,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        m_Rigidbody.AddForce(transform.up * m_Golem.m_JumpStrength * Time.fixedDeltaTime, ForceMode.Impulse);
+        m_Rigidbody.AddForce((transform.up * m_Golem.m_JumpStrength) * Time.fixedDeltaTime, ForceMode.Impulse);
     }
     private void Movement()
     {
@@ -202,6 +180,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetMoveDirection(Vector3 move) => m_MoveDirection = move;
     public Vector3 GetMoveDirection() => m_MoveDirection;
+
+    public Rigidbody GetRigidbody() => m_Rigidbody;
 
     public Animator GetAnimator() => m_Animator;
 }

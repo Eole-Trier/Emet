@@ -861,11 +861,11 @@ MonoBehaviour:
   m_Type: 0
   m_PlayerMovement: {fileID: 0}
   CanJump: 0
-  listCollider: []
   m_WindForceHorizontal: 20
   m_WindForceVertical: 1
   m_TimeBeforeIdle: 5
-  windActive: 0
+  listCollider: []
+  particles: {fileID: 0}
 --- !u!1 &4626367100857585426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,7 +1139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6377699670645217457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.031, z: 0}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children:
