@@ -184,7 +184,7 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 10
     clip: {fileID: 8300000, guid: e6b92a3fcc4c5be4ca80c7933889d5a7, type: 3}
-    volume: 0.2
+    volume: 0.5
     spatialBlend: 1
     loop: 1
     played: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
     maxDistance: 10
     clip: {fileID: 8300000, guid: a542c9a4197c7d34dbe1658ec11de5e3, type: 3}
     volume: 0.2
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 0
     played: 0
     source: {fileID: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
     maxDistance: 10
     clip: {fileID: 8300000, guid: d2d6154efd720e74f99a34fa0fdf0818, type: 3}
     volume: 0.2
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 0
     played: 0
     source: {fileID: 0}
@@ -230,7 +230,7 @@ MonoBehaviour:
     maxDistance: 10
     clip: {fileID: 8300000, guid: 5992b4b8631347e4b9ad4fffc8283a2f, type: 3}
     volume: 0.2
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 0
     played: 0
     source: {fileID: 0}
@@ -239,7 +239,7 @@ MonoBehaviour:
     maxDistance: 10
     clip: {fileID: 8300000, guid: 7b5df9e43e448f145a8760983e481756, type: 3}
     volume: 0.2
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 0
     played: 0
     source: {fileID: 0}
@@ -248,7 +248,7 @@ MonoBehaviour:
     maxDistance: 10
     clip: {fileID: 8300000, guid: eab2474f36e3c3e42a29c795349840ec, type: 3}
     volume: 0.2
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 0
     played: 0
     source: {fileID: 0}
@@ -319,6 +319,42 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 10
     clip: {fileID: 8300000, guid: 63085f53d4f91534eb695dd975941be2, type: 3}
+    volume: 1
+    spatialBlend: 1
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: door_on
+    minDistance: 1
+    maxDistance: 10
+    clip: {fileID: 8300000, guid: 249e767d1c3ad8f46b39169f63ba6e07, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: door_off
+    minDistance: 1
+    maxDistance: 10
+    clip: {fileID: 8300000, guid: 6e8fc8c88fe6c3f4886f4d2d73e61dfa, type: 3}
+    volume: 1
+    spatialBlend: 0
+    loop: 0
+    played: 0
+    source: {fileID: 0}
+  - name: button_pressed
+    minDistance: 1
+    maxDistance: 10
+    clip: {fileID: 8300000, guid: fc960f363b14fb340a5bd200a1c713e0, type: 3}
+    volume: 1
+    spatialBlend: 1
+    loop: 1
+    played: 0
+    source: {fileID: 0}
+  - name: burning_vines
+    minDistance: 1
+    maxDistance: 10
+    clip: {fileID: 8300000, guid: c758f107d58972545aef677a496dc5fc, type: 3}
     volume: 1
     spatialBlend: 1
     loop: 1
