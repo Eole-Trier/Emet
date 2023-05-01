@@ -10,13 +10,16 @@ public class EoleBehaviour : Golem
     [HideInInspector] public List<Collider> listCollider = new();
     [HideInInspector] public ParticleSystem particles;
     private List<CapsuleCollider> m_WindCollider = new();
+    private AudioManager m_AudioManager;
     private Animator m_Animator;
     private bool forward;
 
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("eole_on");
+        m_AudioManager = FindObjectOfType<AudioManager>();
+        m_AudioManager.m_AudioSourceList.Find(s => s.name == "eole_on").Play();
+        m_AudioManager.m_AudioSourceList.Find(s => s.name == "eole_on").transform.position = transform.position;
         m_Type = GolemType.EOLE;
         particles = GetComponentInChildren<ParticleSystem>();
         forward = true;
@@ -46,6 +49,7 @@ public class EoleBehaviour : Golem
     private void FixedUpdate()
     {
         BoxCollider c = GetComponent<BoxCollider>();
+        m_AudioManager.m_AudioSourceList.Find(s => s.name == "eole_on").transform.position = transform.position;
         if (m_PlayerMovement.IsGrounded)
             c.material = null;
         else
@@ -58,7 +62,7 @@ public class EoleBehaviour : Golem
         if (particles != null && !particles.isPlaying)
         {
             particles.Play();
-            FindObjectOfType<AudioManager>().Play("eole_on");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "eole_on").Play();
         }
 
         foreach (Collider collider in listCollider)
@@ -83,7 +87,7 @@ public class EoleBehaviour : Golem
         if (m_PlayerMovement.IsGrounded && m_PlayerMovement.GetMoveDirection() == Vector3.zero)
         {
             forward ^= true;
-            FindObjectOfType<AudioManager>().Play("eole_change");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "eole_change").Play();
 
             if (!forward)
             {

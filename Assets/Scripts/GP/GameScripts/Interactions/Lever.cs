@@ -13,6 +13,7 @@ public class Lever : Interactibles
     {
         IsOn ^= true;
         if (IsOn)
-            m_AudioManager.Play("lever_activate");
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "lever_activate").Play();
+            m_AudioManager.m_AudioSourceList.Find(s => s.name == "lever_activate").transform.position = transform.position;
     }
 }
