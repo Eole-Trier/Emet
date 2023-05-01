@@ -93,11 +93,6 @@ public class PlayerSwitch : MonoBehaviour
                 m_GolemAnimator.SetFloat("SpeedY", golem.GetComponent<Rigidbody>().velocity.y);
                 m_GolemAnimator.SetFloat("SpeedZ", golem.GetComponent<Rigidbody>().velocity.z);
                 m_GolemAnimator.SetBool("Moving", golem.GetComponent<Rigidbody>().velocity != Vector3.zero);
-                if (m_Player.IsGrounded && golem.GetComponent<Rigidbody>().velocity.y < 0 && !m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_land").isPlaying)
-                {
-                    m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_land").transform.position = transform.position;
-                    m_AudioManager.m_AudioSourceList.Find(s => s.name == "golem_land").Play();
-                }
             }
         }
     }
