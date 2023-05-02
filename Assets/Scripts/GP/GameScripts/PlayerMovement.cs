@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float m_WalkingSoundTimer;
     [HideInInspector] public bool IsGrounded;
     [HideInInspector] public bool CanPlay;
-    private List<Lever> m_Interactibles = new();
+    private List<Lever> m_LeverList = new();
+    private List<Button> m_ButtonList = new();
     private Rigidbody m_Rigidbody;
     private Transform m_GolemTransform;
     private Golem m_Golem;
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioManager m_AudioManager;
     private Vector3 m_MoveDirection;
     private float m_Timer;
+    private List<Interactibles> m_InteractibleList = new();
+
     public bool IsMoving { get { return m_MoveDirection != Vector3.zero; } }
 
     // Start is called before the first frame update
@@ -25,10 +28,17 @@ public class PlayerMovement : MonoBehaviour
     {
         m_Timer = m_WalkingSoundTimer;
         m_AudioManager = FindObjectOfType<AudioManager>();
-        m_Interactibles = new(FindObjectsOfType<Lever>());
+        m_LeverList = new(FindObjectsOfType<Lever>());
+        m_ButtonList = new(FindObjectsOfType<Button>());
+        foreach (Lever l in m_LeverList)
+            m_InteractibleList.Add(l);
+        foreach (Button b in m_ButtonList)
+            m_InteractibleList.Add(b);
+
         CanPlay = false;
         yield return new WaitForSeconds(TimeBeforePlay);
         CanPlay = true;
+
     }
 
     // Update is called once per frame
@@ -137,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
                 if (_context.started)
                 {
                     double time = _context.time;
-                    Interactibles interactible = m_Interactibles.Find((interactible) => Vector3.Distance(transform.position, interactible.transform.position) <= m_RangeToActivate);
+                    Interactibles interactible = m_InteractibleList.Find((interactible) => Vector3.Distance(transform.position, interactible.transform.position) <= m_RangeToActivate);
                     if (interactible != null)
                     {
                         interactible.OnOff();
