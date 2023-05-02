@@ -7,15 +7,13 @@ using UnityEngine;
 public class PressurePlate : Interactibles
 {
     private bool m_Played;
+    private bool m_IsNotOnPressurePlate;
     public override void OnOff() {; }
 
     public void FixedUpdate()
     {
         if (IsOn)
             Active();
-
-        else
-            Desactive();
 
         if (IsOn && !m_Played)
         {
@@ -40,5 +38,6 @@ public class PressurePlate : Interactibles
     private void OnCollisionExit(Collision collision)
     {
         IsOn = false;
+        Desactive();
     }
 }
