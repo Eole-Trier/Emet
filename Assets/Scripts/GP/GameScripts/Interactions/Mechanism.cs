@@ -9,7 +9,7 @@ public class Mechanism : MonoBehaviour
     [HideInInspector] public bool IsActive;
     public List<Interactibles> m_InteractibleList;
 
-    private void Start()
+    private void Awake()
     {
         IsActive = Time.time <= 0;
     }

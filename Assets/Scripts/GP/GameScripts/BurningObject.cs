@@ -79,8 +79,6 @@ public class BurningObject : MonoBehaviour
                 m_GameObjects.Add(gameObject);
                 StartCoroutine(OwnDestroy(gameObject));
             }
-            else if (gameObject.tag == "Water")
-                IsBurning = false;
         }
     }
     public IEnumerator OwnDestroy(GameObject go)
@@ -95,5 +93,11 @@ public class BurningObject : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, BurnDistance);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Water"))
+            IsBurning = false;
     }
 }

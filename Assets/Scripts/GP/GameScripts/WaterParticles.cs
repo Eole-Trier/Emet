@@ -8,7 +8,7 @@ public class WaterParticles : MonoBehaviour
     [SerializeField] private float m_TimerToShutDown;
     private float timer;
 
-    private void Start()
+    private void Awake()
     {
         FindObjectOfType<AudioManager>().m_AudioSourceList.Find(s => s.name == "water_screen").Play();
         timer = m_TimerToShutDown;
@@ -20,12 +20,11 @@ public class WaterParticles : MonoBehaviour
         {
             if (timer <= 0)
             {
-                timer = m_TimerToShutDown;
                 burningObject.IsBurning = false;
+                timer = m_TimerToShutDown;
             }
-            timer -= Time.fixedDeltaTime;
+            else
+                timer -= Time.fixedDeltaTime;
         }
-        else
-            timer = m_TimerToShutDown;
     }
 }
