@@ -17,22 +17,15 @@ public class Brasero : Interactibles
         m_ParticleSystem = new (GetComponentsInChildren<ParticleSystem>());
     }
 
-    public override void OnOff() {;}
+    public override void OnOff() {; }
 
     public void FixedUpdate() 
     {
-        IsOn = m_Brasero.IsBurning;
 
         if (IsOn)
-        {
             Active();
-            m_ParticleSystem.ForEach((flame) => flame.Play());
-        }
-        else
-        {
-            Desactive();
-            m_ParticleSystem.ForEach((flame) => flame.Stop());
-        }
+
+        IsOn = m_Brasero.IsBurning;
 
         if (m_Brasero.IsBurning && m_Play)
         {
@@ -44,14 +37,12 @@ public class Brasero : Interactibles
             m_Play = false;
         }
 
-        else if (!m_Brasero.IsBurning && !m_Play)
+        else if (!m_Brasero.IsBurning && m_Play)
         {
             m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_burning").Stop();
             m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_off").Play();
             m_AudioManager.m_AudioSourceList.Find(s => s.name == "fire_off").transform.position = m_Brasero.transform.position;
-            m_Play = true; 
+            m_Play = true;
         }
-
     }
-
 }

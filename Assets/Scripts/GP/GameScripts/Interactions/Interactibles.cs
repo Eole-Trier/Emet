@@ -46,14 +46,14 @@ public abstract class Interactibles : MonoBehaviour
             {
                 if(m_AudioManager.m_AudioSourceList.Find(s => s.name == "moving_platform").isPlaying)
                     m_AudioManager.m_AudioSourceList.Find(s => s.name == "moving_platform").transform.position = mp.transform.position;
-                mp.speed = mp.movingPlateformSpeed;
+                mp.speed = 2;
                 continue;
             }
             
 
 
             // If every interactibles are on then activate/desactivate the object
-            if (m.myTimer <= 0 && m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.TrueForAll(interactibles => interactibles.IsOn))
+            if (m.myTimer <= 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.TrueForAll(interactibles => interactibles.IsOn))
             {
                 if (m.ToString().Contains("Door"))
                     m_AudioManager.m_AudioSourceList.Find(s => s.name == "door_on").Play();
@@ -76,12 +76,13 @@ public abstract class Interactibles : MonoBehaviour
             if (m.TryGetComponent(out MovingPlateform mp))
             {
                 mp.transform.position = mp.plateformPath[0].transform.position;
+                mp.speed = 0;
                 m_AudioManager.m_AudioSourceList.Find(s => s.name == "moving_platform").Stop();
                 m_PlayOnce = false;
             }
 
             m.myTimer = m.timer;
-            if (!m.m_InteractibleList.TrueForAll(interactibles => interactibles.IsOn))
+            if (m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count != m.m_InteractibleList.Count)
             {
                 m.gameObject.SetActive(!m.gameObject.activeInHierarchy);
                 if (m.ToString().Contains("Door") && m.gameObject.activeInHierarchy)
