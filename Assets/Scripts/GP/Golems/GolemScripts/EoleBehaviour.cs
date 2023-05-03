@@ -7,7 +7,7 @@ public class EoleBehaviour : Golem
     [SerializeField] private float m_WindForceHorizontal;
     [SerializeField] private float m_WindForceVertical;
     [SerializeField] private float m_TimeBeforeIdle;
-    [HideInInspector] public List<Collider> listCollider = new();
+    public List<Collider> listCollider = new();
     [HideInInspector] public ParticleSystem particles;
     private List<CapsuleCollider> m_WindCollider = new();
     private AudioManager m_AudioManager;

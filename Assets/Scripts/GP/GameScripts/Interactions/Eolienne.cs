@@ -1,22 +1,23 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Eolienne : Interactibles
 {
     private Collider m_Collider;
-    private EoleBehaviour m_EoleBehavior;
+    private List<EoleBehaviour> m_EoleBehavior;
     private bool m_Play;
 
     private void Start()
     {
         m_AudioManager = FindObjectOfType<AudioManager>();
         m_Collider = GetComponent<BoxCollider>();
-        m_EoleBehavior = FindObjectOfType<EoleBehaviour>();
+        m_EoleBehavior = new(FindObjectsOfType<EoleBehaviour>());
     }
 
     public void FixedUpdate()
     {
             m_AudioManager.m_AudioSourceList.Find(s => s.name == "propeller_rotate").transform.position = transform.position;
-        if (m_EoleBehavior.listCollider.Contains(m_Collider))
+        if (m_EoleBehavior.Find(eole => eole.listCollider.Find(list => list.name == m_Collider.name)))
         {
             IsOn = true;
             Active();
