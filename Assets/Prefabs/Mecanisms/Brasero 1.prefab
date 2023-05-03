@@ -667,7 +667,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4853690516235921773}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.3385706, y: 1.2422714, z: 2.2542953}
@@ -702,8 +702,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOn: 0
   MechanismList: []
-  m_BurnDistance: 0.8
-  m_IsBurning: 0
 --- !u!114 &-4246639583797476829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,8 +729,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurning: 0
-  BurnDistance: 1
-  m_BurningTime: 1
+  BurnDistance: 2
+  m_BurningTime: 0.5
 --- !u!1 &6579925572385292281
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +904,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2607309925948035558}
     m_Modifications:
+    - target: {fileID: 7280073895745678332, guid: bd645904d60ddb6469a092708645729e,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7593820017674743825, guid: bd645904d60ddb6469a092708645729e,
         type: 3}
       propertyPath: m_LocalPosition.x

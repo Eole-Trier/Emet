@@ -731,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7414d97d6bebabb498005240f835e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
   m_CameraList:
   - {fileID: 136070476}
   - {fileID: 983294398}
@@ -2476,6 +2477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7414d97d6bebabb498005240f835e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
   m_CameraList:
   - {fileID: 646585440}
   - {fileID: 1451867338}
@@ -11600,6 +11602,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1965971527923582530, guid: 2f4bda9e9f5194344836f1338f323216,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cb987137b739894682ccea9106cd69b, type: 2}
     - target: {fileID: 2773786917189284602, guid: 2f4bda9e9f5194344836f1338f323216,
         type: 3}
       propertyPath: m_RootOrder
@@ -11660,6 +11667,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.427
       objectReference: {fileID: 0}
+    - target: {fileID: 4648921165062342426, guid: 2f4bda9e9f5194344836f1338f323216,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cb987137b739894682ccea9106cd69b, type: 2}
     - target: {fileID: 5209634636685862909, guid: 2f4bda9e9f5194344836f1338f323216,
         type: 3}
       propertyPath: m_Name
@@ -30898,6 +30910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7414d97d6bebabb498005240f835e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
   m_CameraList:
   - {fileID: 983294398}
   - {fileID: 146356888}
@@ -43009,7 +43022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443596109}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 88.72, y: -7.99, z: -2.95}
+  m_LocalPosition: {x: 88.72, y: -6.18, z: -2.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46868,6 +46881,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e948894341663ce4dbb053d2c557002c, type: 3}
+--- !u!1 &1554984906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1554984907}
+  - component: {fileID: 1554984908}
+  m_Layer: 0
+  m_Name: Invisible Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1554984907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554984906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 63293907}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1554984908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554984906}
+  m_Material: {fileID: 13400000, guid: f1b46f04dd480dd47a1d6b5a26f7feab, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.994455, y: 13.8647375, z: 5.1641755}
+  m_Center: {x: -3.2149034, y: 6.4323664, z: -2.2991955}
 --- !u!1001 &1555035407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51119,6 +51177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7414d97d6bebabb498005240f835e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
   m_CameraList: []
 --- !u!1 &1699898664
 GameObject:
@@ -56710,6 +56769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7414d97d6bebabb498005240f835e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
   m_CameraList:
   - {fileID: 1451867338}
   - {fileID: 136070476}

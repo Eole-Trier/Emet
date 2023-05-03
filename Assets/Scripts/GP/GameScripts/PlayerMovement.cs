@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -158,6 +159,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
+    }
+
+    public void Quit(InputAction.CallbackContext _context)
+    {
+        if(_context.started)
+            SceneManager.LoadScene(0);
     }
     public void SetGolem(Golem golem)
     {

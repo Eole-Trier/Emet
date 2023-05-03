@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class RoomChanger : MonoBehaviour
 {
+    public int Level;
     private PlayerSwitch m_PlayerSwitch;
     [SerializeField] private CinemachineVirtualCamera[] m_CameraList = new CinemachineVirtualCamera[2];
     private int m_ActualCamera;
@@ -13,7 +14,6 @@ public class RoomChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         m_PlayerSwitch = FindObjectOfType<PlayerSwitch>();
         m_ActualCamera = 0;
     }
@@ -31,6 +31,8 @@ public class RoomChanger : MonoBehaviour
                     m_CameraList[m_ActualCamera].enabled = true;
                 }
                 m_PlayerSwitch.m_CurrentRoom += 1;
+                if (Level <= m_PlayerSwitch.m_CurrentRoom)
+                    Level = SceneManager.GetActiveScene().buildIndex + 1;
                 m_PlayerSwitch.m_CurrentGolem = m_PlayerSwitch.Rooms[m_PlayerSwitch.m_CurrentRoom].Golems.Count-1;
                 m_PlayerSwitch.GolemSwitch();
             }
@@ -40,12 +42,12 @@ public class RoomChanger : MonoBehaviour
                 if (SceneManager.GetActiveScene().buildIndex + 1 > sceneNumber)
                     SceneManager.LoadScene(0);
                 else
+                {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                
-
+                }
             }
+            PlayerPrefs.SetInt("Level", Level);
             gameObject.SetActive(false);
         }
-        
     }
 }

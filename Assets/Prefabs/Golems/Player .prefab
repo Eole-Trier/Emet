@@ -242,9 +242,25 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 96796251-3da5-4666-bb14-250445c4d531
     m_ActionName: Keyboard/Switch[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6750812620780612619}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9bbc97b7-39a0-4ce3-955c-c8d63aab999c
+    m_ActionName: Controller/Quit[/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Keyboard
+  m_DefaultActionMap: 61fdab3b-83d1-4278-89e4-f5f060093d0c
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &6750812620780612619
@@ -264,7 +280,6 @@ MonoBehaviour:
   m_WalkingSoundTimer: 0
   IsGrounded: 0
   CanPlay: 0
-  m_MoveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6750812620780612618
 MonoBehaviour:
   m_ObjectHideFlags: 0
