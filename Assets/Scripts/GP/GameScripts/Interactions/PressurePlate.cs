@@ -12,9 +12,6 @@ public class PressurePlate : Interactibles
 
     public void FixedUpdate()
     {
-        if (IsOn)
-            Active();
-
         if (IsOn && !m_Played)
         {
             m_AudioManager.m_AudioSourceList.Find(s => s.name == "pressurePlate_on").Play();
@@ -32,7 +29,10 @@ public class PressurePlate : Interactibles
     private void OnCollisionStay(Collision collision)
     {
         if (collision.transform.position.y >= transform.position.y)
+        {
             IsOn = true;
+            Active();
+        }
     }
 
     private void OnCollisionExit(Collision collision)

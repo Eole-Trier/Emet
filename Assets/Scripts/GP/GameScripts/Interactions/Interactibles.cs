@@ -53,11 +53,11 @@ public abstract class Interactibles : MonoBehaviour
 
 
             // If every interactibles are on then activate/desactivate the object
-            if (m.myTimer <= 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.TrueForAll(interactibles => interactibles.IsOn))
+            if (m.timer == 0 && m.gameObject.activeInHierarchy == m.IsActive && m.m_InteractibleList.TrueForAll(interactibles => interactibles.IsOn))
             {
                 if (m.ToString().Contains("Door"))
                     m_AudioManager.m_AudioSourceList.Find(s => s.name == "door_on").Play();
-                m.gameObject.SetActive(!m.gameObject.activeInHierarchy);
+                m.gameObject.SetActive(!m.IsActive);
             }
             //If playOnce is true then loop the activate/desactivate state if timer > 0
             if (!m.playOnce && m.myTimer < 0 && m.timer > 0)
@@ -84,7 +84,7 @@ public abstract class Interactibles : MonoBehaviour
             m.myTimer = m.timer;
             if (m.gameObject.activeInHierarchy != m.IsActive && m.m_InteractibleList.FindAll(interactible => interactible.IsOn).Count != m.m_InteractibleList.Count)
             {
-                m.gameObject.SetActive(!m.gameObject.activeInHierarchy);
+                m.gameObject.SetActive(m.IsActive);
                 if (m.ToString().Contains("Door") && m.gameObject.activeInHierarchy)
                     m_AudioManager.m_AudioSourceList.Find(s => s.name == "door_on").Stop();
             }
